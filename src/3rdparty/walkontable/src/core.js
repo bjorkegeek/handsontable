@@ -15,8 +15,10 @@ import {WalkontableViewport} from './viewport';
 import {WalkontableOverlay} from './overlay/_base.js';
 import {WalkontableTopOverlay} from './overlay/top.js';
 import {WalkontableLeftOverlay} from './overlay/left.js';
+import {WalkontableBottomOverlay} from './overlay/bottom.js';
 import {WalkontableDebugOverlay} from './overlay/debug.js';
 import {WalkontableTopLeftCornerOverlay} from './overlay/topLeftCorner.js';
+import {WalkontableBottomLeftCornerOverlay} from './overlay/bottomLeftCorner.js';
 
 /**
  * @class Walkontable
