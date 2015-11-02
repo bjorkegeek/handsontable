@@ -169,8 +169,17 @@ SelectEditor.prototype.refreshDimensions = function() {
     case 'bottom-left-corner':
       cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.bottomLeftCornerOverlay.clone.wtTable.holder.parentNode);
       break;
+    case 'top-right-corner':
+      cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.topRightCornerOverlay.clone.wtTable.holder.parentNode);
+      break;
+    case 'bottom-right-corner':
+      cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.bottomRightCornerOverlay.clone.wtTable.holder.parentNode);
+      break;
     case 'bottom':
       cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.bottomOverlay.clone.wtTable.holder.parentNode);
+      break;
+    case 'right':
+      cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.rightOverlay.clone.wtTable.holder.parentNode);
       break;
   }
   if (this.instance.getSelected()[0] === 0) {

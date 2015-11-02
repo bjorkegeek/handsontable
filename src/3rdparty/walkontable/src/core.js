@@ -16,9 +16,12 @@ import {WalkontableOverlay} from './overlay/_base.js';
 import {WalkontableTopOverlay} from './overlay/top.js';
 import {WalkontableLeftOverlay} from './overlay/left.js';
 import {WalkontableBottomOverlay} from './overlay/bottom.js';
+import {WalkontableRightOverlay} from './overlay/right.js';
 import {WalkontableDebugOverlay} from './overlay/debug.js';
 import {WalkontableTopLeftCornerOverlay} from './overlay/topLeftCorner.js';
 import {WalkontableBottomLeftCornerOverlay} from './overlay/bottomLeftCorner.js';
+import {WalkontableTopRightCornerOverlay} from './overlay/topRightCorner.js';
+import {WalkontableBottomRightCornerOverlay} from './overlay/bottomRightCorner.js';
 
 /**
  * @class Walkontable
@@ -106,32 +109,41 @@ class Walkontable {
     }
 
     let totalRows = this.wtSettings.getSetting('totalRows');
+    let totalColumns = this.wtSettings.getSetting('totalColumns');
     let fixedRowsTop = this.wtSettings.getSetting('fixedRowsTop');
     let fixedRowsBottom = this.wtSettings.getSetting('fixedRowsBottom');
-    let fixedColumns = this.wtSettings.getSetting('fixedColumnsLeft');
+    let fixedColumnsLeft = this.wtSettings.getSetting('fixedColumnsLeft');
+    let fixedColumnsRight = this.wtSettings.getSetting('fixedRowsBottom');
 
-    if (coords.row < fixedRowsTop && coords.col < fixedColumns) {
-      return this.wtOverlays.topLeftCornerOverlay.clone.wtTable.getCell(coords);
-
-    } else if (coords.row < fixedRowsTop) {
-      return this.wtOverlays.topOverlay.clone.wtTable.getCell(coords);
-
-    } else if (coords.col < fixedColumns && coords.row >= totalRows - fixedRowsBottom) {
-      if (this.wtOverlays.bottomLeftCornerOverlay.clone) {
-        return this.wtOverlays.bottomLeftCornerOverlay.clone.wtTable.getCell(coords);
-      }
-
-    } else if (coords.col < fixedColumns) {
-      return this.wtOverlays.leftOverlay.clone.wtTable.getCell(coords);
-
+    let vDir;
+    if (coords.row < fixedRowsTop) {
+      vDir = 't';
     } else if (coords.row > totalRows - fixedRowsBottom) {
-      if (this.wtOverlays.bottomOverlay.clone) {
-        return this.wtOverlays.bottomOverlay.clone.wtTable.getCell(coords);
-      }
-
+      vDir = 'b';
+    } else {
+      vDir = 'c';
     }
-
-    return this.wtTable.getCell(coords);
+    let hDir;
+    if (coords.col < fixedColumnsLeft) {
+      hDir = 'l';
+    } else if (coords.col >= totalColumns - fixedColumnsRight) {
+      hDir = 'r';
+    } else {
+      hDir = 'c';
+    }
+    let table;
+    switch (vDir + hDir) {
+      case 'tl': table = this.wtOverlays.topLeftCornerOverlay.clone.wtTable; break;
+      case 'tr': table = this.wtOverlays.topRightCornerOverlay.clone.wtTable; break;
+      case 'tc': table = this.wtOverlays.topOverlay.clone.wtTable; break;
+      case 'cl': table = this.wtOverlays.leftOverlay.clone.wtTable; break;
+      case 'cc': table = this.wtTable; break;
+      case 'cr': table = this.wtOverlays.rightOverlay.clone.wtTable; break;
+      case 'bl': table = this.wtOverlays.bottomLeftCornerOverlay.clone.wtTable; break;
+      case 'bc': table = this.wtOverlays.bottomOverlay.clone.wtTable; break;
+      case 'br': table = this.wtOverlays.bottomRightCornerOverlay.clone.wtTable; break;
+    }
+    return table.getCell(coords);
   }
 
   /**
