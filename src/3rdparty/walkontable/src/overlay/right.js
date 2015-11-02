@@ -12,15 +12,15 @@ import {
 import {WalkontableOverlay} from './_base';
 
 /**
- * @class WalkontableLeftOverlay
+ * @class WalkontableRightOverlay
  */
-class WalkontableLeftOverlay extends WalkontableOverlay {
+class WalkontableRightOverlay extends WalkontableOverlay {
   /**
    * @param {Walkontable} wotInstance
    */
   constructor(wotInstance) {
     super(wotInstance);
-    this.clone = this.makeClone(WalkontableOverlay.CLONE_LEFT);
+    this.clone = this.makeClone(WalkontableOverlay.CLONE_RIGHT);
   }
 
   /**
@@ -69,6 +69,14 @@ class WalkontableLeftOverlay extends WalkontableOverlay {
     this.adjustHeaderBordersPosition(headerPosition);
 
     this.adjustElementsSize();
+    if (this.wot.wtOverlays.leftOverlay.trimmingContainer !== window) {
+      let scrollBarWidth = getScrollbarWidth();
+      setOverlayPosition(overlayRoot,
+          this.wot.wtViewport.getWorkspaceWidth() -
+          scrollBarWidth -
+          outerWidth(this.clone.wtTable.TABLE) + 'px',
+          '0px');
+    }
   }
 
   /**
@@ -89,7 +97,7 @@ class WalkontableLeftOverlay extends WalkontableOverlay {
    * Triggers onScroll hook callback
    */
   onScroll() {
-    this.wot.getSetting('onScrollVertically');
+    this.wot.getSetting('onScrollHorizontally');
   }
 
   /**
@@ -214,10 +222,8 @@ class WalkontableLeftOverlay extends WalkontableOverlay {
       scrollbarCompensation = getScrollbarWidth();
     }
     if (beyondRendered) {
-      let fixedColumnsRight = this.wot.getSetting('fixedColumnsRight');
-      let totalColumns = this.wot.getSetting('totalColumns');
       newX += this.sumCellSizes(0, sourceCol + 1);
-      newX -= this.wot.wtViewport.getViewportWidth() - this.sumCellSizes(totalColumns - fixedColumnsRight, totalColumns);
+      newX -= this.wot.wtViewport.getViewportWidth();
 
     } else {
       newX += this.sumCellSizes(this.wot.getSetting('fixedColumnsLeft'), sourceCol);
@@ -278,8 +284,8 @@ class WalkontableLeftOverlay extends WalkontableOverlay {
   }
 }
 
-export {WalkontableLeftOverlay};
+export {WalkontableRightOverlay};
 
-window.WalkontableLeftOverlay = WalkontableLeftOverlay;
+window.WalkontableRightOverlay = WalkontableRightOverlay;
 
-WalkontableOverlay.registerOverlay(WalkontableOverlay.CLONE_LEFT, WalkontableLeftOverlay);
+WalkontableOverlay.registerOverlay(WalkontableOverlay.CLONE_RIGHT, WalkontableRightOverlay);

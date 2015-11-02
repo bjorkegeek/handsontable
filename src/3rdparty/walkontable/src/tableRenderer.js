@@ -60,11 +60,19 @@ class WalkontableTableRenderer {
     let adjusted = false;
 
     if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM) ||
-        WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER)) {
+        WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER) ||
+        WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER)) {
 
       // do NOT render headers on the bottom or bottom-left corner overlay
       this.columnHeaders = [];
       this.columnHeaderCount = 0;
+    }
+
+    if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_RIGHT) ||
+        WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_RIGHT_CORNER) ||
+        WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER)) {
+      this.rowHeaders = [];
+      this.rowHeaderCount = 0;
     }
 
     if (totalColumns > 0) {
@@ -109,6 +117,12 @@ class WalkontableTableRenderer {
         for (let i = firstRendered; i < lastRendered; i++) {
           let width = this.wtTable.getStretchedColumnWidth(i);
           let renderedIndex = this.columnFilter.sourceToRendered(i);
+          if (renderedIndex + this.rowHeaderCount === 0 &&
+              (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_RIGHT) ||
+              WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_RIGHT_CORNER) ||
+              WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER))) {
+            ++width; // Account for the extra border
+          }
 
           this.COLGROUP.childNodes[renderedIndex + this.rowHeaderCount].style.width = width + 'px';
         }
@@ -356,6 +370,12 @@ class WalkontableTableRenderer {
 
     for (let renderedColIndex = 0; renderedColIndex < columnsToRender; renderedColIndex++) {
       let width = this.wtTable.getStretchedColumnWidth(this.columnFilter.renderedToSource(renderedColIndex));
+      if (renderedColIndex + this.rowHeaderCount === 0 &&
+          (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_RIGHT) ||
+           WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_RIGHT_CORNER) ||
+           WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER))) {
+        ++width; // Account for the extra border
+      }
       this.COLGROUP.childNodes[renderedColIndex + this.rowHeaderCount].style.width = width + 'px';
     }
   }

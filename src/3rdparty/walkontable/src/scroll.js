@@ -26,6 +26,7 @@ class WalkontableScroll {
     let fixedRowsTop = this.instance.getSetting('fixedRowsTop');
     let fixedRowsBottom = this.instance.getSetting('fixedRowsBottom');
     let fixedColumnsLeft = this.instance.getSetting('fixedColumnsLeft');
+    let fixedColumnsRight = this.instance.getSetting('fixedColumnsRight');
 
     if (coords.row < 0 || coords.row > totalRows - 1) {
       throw new Error('row ' + coords.row + ' does not exist');
@@ -43,7 +44,7 @@ class WalkontableScroll {
       this.wot.wtOverlays.topOverlay.scrollTo(coords.row);
     }
 
-    if (coords.col > this.instance.wtTable.getLastVisibleColumn()) {
+    if (coords.col > this.instance.wtTable.getLastVisibleColumn() && coords.col < totalColumns - fixedColumnsRight) {
       this.wot.wtOverlays.leftOverlay.scrollTo(coords.col, true);
 
     } else if (coords.col >= fixedColumnsLeft &&
