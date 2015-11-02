@@ -7,13 +7,13 @@
  * Licensed under the MIT license.
  * http://handsontable.com/
  *
- * Date: Fri Oct 02 2015 12:37:12 GMT+0200 (CEST)
+ * Date: Mon Nov 02 2015 11:42:41 GMT+0100 (CET)
  */
 /*jslint white: true, browser: true, plusplus: true, indent: 4, maxerr: 50 */
 
 window.Handsontable = {
   version: '0.19.0',
-  buildDate: 'Fri Oct 02 2015 12:37:12 GMT+0200 (CEST)',
+  buildDate: 'Mon Nov 02 2015 11:42:41 GMT+0100 (CET)',
 };
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.Handsontable = f()}})(function(){var define,module,exports;return (function init(modules, cache, entry) {
   (function outer (modules, cache, entry) {
@@ -380,9 +380,9 @@ var WalkontableBorder = function WalkontableBorder(wotInstance, settings) {
         trimmingContainer,
         cornerOverlappingContainer,
         ilen;
-    if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_LEFT_CORNER)) {
+    if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_LEFT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_RIGHT_CORNER)) {
       ilen = this.wot.getSetting('fixedRowsTop');
-    } else if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER)) {
+    } else if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER)) {
       ilen = this.wot.getSetting('fixedRowsBottom');
     } else {
       ilen = this.wot.wtTable.getRenderedRowsCount();
@@ -508,7 +508,7 @@ var WalkontableBorder = function WalkontableBorder(wotInstance, settings) {
 window.WalkontableBorder = WalkontableBorder;
 
 //# 
-},{"cell/coords":5,"eventManager":40,"helpers/dom/element":44,"helpers/dom/event":45,"overlay/_base.js":11}],3:[function(require,module,exports){
+},{"cell/coords":5,"eventManager":45,"helpers/dom/element":49,"helpers/dom/event":50,"overlay/_base.js":11}],3:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableViewportColumnsCalculator: {get: function() {
@@ -1086,8 +1086,13 @@ var $___46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__,
     $__overlay_47__95_base_46_js__,
     $__overlay_47_top_46_js__,
     $__overlay_47_left_46_js__,
+    $__overlay_47_bottom_46_js__,
+    $__overlay_47_right_46_js__,
     $__overlay_47_debug_46_js__,
-    $__overlay_47_topLeftCorner_46_js__;
+    $__overlay_47_topLeftCorner_46_js__,
+    $__overlay_47_bottomLeftCorner_46_js__,
+    $__overlay_47_topRightCorner_46_js__,
+    $__overlay_47_bottomRightCorner_46_js__;
 var $__0 = ($___46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ = require("helpers/dom/element"), $___46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ && $___46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__.__esModule && $___46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ || {default: $___46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__}),
     addClass = $__0.addClass,
     fastInnerText = $__0.fastInnerText,
@@ -1106,8 +1111,13 @@ var WalkontableViewport = ($__viewport__ = require("viewport"), $__viewport__ &&
 var WalkontableOverlay = ($__overlay_47__95_base_46_js__ = require("overlay/_base.js"), $__overlay_47__95_base_46_js__ && $__overlay_47__95_base_46_js__.__esModule && $__overlay_47__95_base_46_js__ || {default: $__overlay_47__95_base_46_js__}).WalkontableOverlay;
 var WalkontableTopOverlay = ($__overlay_47_top_46_js__ = require("overlay/top.js"), $__overlay_47_top_46_js__ && $__overlay_47_top_46_js__.__esModule && $__overlay_47_top_46_js__ || {default: $__overlay_47_top_46_js__}).WalkontableTopOverlay;
 var WalkontableLeftOverlay = ($__overlay_47_left_46_js__ = require("overlay/left.js"), $__overlay_47_left_46_js__ && $__overlay_47_left_46_js__.__esModule && $__overlay_47_left_46_js__ || {default: $__overlay_47_left_46_js__}).WalkontableLeftOverlay;
+var WalkontableBottomOverlay = ($__overlay_47_bottom_46_js__ = require("overlay/bottom.js"), $__overlay_47_bottom_46_js__ && $__overlay_47_bottom_46_js__.__esModule && $__overlay_47_bottom_46_js__ || {default: $__overlay_47_bottom_46_js__}).WalkontableBottomOverlay;
+var WalkontableRightOverlay = ($__overlay_47_right_46_js__ = require("overlay/right.js"), $__overlay_47_right_46_js__ && $__overlay_47_right_46_js__.__esModule && $__overlay_47_right_46_js__ || {default: $__overlay_47_right_46_js__}).WalkontableRightOverlay;
 var WalkontableDebugOverlay = ($__overlay_47_debug_46_js__ = require("overlay/debug.js"), $__overlay_47_debug_46_js__ && $__overlay_47_debug_46_js__.__esModule && $__overlay_47_debug_46_js__ || {default: $__overlay_47_debug_46_js__}).WalkontableDebugOverlay;
 var WalkontableTopLeftCornerOverlay = ($__overlay_47_topLeftCorner_46_js__ = require("overlay/topLeftCorner.js"), $__overlay_47_topLeftCorner_46_js__ && $__overlay_47_topLeftCorner_46_js__.__esModule && $__overlay_47_topLeftCorner_46_js__ || {default: $__overlay_47_topLeftCorner_46_js__}).WalkontableTopLeftCornerOverlay;
+var WalkontableBottomLeftCornerOverlay = ($__overlay_47_bottomLeftCorner_46_js__ = require("overlay/bottomLeftCorner.js"), $__overlay_47_bottomLeftCorner_46_js__ && $__overlay_47_bottomLeftCorner_46_js__.__esModule && $__overlay_47_bottomLeftCorner_46_js__ || {default: $__overlay_47_bottomLeftCorner_46_js__}).WalkontableBottomLeftCornerOverlay;
+var WalkontableTopRightCornerOverlay = ($__overlay_47_topRightCorner_46_js__ = require("overlay/topRightCorner.js"), $__overlay_47_topRightCorner_46_js__ && $__overlay_47_topRightCorner_46_js__.__esModule && $__overlay_47_topRightCorner_46_js__ || {default: $__overlay_47_topRightCorner_46_js__}).WalkontableTopRightCornerOverlay;
+var WalkontableBottomRightCornerOverlay = ($__overlay_47_bottomRightCorner_46_js__ = require("overlay/bottomRightCorner.js"), $__overlay_47_bottomRightCorner_46_js__ && $__overlay_47_bottomRightCorner_46_js__.__esModule && $__overlay_47_bottomRightCorner_46_js__ || {default: $__overlay_47_bottomRightCorner_46_js__}).WalkontableBottomRightCornerOverlay;
 var Walkontable = function Walkontable(settings) {
   var originalHeaders = [];
   this.guid = 'wt_' + randomString();
@@ -1161,25 +1171,58 @@ var Walkontable = function Walkontable(settings) {
       return this.wtTable.getCell(coords);
     }
     var totalRows = this.wtSettings.getSetting('totalRows');
+    var totalColumns = this.wtSettings.getSetting('totalColumns');
     var fixedRowsTop = this.wtSettings.getSetting('fixedRowsTop');
     var fixedRowsBottom = this.wtSettings.getSetting('fixedRowsBottom');
-    var fixedColumns = this.wtSettings.getSetting('fixedColumnsLeft');
-    if (coords.row < fixedRowsTop && coords.col < fixedColumns) {
-      return this.wtOverlays.topLeftCornerOverlay.clone.wtTable.getCell(coords);
-    } else if (coords.row < fixedRowsTop) {
-      return this.wtOverlays.topOverlay.clone.wtTable.getCell(coords);
-    } else if (coords.col < fixedColumns && coords.row >= totalRows - fixedRowsBottom) {
-      if (this.wtOverlays.bottomLeftCornerOverlay.clone) {
-        return this.wtOverlays.bottomLeftCornerOverlay.clone.wtTable.getCell(coords);
-      }
-    } else if (coords.col < fixedColumns) {
-      return this.wtOverlays.leftOverlay.clone.wtTable.getCell(coords);
+    var fixedColumnsLeft = this.wtSettings.getSetting('fixedColumnsLeft');
+    var fixedColumnsRight = this.wtSettings.getSetting('fixedRowsBottom');
+    var vDir;
+    if (coords.row < fixedRowsTop) {
+      vDir = 't';
     } else if (coords.row >= totalRows - fixedRowsBottom) {
-      if (this.wtOverlays.bottomOverlay.clone) {
-        return this.wtOverlays.bottomOverlay.clone.wtTable.getCell(coords);
-      }
+      vDir = 'b';
+    } else {
+      vDir = 'c';
     }
-    return this.wtTable.getCell(coords);
+    var hDir;
+    if (coords.col < fixedColumnsLeft) {
+      hDir = 'l';
+    } else if (coords.col >= totalColumns - fixedColumnsRight) {
+      hDir = 'r';
+    } else {
+      hDir = 'c';
+    }
+    var table;
+    switch (vDir + hDir) {
+      case 'tl':
+        table = this.wtOverlays.topLeftCornerOverlay.clone.wtTable;
+        break;
+      case 'tr':
+        table = this.wtOverlays.topRightCornerOverlay.clone.wtTable;
+        break;
+      case 'tc':
+        table = this.wtOverlays.topOverlay.clone.wtTable;
+        break;
+      case 'cl':
+        table = this.wtOverlays.leftOverlay.clone.wtTable;
+        break;
+      case 'cc':
+        table = this.wtTable;
+        break;
+      case 'cr':
+        table = this.wtOverlays.rightOverlay.clone.wtTable;
+        break;
+      case 'bl':
+        table = this.wtOverlays.bottomLeftCornerOverlay.clone.wtTable;
+        break;
+      case 'bc':
+        table = this.wtOverlays.bottomOverlay.clone.wtTable;
+        break;
+      case 'br':
+        table = this.wtOverlays.bottomRightCornerOverlay.clone.wtTable;
+        break;
+    }
+    return table.getCell(coords);
   },
   update: function(settings, value) {
     return this.wtSettings.update(settings, value);
@@ -1205,7 +1248,7 @@ var Walkontable = function Walkontable(settings) {
     return this.cloneOverlay ? this.cloneOverlay.type : 'master';
   },
   exportSettingsAsClassNames: function() {
-    var $__14 = this;
+    var $__19 = this;
     var toExport = {
       rowHeaders: ['array'],
       columnHeaders: ['array']
@@ -1213,7 +1256,7 @@ var Walkontable = function Walkontable(settings) {
     var allClassNames = [];
     var newClassNames = [];
     objectEach(toExport, (function(optionType, key) {
-      if (optionType.indexOf('array') > -1 && $__14.getSetting(key).length) {
+      if (optionType.indexOf('array') > -1 && $__19.getSetting(key).length) {
         newClassNames.push('ht' + toUpperCaseFirst(key));
       }
       allClassNames.push('ht' + toUpperCaseFirst(key));
@@ -1236,7 +1279,7 @@ var Walkontable = function Walkontable(settings) {
 window.Walkontable = Walkontable;
 
 //# 
-},{"event":8,"helpers/dom/element":44,"helpers/object":49,"helpers/string":51,"overlay/_base.js":11,"overlay/debug.js":12,"overlay/left.js":13,"overlay/top.js":14,"overlay/topLeftCorner.js":15,"overlays":16,"scroll":17,"settings":19,"table":20,"viewport":22}],8:[function(require,module,exports){
+},{"event":8,"helpers/dom/element":49,"helpers/object":54,"helpers/string":56,"overlay/_base.js":11,"overlay/bottom.js":12,"overlay/bottomLeftCorner.js":13,"overlay/bottomRightCorner.js":14,"overlay/debug.js":15,"overlay/left.js":16,"overlay/right.js":17,"overlay/top.js":18,"overlay/topLeftCorner.js":19,"overlay/topRightCorner.js":20,"overlays":21,"scroll":22,"settings":24,"table":25,"viewport":27}],8:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableEvent: {get: function() {
@@ -1398,7 +1441,7 @@ WalkontableEvent.prototype.parentCell = function(elem) {
 window.WalkontableEvent = WalkontableEvent;
 
 //# 
-},{"eventManager":40,"helpers/dom/element":44}],9:[function(require,module,exports){
+},{"eventManager":45,"helpers/dom/element":49}],9:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableColumnFilter: {get: function() {
@@ -1562,17 +1605,26 @@ var $WalkontableOverlay = WalkontableOverlay;
   get CLONE_LEFT() {
     return 'left';
   },
+  get CLONE_RIGHT() {
+    return 'right';
+  },
   get CLONE_TOP_LEFT_CORNER() {
     return 'top_left_corner';
   },
   get CLONE_BOTTOM_LEFT_CORNER() {
     return 'bottom_left_corner';
   },
+  get CLONE_TOP_RIGHT_CORNER() {
+    return 'top_right_corner';
+  },
+  get CLONE_BOTTOM_RIGHT_CORNER() {
+    return 'bottom_right_corner';
+  },
   get CLONE_DEBUG() {
     return 'debug';
   },
   get CLONE_TYPES() {
-    return [$WalkontableOverlay.CLONE_TOP, $WalkontableOverlay.CLONE_BOTTOM, $WalkontableOverlay.CLONE_LEFT, $WalkontableOverlay.CLONE_TOP_LEFT_CORNER, $WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER, $WalkontableOverlay.CLONE_DEBUG];
+    return [$WalkontableOverlay.CLONE_TOP, $WalkontableOverlay.CLONE_BOTTOM, $WalkontableOverlay.CLONE_LEFT, $WalkontableOverlay.CLONE_RIGHT, $WalkontableOverlay.CLONE_TOP_LEFT_CORNER, $WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER, $WalkontableOverlay.CLONE_TOP_RIGHT_CORNER, $WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER, $WalkontableOverlay.CLONE_DEBUG];
   },
   registerOverlay: function(type, overlayClass) {
     if ($WalkontableOverlay.CLONE_TYPES.indexOf(type) === -1) {
@@ -1594,7 +1646,336 @@ var $WalkontableOverlay = WalkontableOverlay;
 window.WalkontableOverlay = WalkontableOverlay;
 
 //# 
-},{"eventManager":40,"helpers/dom/element":44,"helpers/object":49}],12:[function(require,module,exports){
+},{"eventManager":45,"helpers/dom/element":49,"helpers/object":54}],12:[function(require,module,exports){
+"use strict";
+Object.defineProperties(exports, {
+  WalkontableBottomOverlay: {get: function() {
+      return WalkontableBottomOverlay;
+    }},
+  __esModule: {value: true}
+});
+var $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__,
+    $___95_base__;
+var $__0 = ($___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ = require("helpers/dom/element"), $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ && $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__.__esModule && $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ || {default: $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__}),
+    addClass = $__0.addClass,
+    getScrollbarWidth = $__0.getScrollbarWidth,
+    getScrollbarHeight = $__0.getScrollbarHeight,
+    getScrollTop = $__0.getScrollTop,
+    getWindowScrollLeft = $__0.getWindowScrollLeft,
+    hasClass = $__0.hasClass,
+    outerHeight = $__0.outerHeight,
+    removeClass = $__0.removeClass,
+    setOverlayPosition = $__0.setOverlayPosition;
+var WalkontableOverlay = ($___95_base__ = require("_base"), $___95_base__ && $___95_base__.__esModule && $___95_base__ || {default: $___95_base__}).WalkontableOverlay;
+var WalkontableBottomOverlay = function WalkontableBottomOverlay(wotInstance) {
+  $traceurRuntime.superConstructor($WalkontableBottomOverlay).call(this, wotInstance);
+  this.clone = this.makeClone(WalkontableOverlay.CLONE_BOTTOM);
+};
+var $WalkontableBottomOverlay = WalkontableBottomOverlay;
+($traceurRuntime.createClass)(WalkontableBottomOverlay, {
+  shouldBeRendered: function() {
+    return !!this.wot.getSetting('fixedRowsBottom');
+  },
+  resetFixedPosition: function() {
+    if (!this.needFullRender || !this.wot.wtTable.holder.parentNode) {
+      return;
+    }
+    var overlayRoot = this.clone.wtTable.holder.parentNode;
+    var headerPosition = 0;
+    if (this.wot.wtOverlays.leftOverlay.trimmingContainer === window) {
+      var box = this.wot.wtTable.hider.getBoundingClientRect();
+      var top = Math.ceil(box.top);
+      var bottom = Math.ceil(box.bottom);
+      var finalLeft;
+      var finalTop;
+      finalLeft = this.wot.wtTable.hider.style.left;
+      finalLeft = finalLeft === '' ? 0 : finalLeft;
+      if (top < 0 && (bottom - overlayRoot.offsetHeight) > 0) {
+        finalTop = -top;
+      } else {
+        finalTop = 0;
+      }
+      headerPosition = finalTop;
+      finalTop = finalTop + 'px';
+      setOverlayPosition(overlayRoot, finalLeft, finalTop);
+    } else {
+      headerPosition = this.getScrollPosition();
+    }
+    this.adjustHeaderBordersPosition(headerPosition);
+    this.adjustElementsSize();
+    if (this.wot.wtOverlays.leftOverlay.trimmingContainer !== window) {
+      var scrollBarHeight = getScrollbarHeight();
+      setOverlayPosition(overlayRoot, '0px', this.wot.wtViewport.getWorkspaceHeight() - scrollBarHeight - outerHeight(this.clone.wtTable.TABLE) + 'px');
+    }
+  },
+  setScrollPosition: function(pos) {
+    if (this.mainTableScrollableElement === window) {
+      window.scrollTo(getWindowScrollLeft(), pos);
+    } else {
+      this.mainTableScrollableElement.scrollTop = pos;
+    }
+  },
+  onScroll: function() {
+    this.wot.getSetting('onScrollVertically');
+  },
+  sumCellSizes: function(from, to) {
+    var sum = 0;
+    var defaultRowHeight = this.wot.wtSettings.settings.defaultRowHeight;
+    while (from < to) {
+      sum += this.wot.wtTable.getRowHeight(from) || defaultRowHeight;
+      from++;
+    }
+    return sum;
+  },
+  adjustElementsSize: function() {
+    var force = arguments[0] !== (void 0) ? arguments[0] : false;
+    if (this.needFullRender || force) {
+      this.adjustRootElementSize();
+      this.adjustRootChildrenSize();
+      if (!force) {
+        this.areElementSizesAdjusted = true;
+      }
+    }
+  },
+  adjustRootElementSize: function() {
+    var masterHolder = this.wot.wtTable.holder;
+    var scrollbarWidth = masterHolder.clientWidth === masterHolder.offsetWidth ? 0 : getScrollbarWidth();
+    var overlayRoot = this.clone.wtTable.holder.parentNode;
+    var overlayRootStyle = overlayRoot.style;
+    var tableHeight;
+    if (this.trimmingContainer !== window) {
+      overlayRootStyle.width = this.wot.wtViewport.getWorkspaceWidth() - scrollbarWidth + 'px';
+    }
+    this.clone.wtTable.holder.style.width = overlayRootStyle.width;
+    tableHeight = outerHeight(this.clone.wtTable.TABLE);
+    overlayRootStyle.height = (tableHeight === 0 ? tableHeight : tableHeight + 4) + 'px';
+  },
+  adjustRootChildrenSize: function() {
+    var scrollbarHeight = getScrollbarHeight();
+    this.clone.wtTable.hider.style.width = this.hider.style.width;
+    this.clone.wtTable.holder.style.width = this.clone.wtTable.holder.parentNode.style.width;
+    if (scrollbarHeight === 0) {
+      scrollbarHeight = 30;
+    }
+    this.clone.wtTable.holder.style.height = parseInt(this.clone.wtTable.holder.parentNode.style.height, 10) + scrollbarHeight + 'px';
+  },
+  applyToDOM: function() {
+    var total = this.wot.getSetting('totalRows');
+    if (!this.areElementSizesAdjusted) {
+      this.adjustElementsSize();
+    }
+    if (typeof this.wot.wtViewport.rowsRenderCalculator.startPosition === 'number') {
+      this.spreader.style.top = this.wot.wtViewport.rowsRenderCalculator.startPosition + 'px';
+    } else if (total === 0) {
+      this.spreader.style.top = '0';
+    } else {
+      throw new Error('Incorrect value of the rowsRenderCalculator');
+    }
+    this.spreader.style.bottom = '';
+    if (this.needFullRender) {
+      this.syncOverlayOffset();
+    }
+  },
+  syncOverlayOffset: function() {
+    if (typeof this.wot.wtViewport.columnsRenderCalculator.startPosition === 'number') {
+      this.clone.wtTable.spreader.style.left = this.wot.wtViewport.columnsRenderCalculator.startPosition + 'px';
+    } else {
+      this.clone.wtTable.spreader.style.left = '';
+    }
+  },
+  scrollTo: function(sourceRow, bottomEdge) {
+    var newY = this.getTableParentOffset();
+    var sourceInstance = this.wot.cloneSource ? this.wot.cloneSource : this.wot;
+    var mainHolder = sourceInstance.wtTable.holder;
+    var scrollbarCompensation = 0;
+    if (bottomEdge && mainHolder.offsetHeight !== mainHolder.clientHeight) {
+      scrollbarCompensation = getScrollbarWidth();
+    }
+    if (bottomEdge) {
+      var fixedRowsBottom = this.wot.getSetting('fixedRowsBottom');
+      var fixedRowsTop = this.wot.getSetting('fixedRowsTop');
+      var totalRows = this.wot.getSetting('totalRows');
+      newY += this.sumCellSizes(0, sourceRow + 1);
+      newY -= this.wot.wtViewport.getViewportHeight() - this.sumCellSizes(totalRows - fixedRowsBottom, totalRows);
+      newY += 1;
+    } else {
+      newY += this.sumCellSizes(this.wot.getSetting('fixedRowsTop'), sourceRow);
+    }
+    newY += scrollbarCompensation;
+    this.setScrollPosition(newY);
+  },
+  getTableParentOffset: function() {
+    if (this.mainTableScrollableElement === window) {
+      return this.wot.wtTable.holderOffset.top;
+    } else {
+      return 0;
+    }
+  },
+  getScrollPosition: function() {
+    return getScrollTop(this.mainTableScrollableElement);
+  },
+  adjustHeaderBordersPosition: function(position) {
+    if (this.wot.getSetting('fixedRowsTop') === 0 && this.wot.getSetting('columnHeaders').length > 0) {
+      var masterParent = this.wot.wtTable.holder.parentNode;
+      var previousState = hasClass(masterParent, 'innerBorderTop');
+      if (position) {
+        addClass(masterParent, 'innerBorderTop');
+      } else {
+        removeClass(masterParent, 'innerBorderTop');
+      }
+      if (!previousState && position || previousState && !position) {
+        this.wot.wtOverlays.adjustElementsSize();
+      }
+    }
+    if (this.wot.getSetting('rowHeaders').length === 0) {
+      var secondHeaderCell = this.clone.wtTable.THEAD.querySelectorAll('th:nth-of-type(2)');
+      if (secondHeaderCell) {
+        for (var i = 0; i < secondHeaderCell.length; i++) {
+          secondHeaderCell[i].style['border-left-width'] = 0;
+        }
+      }
+    }
+  },
+  markOversizedFixedBottomRows: function() {}
+}, {}, WalkontableOverlay);
+;
+window.WalkontableBottomOverlay = WalkontableBottomOverlay;
+WalkontableOverlay.registerOverlay(WalkontableOverlay.CLONE_BOTTOM, WalkontableBottomOverlay);
+
+//# 
+},{"_base":11,"helpers/dom/element":49}],13:[function(require,module,exports){
+"use strict";
+Object.defineProperties(exports, {
+  WalkontableBottomLeftCornerOverlay: {get: function() {
+      return WalkontableBottomLeftCornerOverlay;
+    }},
+  __esModule: {value: true}
+});
+var $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__,
+    $___95_base__;
+var $__0 = ($___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ = require("helpers/dom/element"), $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ && $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__.__esModule && $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ || {default: $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__}),
+    outerHeight = $__0.outerHeight,
+    outerWidth = $__0.outerWidth,
+    setOverlayPosition = $__0.setOverlayPosition,
+    getScrollbarHeight = $__0.getScrollbarHeight;
+var WalkontableOverlay = ($___95_base__ = require("_base"), $___95_base__ && $___95_base__.__esModule && $___95_base__ || {default: $___95_base__}).WalkontableOverlay;
+var WalkontableBottomLeftCornerOverlay = function WalkontableBottomLeftCornerOverlay(wotInstance) {
+  $traceurRuntime.superConstructor($WalkontableBottomLeftCornerOverlay).call(this, wotInstance);
+  this.clone = this.makeClone(WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER);
+};
+var $WalkontableBottomLeftCornerOverlay = WalkontableBottomLeftCornerOverlay;
+($traceurRuntime.createClass)(WalkontableBottomLeftCornerOverlay, {
+  shouldBeRendered: function() {
+    return this.wot.getSetting('fixedRowsBottom') && (this.wot.getSetting('fixedColumnsLeft') || this.wot.getSetting('rowHeaders').length) ? true : false;
+  },
+  resetFixedPosition: function() {
+    if (!this.wot.wtTable.holder.parentNode) {
+      return;
+    }
+    var overlayRoot = this.clone.wtTable.holder.parentNode;
+    var tableHeight = outerHeight(this.clone.wtTable.TABLE);
+    var tableWidth = outerWidth(this.clone.wtTable.TABLE);
+    if (this.trimmingContainer === window) {
+      var box = this.wot.wtTable.hider.getBoundingClientRect();
+      var top = Math.ceil(box.top);
+      var left = Math.ceil(box.left);
+      var bottom = Math.ceil(box.bottom);
+      var right = Math.ceil(box.right);
+      var finalLeft;
+      var finalTop;
+      if (left < 0 && (right - overlayRoot.offsetWidth) > 0) {
+        finalLeft = -left + 'px';
+      } else {
+        finalLeft = '0';
+      }
+      if (top < 0 && (bottom - overlayRoot.offsetHeight) > 0) {
+        finalTop = -top + 'px';
+      } else {
+        finalTop = '0';
+      }
+      setOverlayPosition(overlayRoot, finalLeft, finalTop);
+    }
+    overlayRoot.style.height = (tableHeight === 0 ? tableHeight : tableHeight + 4) + 'px';
+    overlayRoot.style.width = (tableWidth === 0 ? tableWidth : tableWidth + 4) + 'px';
+    if (this.wot.wtOverlays.leftOverlay.trimmingContainer !== window) {
+      var scrollBarHeight = getScrollbarHeight();
+      setOverlayPosition(overlayRoot, '0px', this.wot.wtViewport.getWorkspaceHeight() - scrollBarHeight - tableHeight + 'px');
+    }
+  }
+}, {}, WalkontableOverlay);
+;
+window.WalkontableBottomLeftCornerOverlay = WalkontableBottomLeftCornerOverlay;
+WalkontableOverlay.registerOverlay(WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER, WalkontableBottomLeftCornerOverlay);
+
+//# 
+},{"_base":11,"helpers/dom/element":49}],14:[function(require,module,exports){
+"use strict";
+Object.defineProperties(exports, {
+  WalkontableBottomRightCornerOverlay: {get: function() {
+      return WalkontableBottomRightCornerOverlay;
+    }},
+  __esModule: {value: true}
+});
+var $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__,
+    $___95_base__;
+var $__0 = ($___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ = require("helpers/dom/element"), $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ && $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__.__esModule && $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ || {default: $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__}),
+    outerHeight = $__0.outerHeight,
+    outerWidth = $__0.outerWidth,
+    setOverlayPosition = $__0.setOverlayPosition,
+    getScrollbarWidth = $__0.getScrollbarWidth,
+    getScrollbarHeight = $__0.getScrollbarHeight;
+var WalkontableOverlay = ($___95_base__ = require("_base"), $___95_base__ && $___95_base__.__esModule && $___95_base__ || {default: $___95_base__}).WalkontableOverlay;
+var WalkontableBottomRightCornerOverlay = function WalkontableBottomRightCornerOverlay(wotInstance) {
+  $traceurRuntime.superConstructor($WalkontableBottomRightCornerOverlay).call(this, wotInstance);
+  this.clone = this.makeClone(WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER);
+};
+var $WalkontableBottomRightCornerOverlay = WalkontableBottomRightCornerOverlay;
+($traceurRuntime.createClass)(WalkontableBottomRightCornerOverlay, {
+  shouldBeRendered: function() {
+    return this.wot.getSetting('fixedRowsBottom') && (this.wot.getSetting('fixedColumnsRight') || this.wot.getSetting('rowHeaders').length) ? true : false;
+  },
+  resetFixedPosition: function() {
+    if (!this.wot.wtTable.holder.parentNode) {
+      return;
+    }
+    var overlayRoot = this.clone.wtTable.holder.parentNode;
+    var tableHeight = outerHeight(this.clone.wtTable.TABLE);
+    var tableWidth = outerWidth(this.clone.wtTable.TABLE);
+    if (this.trimmingContainer === window) {
+      var box = this.wot.wtTable.hider.getBoundingClientRect();
+      var top = Math.ceil(box.top);
+      var left = Math.ceil(box.left);
+      var bottom = Math.ceil(box.bottom);
+      var right = Math.ceil(box.right);
+      var finalRight;
+      var finalTop;
+      if (right < 0 && (right - overlayRoot.offsetWidth) > 0) {
+        finalRight = -right + 'px';
+      } else {
+        finalRight = '0';
+      }
+      if (top < 0 && (bottom - overlayRoot.offsetHeight) > 0) {
+        finalTop = -top + 'px';
+      } else {
+        finalTop = '0';
+      }
+      setOverlayPosition(overlayRoot, finalRight, finalTop);
+    }
+    overlayRoot.style.height = (tableHeight === 0 ? tableHeight : tableHeight + 4) + 'px';
+    overlayRoot.style.width = (tableWidth === 0 ? tableWidth : tableWidth + 4) + 'px';
+    if (this.wot.wtOverlays.rightOverlay.trimmingContainer !== window) {
+      var scrollBarWidth = getScrollbarWidth();
+      var scrollBarHeight = getScrollbarHeight();
+      setOverlayPosition(overlayRoot, this.wot.wtViewport.getWorkspaceWidth() - scrollBarWidth - outerWidth(this.clone.wtTable.TABLE) + 'px', this.wot.wtViewport.getWorkspaceHeight() - scrollBarHeight - outerHeight(this.clone.wtTable.TABLE) + 'px');
+    }
+  }
+}, {}, WalkontableOverlay);
+;
+window.WalkontableBottomRightCornerOverlay = WalkontableBottomRightCornerOverlay;
+WalkontableOverlay.registerOverlay(WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER, WalkontableBottomRightCornerOverlay);
+
+//# 
+},{"_base":11,"helpers/dom/element":49}],15:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableDebugOverlay: {get: function() {
@@ -1620,7 +2001,7 @@ window.WalkontableDebugOverlay = WalkontableDebugOverlay;
 WalkontableOverlay.registerOverlay(WalkontableOverlay.CLONE_DEBUG, WalkontableDebugOverlay);
 
 //# 
-},{"_base":11,"helpers/dom/element":44}],13:[function(require,module,exports){
+},{"_base":11,"helpers/dom/element":49}],16:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableLeftOverlay: {get: function() {
@@ -1761,8 +2142,10 @@ var $WalkontableLeftOverlay = WalkontableLeftOverlay;
       scrollbarCompensation = getScrollbarWidth();
     }
     if (beyondRendered) {
+      var fixedColumnsRight = this.wot.getSetting('fixedColumnsRight');
+      var totalColumns = this.wot.getSetting('totalColumns');
       newX += this.sumCellSizes(0, sourceCol + 1);
-      newX -= this.wot.wtViewport.getViewportWidth();
+      newX -= this.wot.wtViewport.getViewportWidth() - this.sumCellSizes(totalColumns - fixedColumnsRight, totalColumns);
     } else {
       newX += this.sumCellSizes(this.wot.getSetting('fixedColumnsLeft'), sourceCol);
     }
@@ -1803,7 +2186,194 @@ window.WalkontableLeftOverlay = WalkontableLeftOverlay;
 WalkontableOverlay.registerOverlay(WalkontableOverlay.CLONE_LEFT, WalkontableLeftOverlay);
 
 //# 
-},{"_base":11,"helpers/dom/element":44}],14:[function(require,module,exports){
+},{"_base":11,"helpers/dom/element":49}],17:[function(require,module,exports){
+"use strict";
+Object.defineProperties(exports, {
+  WalkontableRightOverlay: {get: function() {
+      return WalkontableRightOverlay;
+    }},
+  __esModule: {value: true}
+});
+var $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__,
+    $___95_base__;
+var $__0 = ($___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ = require("helpers/dom/element"), $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ && $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__.__esModule && $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ || {default: $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__}),
+    addClass = $__0.addClass,
+    getScrollbarWidth = $__0.getScrollbarWidth,
+    getScrollLeft = $__0.getScrollLeft,
+    getWindowScrollTop = $__0.getWindowScrollTop,
+    hasClass = $__0.hasClass,
+    outerWidth = $__0.outerWidth,
+    removeClass = $__0.removeClass,
+    setOverlayPosition = $__0.setOverlayPosition;
+var WalkontableOverlay = ($___95_base__ = require("_base"), $___95_base__ && $___95_base__.__esModule && $___95_base__ || {default: $___95_base__}).WalkontableOverlay;
+var WalkontableRightOverlay = function WalkontableRightOverlay(wotInstance) {
+  $traceurRuntime.superConstructor($WalkontableRightOverlay).call(this, wotInstance);
+  this.clone = this.makeClone(WalkontableOverlay.CLONE_RIGHT);
+};
+var $WalkontableRightOverlay = WalkontableRightOverlay;
+($traceurRuntime.createClass)(WalkontableRightOverlay, {
+  shouldBeRendered: function() {
+    return this.wot.getSetting('fixedColumnsLeft') || this.wot.getSetting('rowHeaders').length ? true : false;
+  },
+  resetFixedPosition: function() {
+    if (!this.needFullRender || !this.wot.wtTable.holder.parentNode) {
+      return;
+    }
+    var overlayRoot = this.clone.wtTable.holder.parentNode;
+    var headerPosition = 0;
+    if (this.trimmingContainer === window) {
+      var box = this.wot.wtTable.hider.getBoundingClientRect();
+      var left = Math.ceil(box.left);
+      var right = Math.ceil(box.right);
+      var finalLeft;
+      var finalTop;
+      finalTop = this.wot.wtTable.hider.style.top;
+      finalTop = finalTop === '' ? 0 : finalTop;
+      if (left < 0 && (right - overlayRoot.offsetWidth) > 0) {
+        finalLeft = -left;
+      } else {
+        finalLeft = 0;
+      }
+      headerPosition = finalLeft;
+      finalLeft = finalLeft + 'px';
+      setOverlayPosition(overlayRoot, finalLeft, finalTop);
+    } else {
+      headerPosition = this.getScrollPosition();
+    }
+    this.adjustHeaderBordersPosition(headerPosition);
+    this.adjustElementsSize();
+    if (this.wot.wtOverlays.leftOverlay.trimmingContainer !== window) {
+      var scrollBarWidth = getScrollbarWidth();
+      setOverlayPosition(overlayRoot, this.wot.wtViewport.getWorkspaceWidth() - scrollBarWidth - outerWidth(this.clone.wtTable.TABLE) + 'px', '0px');
+    }
+  },
+  setScrollPosition: function(pos) {
+    if (this.mainTableScrollableElement === window) {
+      window.scrollTo(pos, getWindowScrollTop());
+    } else {
+      this.mainTableScrollableElement.scrollLeft = pos;
+    }
+  },
+  onScroll: function() {
+    this.wot.getSetting('onScrollHorizontally');
+  },
+  sumCellSizes: function(from, to) {
+    var sum = 0;
+    var defaultColumnWidth = this.wot.wtSettings.defaultColumnWidth;
+    while (from < to) {
+      sum += this.wot.wtTable.getStretchedColumnWidth(from) || defaultColumnWidth;
+      from++;
+    }
+    return sum;
+  },
+  adjustElementsSize: function() {
+    var force = arguments[0] !== (void 0) ? arguments[0] : false;
+    if (this.needFullRender || force) {
+      this.adjustRootElementSize();
+      this.adjustRootChildrenSize();
+      if (!force) {
+        this.areElementSizesAdjusted = true;
+      }
+    }
+  },
+  adjustRootElementSize: function() {
+    var masterHolder = this.wot.wtTable.holder;
+    var scrollbarHeight = masterHolder.clientHeight === masterHolder.offsetHeight ? 0 : getScrollbarWidth();
+    var overlayRoot = this.clone.wtTable.holder.parentNode;
+    var overlayRootStyle = overlayRoot.style;
+    var tableWidth;
+    if (this.trimmingContainer !== window) {
+      overlayRootStyle.height = this.wot.wtViewport.getWorkspaceHeight() - scrollbarHeight + 'px';
+    }
+    this.clone.wtTable.holder.style.height = overlayRootStyle.height;
+    tableWidth = outerWidth(this.clone.wtTable.TABLE);
+    overlayRootStyle.width = (tableWidth === 0 ? tableWidth : tableWidth + 4) + 'px';
+  },
+  adjustRootChildrenSize: function() {
+    var scrollbarWidth = getScrollbarWidth();
+    this.clone.wtTable.hider.style.height = this.hider.style.height;
+    this.clone.wtTable.holder.style.height = this.clone.wtTable.holder.parentNode.style.height;
+    if (scrollbarWidth === 0) {
+      scrollbarWidth = 30;
+    }
+    this.clone.wtTable.holder.style.width = parseInt(this.clone.wtTable.holder.parentNode.style.width, 10) + scrollbarWidth + 'px';
+  },
+  applyToDOM: function() {
+    var total = this.wot.getSetting('totalColumns');
+    if (!this.areElementSizesAdjusted) {
+      this.adjustElementsSize();
+    }
+    if (typeof this.wot.wtViewport.columnsRenderCalculator.startPosition === 'number') {
+      this.spreader.style.left = this.wot.wtViewport.columnsRenderCalculator.startPosition + 'px';
+    } else if (total === 0) {
+      this.spreader.style.left = '0';
+    } else {
+      throw new Error('Incorrect value of the columnsRenderCalculator');
+    }
+    this.spreader.style.right = '';
+    if (this.needFullRender) {
+      this.syncOverlayOffset();
+    }
+  },
+  syncOverlayOffset: function() {
+    if (typeof this.wot.wtViewport.rowsRenderCalculator.startPosition === 'number') {
+      this.clone.wtTable.spreader.style.top = this.wot.wtViewport.rowsRenderCalculator.startPosition + 'px';
+    } else {
+      this.clone.wtTable.spreader.style.top = '';
+    }
+  },
+  scrollTo: function(sourceCol, beyondRendered) {
+    var newX = this.getTableParentOffset();
+    var sourceInstance = this.wot.cloneSource ? this.wot.cloneSource : this.wot;
+    var mainHolder = sourceInstance.wtTable.holder;
+    var scrollbarCompensation = 0;
+    if (beyondRendered && mainHolder.offsetWidth !== mainHolder.clientWidth) {
+      scrollbarCompensation = getScrollbarWidth();
+    }
+    if (beyondRendered) {
+      newX += this.sumCellSizes(0, sourceCol + 1);
+      newX -= this.wot.wtViewport.getViewportWidth();
+    } else {
+      newX += this.sumCellSizes(this.wot.getSetting('fixedColumnsLeft'), sourceCol);
+    }
+    newX += scrollbarCompensation;
+    this.setScrollPosition(newX);
+  },
+  getTableParentOffset: function() {
+    if (this.trimmingContainer === window) {
+      return this.wot.wtTable.holderOffset.left;
+    } else {
+      return 0;
+    }
+  },
+  getScrollPosition: function() {
+    return getScrollLeft(this.mainTableScrollableElement);
+  },
+  adjustHeaderBordersPosition: function(position) {
+    var masterParent = this.wot.wtTable.holder.parentNode;
+    var rowHeaders = this.wot.getSetting('rowHeaders');
+    var fixedColumnsLeft = this.wot.getSetting('fixedColumnsLeft');
+    if (fixedColumnsLeft && !rowHeaders.length) {
+      addClass(masterParent, 'innerBorderLeft');
+    } else if (!fixedColumnsLeft && rowHeaders.length) {
+      var previousState = hasClass(masterParent, 'innerBorderLeft');
+      if (position) {
+        addClass(masterParent, 'innerBorderLeft');
+      } else {
+        removeClass(masterParent, 'innerBorderLeft');
+      }
+      if (!previousState && position || previousState && !position) {
+        this.wot.wtOverlays.adjustElementsSize();
+      }
+    }
+  }
+}, {}, WalkontableOverlay);
+;
+window.WalkontableRightOverlay = WalkontableRightOverlay;
+WalkontableOverlay.registerOverlay(WalkontableOverlay.CLONE_RIGHT, WalkontableRightOverlay);
+
+//# 
+},{"_base":11,"helpers/dom/element":49}],18:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableTopOverlay: {get: function() {
@@ -1994,7 +2564,7 @@ window.WalkontableTopOverlay = WalkontableTopOverlay;
 WalkontableOverlay.registerOverlay(WalkontableOverlay.CLONE_TOP, WalkontableTopOverlay);
 
 //# 
-},{"_base":11,"helpers/dom/element":44}],15:[function(require,module,exports){
+},{"_base":11,"helpers/dom/element":49}],19:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableTopLeftCornerOverlay: {get: function() {
@@ -2054,7 +2624,72 @@ window.WalkontableTopLeftCornerOverlay = WalkontableTopLeftCornerOverlay;
 WalkontableOverlay.registerOverlay(WalkontableOverlay.CLONE_TOP_LEFT_CORNER, WalkontableTopLeftCornerOverlay);
 
 //# 
-},{"_base":11,"helpers/dom/element":44}],16:[function(require,module,exports){
+},{"_base":11,"helpers/dom/element":49}],20:[function(require,module,exports){
+"use strict";
+Object.defineProperties(exports, {
+  WalkontableTopRightCornerOverlay: {get: function() {
+      return WalkontableTopRightCornerOverlay;
+    }},
+  __esModule: {value: true}
+});
+var $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__,
+    $___95_base__;
+var $__0 = ($___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ = require("helpers/dom/element"), $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ && $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__.__esModule && $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ || {default: $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__}),
+    outerHeight = $__0.outerHeight,
+    outerWidth = $__0.outerWidth,
+    setOverlayPosition = $__0.setOverlayPosition,
+    getScrollbarWidth = $__0.getScrollbarWidth;
+var WalkontableOverlay = ($___95_base__ = require("_base"), $___95_base__ && $___95_base__.__esModule && $___95_base__ || {default: $___95_base__}).WalkontableOverlay;
+var WalkontableTopRightCornerOverlay = function WalkontableTopRightCornerOverlay(wotInstance) {
+  $traceurRuntime.superConstructor($WalkontableTopRightCornerOverlay).call(this, wotInstance);
+  this.clone = this.makeClone(WalkontableOverlay.CLONE_TOP_RIGHT_CORNER);
+};
+var $WalkontableTopRightCornerOverlay = WalkontableTopRightCornerOverlay;
+($traceurRuntime.createClass)(WalkontableTopRightCornerOverlay, {
+  shouldBeRendered: function() {
+    return this.wot.getSetting('fixedRowsBottom') && (this.wot.getSetting('fixedColumnsRight') || this.wot.getSetting('rowHeaders').length) ? true : false;
+  },
+  resetFixedPosition: function() {
+    if (!this.wot.wtTable.holder.parentNode) {
+      return;
+    }
+    var overlayRoot = this.clone.wtTable.holder.parentNode;
+    var tableHeight = outerHeight(this.clone.wtTable.TABLE);
+    var tableWidth = outerWidth(this.clone.wtTable.TABLE);
+    if (this.trimmingContainer === window) {
+      var box = this.wot.wtTable.hider.getBoundingClientRect();
+      var top = Math.ceil(box.top);
+      var left = Math.ceil(box.left);
+      var bottom = Math.ceil(box.bottom);
+      var right = Math.ceil(box.right);
+      var finalRight;
+      var finalTop;
+      if (right < 0 && (right - overlayRoot.offsetWidth) > 0) {
+        finalRight = -right + 'px';
+      } else {
+        finalRight = '0';
+      }
+      if (top < 0 && (bottom - overlayRoot.offsetHeight) > 0) {
+        finalTop = -top + 'px';
+      } else {
+        finalTop = '0';
+      }
+      setOverlayPosition(overlayRoot, finalRight, finalTop);
+    }
+    overlayRoot.style.height = (tableHeight === 0 ? tableHeight : tableHeight + 4) + 'px';
+    overlayRoot.style.width = (tableWidth === 0 ? tableWidth : tableWidth + 4) + 'px';
+    if (this.wot.wtOverlays.rightOverlay.trimmingContainer !== window) {
+      var scrollBarWidth = getScrollbarWidth();
+      setOverlayPosition(overlayRoot, this.wot.wtViewport.getWorkspaceWidth() - scrollBarWidth - outerWidth(this.clone.wtTable.TABLE) + 'px', '0px');
+    }
+  }
+}, {}, WalkontableOverlay);
+;
+window.WalkontableTopRightCornerOverlay = WalkontableTopRightCornerOverlay;
+WalkontableOverlay.registerOverlay(WalkontableOverlay.CLONE_TOP_RIGHT_CORNER, WalkontableTopRightCornerOverlay);
+
+//# 
+},{"_base":11,"helpers/dom/element":49}],21:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableOverlays: {get: function() {
@@ -2086,13 +2721,28 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
     this.bottomOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_BOTTOM, this.wot);
   }
   this.leftOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_LEFT, this.wot);
+  if (typeof WalkontableRightOverlay === 'undefined') {
+    this.rightOverlay = {needFullRender: false};
+  } else {
+    this.rightOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_RIGHT, this.wot);
+  }
   if (this.topOverlay.needFullRender && this.leftOverlay.needFullRender) {
     this.topLeftCornerOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_TOP_LEFT_CORNER, this.wot);
+  }
+  if (this.topOverlay.needFullRender && this.rightOverlay.needFullRender && typeof WalkontableTopRightCornerOverlay !== 'undefined') {
+    this.topRightCornerOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_TOP_RIGHT_CORNER, this.wot);
+  } else {
+    this.topRightCornerOverlay = {needFullRender: false};
   }
   if (this.bottomOverlay.needFullRender && this.leftOverlay.needFullRender && typeof WalkontableBottomLeftCornerOverlay !== 'undefined') {
     this.bottomLeftCornerOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER, this.wot);
   } else {
     this.bottomLeftCornerOverlay = {needFullRender: false};
+  }
+  if (this.bottomOverlay.needFullRender && this.rightOverlay.needFullRender && typeof WalkontableBottomRightCornerOverlay !== 'undefined') {
+    this.bottomRightCornerOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER, this.wot);
+  } else {
+    this.bottomRightCornerOverlay = {needFullRender: false};
   }
   if (this.wot.getSetting('debug')) {
     this.debug = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_DEBUG, this.wot);
@@ -2117,6 +2767,10 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
       left: 0
     },
     left: {
+      top: 0,
+      left: null
+    },
+    right: {
       top: 0,
       left: null
     }
@@ -2174,6 +2828,14 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
         return $__3.onTableScroll(event);
       }));
     }
+    if (this.rightOverlay.needFullRender) {
+      this.eventManager.addEventListener(this.rightOverlay.clone.wtTable.holder, 'scroll', (function(event) {
+        return $__3.onTableScroll(event);
+      }));
+      this.eventManager.addEventListener(this.rightOverlay.clone.wtTable.holder, 'wheel', (function(event) {
+        return $__3.onTableScroll(event);
+      }));
+    }
     if (this.topOverlay.trimmingContainer !== window && this.leftOverlay.trimmingContainer !== window) {
       this.eventManager.addEventListener(window, 'wheel', (function(event) {
         var overlay;
@@ -2184,6 +2846,8 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
         } else if ($__3.bottomOverlay.clone && $__3.bottomOverlay.clone.wtTable.holder.contains(event.realTarget)) {
           overlay = 'bottom';
         } else if ($__3.leftOverlay.clone.wtTable.holder.contains(event.realTarget)) {
+          overlay = 'left';
+        } else if ($__3.rightOverlay.clone.wtTable.holder.contains(event.realTarget)) {
           overlay = 'left';
         }
         if (overlay == 'top' && deltaY !== 0) {
@@ -2219,6 +2883,7 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
     var topOverlay = this.topOverlay.clone.wtTable.holder;
     var bottomOverlay = this.bottomOverlay.clone ? this.bottomOverlay.clone.wtTable.holder : null;
     var leftOverlay = this.leftOverlay.clone.wtTable.holder;
+    var rightOverlay = this.rightOverlay.clone ? this.rightOverlay.clone.wtTable.holder : null;
     var eventMockup = {type: 'wheel'};
     var tempElem = event.target;
     var deltaY = event.wheelDeltaY || (-1) * event.deltaY;
@@ -2237,6 +2902,8 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
     } else if (parentHolder == bottomOverlay) {
       this.syncScrollPositions(eventMockup, (-0.2) * deltaY);
     } else if (parentHolder == leftOverlay) {
+      this.syncScrollPositions(eventMockup, (-0.2) * deltaX);
+    } else if (parentHolder == rightOverlay) {
       this.syncScrollPositions(eventMockup, (-0.2) * deltaX);
     }
     return false;
@@ -2257,6 +2924,7 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
     var topOverlay;
     var leftOverlay;
     var bottomOverlay;
+    var rightOverlay;
     if (this.topOverlay.needFullRender) {
       topOverlay = this.topOverlay.clone.wtTable.holder;
     }
@@ -2265,6 +2933,9 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
     }
     if (this.leftOverlay.needFullRender) {
       leftOverlay = this.leftOverlay.clone.wtTable.holder;
+    }
+    if (this.rightOverlay.needFullRender) {
+      rightOverlay = this.rightOverlay.clone.wtTable.holder;
     }
     if (target === document) {
       target = window;
@@ -2287,6 +2958,9 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
         scrollValueChanged = true;
         if (leftOverlay) {
           leftOverlay.scrollTop = tempScrollValue;
+        }
+        if (rightOverlay) {
+          rightOverlay.scrollTop = tempScrollValue;
         }
       }
     } else if (target === bottomOverlay) {
@@ -2322,6 +2996,17 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
         scrollValueChanged = true;
         master.scrollLeft += fakeScrollValue;
       }
+    } else if (target === rightOverlay) {
+      tempScrollValue = getScrollTop(target);
+      if (this.overlayScrollPositions.right.top !== tempScrollValue) {
+        this.overlayScrollPositions.right.top = tempScrollValue;
+        scrollValueChanged = true;
+        master.scrollTop = tempScrollValue;
+      }
+      if (fakeScrollValue !== null) {
+        scrollValueChanged = true;
+        master.scrollLeft += fakeScrollValue;
+      }
     }
     if (!this.keyPressed && scrollValueChanged && event.type === 'scroll') {
       this.refreshAll();
@@ -2343,11 +3028,20 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
       this.bottomOverlay.destroy();
     }
     this.leftOverlay.destroy();
+    if (this.rightOverlay.clone) {
+      this.rightOverlay.destroy();
+    }
     if (this.topLeftCornerOverlay) {
       this.topLeftCornerOverlay.destroy();
     }
     if (this.bottomLeftCornerOverlay && this.bottomLeftCornerOverlay.clone) {
       this.bottomLeftCornerOverlay.destroy();
+    }
+    if (this.topRightCornerOverlay && this.topRightCornerOverlay.clone) {
+      this.topRightCornerOverlay.destroy();
+    }
+    if (this.bottomRightCornerOverlay && this.bottomRightCornerOverlay.clone) {
+      this.bottomRightCornerOverlay.destroy();
     }
     if (this.debug) {
       this.debug.destroy();
@@ -2371,11 +3065,20 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
     }
     this.leftOverlay.refresh(fastDraw);
     this.topOverlay.refresh(fastDraw);
+    if (this.rightOverlay.clone) {
+      this.rightOverlay.refresh(fastDraw);
+    }
     if (this.topLeftCornerOverlay) {
       this.topLeftCornerOverlay.refresh(fastDraw);
     }
     if (this.bottomLeftCornerOverlay && this.bottomLeftCornerOverlay.clone) {
       this.bottomLeftCornerOverlay.refresh(fastDraw);
+    }
+    if (this.topRightCornerOverlay && this.topRightCornerOverlay.clone) {
+      this.topRightCornerOverlay.refresh(fastDraw);
+    }
+    if (this.bottomRightCornerOverlay && this.bottomRightCornerOverlay.clone) {
+      this.bottomRightCornerOverlay.refresh(fastDraw);
     }
     if (this.debug) {
       this.debug.refresh(fastDraw);
@@ -2395,6 +3098,9 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
     if (this.bottomOverlay.clone) {
       this.bottomOverlay.adjustElementsSize(force);
     }
+    if (this.rightOverlay.clone) {
+      this.rightOverlay.adjustElementsSize(force);
+    }
   },
   applyToDOM: function() {
     if (!this.topOverlay.areElementSizesAdjusted || !this.leftOverlay.areElementSizesAdjusted) {
@@ -2405,13 +3111,16 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
       this.bottomOverlay.applyToDOM();
     }
     this.leftOverlay.applyToDOM();
+    if (this.rightOverlay.clone) {
+      this.rightOverlay.applyToDOM();
+    }
   }
 }, {});
 ;
 window.WalkontableOverlays = WalkontableOverlays;
 
 //# 
-},{"eventManager":40,"helpers/dom/element":44,"helpers/unicode":52}],17:[function(require,module,exports){
+},{"eventManager":45,"helpers/dom/element":49,"helpers/unicode":57}],22:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableScroll: {get: function() {
@@ -2432,6 +3141,7 @@ var WalkontableScroll = function WalkontableScroll(wotInstance) {
     var fixedRowsTop = this.instance.getSetting('fixedRowsTop');
     var fixedRowsBottom = this.instance.getSetting('fixedRowsBottom');
     var fixedColumnsLeft = this.instance.getSetting('fixedColumnsLeft');
+    var fixedColumnsRight = this.instance.getSetting('fixedColumnsRight');
     if (coords.row < 0 || coords.row > totalRows - 1) {
       throw new Error('row ' + coords.row + ' does not exist');
     }
@@ -2443,7 +3153,7 @@ var WalkontableScroll = function WalkontableScroll(wotInstance) {
     } else if (coords.row >= fixedRowsTop && coords.row < this.instance.wtTable.getFirstVisibleRow()) {
       this.wot.wtOverlays.topOverlay.scrollTo(coords.row);
     }
-    if (coords.col > this.instance.wtTable.getLastVisibleColumn()) {
+    if (coords.col > this.instance.wtTable.getLastVisibleColumn() && coords.col < totalColumns - fixedColumnsRight) {
       this.wot.wtOverlays.leftOverlay.scrollTo(coords.col, true);
     } else if (coords.col >= fixedColumnsLeft && coords.col < this.instance.wtTable.getFirstVisibleColumn()) {
       this.wot.wtOverlays.leftOverlay.scrollTo(coords.col);
@@ -2453,7 +3163,7 @@ var WalkontableScroll = function WalkontableScroll(wotInstance) {
 window.WalkontableScroll = WalkontableScroll;
 
 //# 
-},{}],18:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableSelection: {get: function() {
@@ -2581,7 +3291,7 @@ var WalkontableSelection = function WalkontableSelection(settings, cellRange) {
 window.WalkontableSelection = WalkontableSelection;
 
 //# 
-},{"border":2,"cell/coords":5,"cell/range":6,"helpers/dom/element":44}],19:[function(require,module,exports){
+},{"border":2,"cell/coords":5,"cell/range":6,"helpers/dom/element":49}],24:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableSettings: {get: function() {
@@ -2604,6 +3314,7 @@ var WalkontableSettings = function WalkontableSettings(wotInstance, settings) {
     currentColumnClassName: null,
     data: void 0,
     fixedColumnsLeft: 0,
+    fixedColumnsRight: 0,
     fixedRowsTop: 0,
     fixedRowsBottom: 0,
     minSpareRows: 0,
@@ -2691,7 +3402,7 @@ var WalkontableSettings = function WalkontableSettings(wotInstance, settings) {
 window.WalkontableSettings = WalkontableSettings;
 
 //# 
-},{"helpers/dom/element":44}],20:[function(require,module,exports){
+},{"helpers/dom/element":49}],25:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableTable: {get: function() {
@@ -2825,6 +3536,7 @@ var WalkontableTable = function WalkontableTable(wotInstance, table) {
   },
   draw: function(fastDraw) {
     var totalRows = this.instance.getSetting('totalRows');
+    var totalColumns = this.instance.getSetting('totalColumns');
     if (!this.isWorkingOnClone()) {
       this.holderOffset = offset(this.holder);
       fastDraw = this.wot.wtViewport.createRenderCalculators(fastDraw);
@@ -2843,21 +3555,27 @@ var WalkontableTable = function WalkontableTable(wotInstance, table) {
         this.tableOffset = offset(this.TABLE);
       }
       var startRow;
-      if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_DEBUG) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_LEFT_CORNER)) {
+      var numColumnHeaders = this.wot.getSetting('columnHeaders').length;
+      var numRowHeaders = this.wot.getSetting('rowHeaders').length;
+      if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_DEBUG) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_LEFT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_RIGHT_CORNER)) {
         startRow = 0;
-      } else if (WalkontableOverlay.isOverlayTypeOf(this.instance.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM) || WalkontableOverlay.isOverlayTypeOf(this.instance.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER)) {
+      } else if (WalkontableOverlay.isOverlayTypeOf(this.instance.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM) || WalkontableOverlay.isOverlayTypeOf(this.instance.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.instance.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER)) {
         startRow = totalRows - this.wot.getSetting('fixedRowsBottom');
+        numColumnHeaders = 0;
       } else {
         startRow = this.wot.wtViewport.rowsRenderCalculator.startRow;
       }
       var startColumn;
       if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_DEBUG) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_LEFT) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_LEFT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER)) {
         startColumn = 0;
+      } else if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_RIGHT) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_RIGHT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER)) {
+        startColumn = totalColumns - this.wot.getSetting('fixedColumnsRight');
+        numRowHeaders = 0;
       } else {
         startColumn = this.wot.wtViewport.columnsRenderCalculator.startColumn;
       }
-      this.rowFilter = new WalkontableRowFilter(startRow, totalRows, this.wot.getSetting('columnHeaders').length);
-      this.columnFilter = new WalkontableColumnFilter(startColumn, this.wot.getSetting('totalColumns'), this.wot.getSetting('rowHeaders').length);
+      this.rowFilter = new WalkontableRowFilter(startRow, totalRows, numColumnHeaders);
+      this.columnFilter = new WalkontableColumnFilter(startColumn, totalColumns, numRowHeaders);
       this._doDraw();
       this.alignOverlaysWithTrimmingContainer();
     }
@@ -2868,11 +3586,20 @@ var WalkontableTable = function WalkontableTable(wotInstance, table) {
         this.wot.wtOverlays.bottomOverlay.resetFixedPosition();
       }
       this.wot.wtOverlays.leftOverlay.resetFixedPosition();
+      if (this.wot.wtOverlays.rightOverlay.clone) {
+        this.wot.wtOverlays.rightOverlay.resetFixedPosition();
+      }
       if (this.wot.wtOverlays.topLeftCornerOverlay) {
         this.wot.wtOverlays.topLeftCornerOverlay.resetFixedPosition();
       }
       if (this.instance.wtOverlays.bottomLeftCornerOverlay && this.instance.wtOverlays.bottomLeftCornerOverlay.clone) {
         this.wot.wtOverlays.bottomLeftCornerOverlay.resetFixedPosition();
+      }
+      if (this.instance.wtOverlays.topRightCornerOverlay && this.instance.wtOverlays.topRightCornerOverlay.clone) {
+        this.wot.wtOverlays.topRightCornerOverlay.resetFixedPosition();
+      }
+      if (this.instance.wtOverlays.bottomRightCornerOverlay && this.instance.wtOverlays.bottomRightCornerOverlay.clone) {
+        this.wot.wtOverlays.bottomRightCornerOverlay.resetFixedPosition();
       }
     }
     this.wot.drawn = true;
@@ -3002,6 +3729,8 @@ var WalkontableTable = function WalkontableTable(wotInstance, table) {
       return this.wot.getSetting('totalColumns');
     } else if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_LEFT) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_LEFT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER)) {
       return this.wot.getSetting('fixedColumnsLeft');
+    } else if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_RIGHT) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_RIGHT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER)) {
+      return this.wot.getSetting('fixedColumnsRight');
     } else {
       return this.wot.wtViewport.columnsRenderCalculator.count;
     }
@@ -3009,9 +3738,9 @@ var WalkontableTable = function WalkontableTable(wotInstance, table) {
   getRenderedRowsCount: function() {
     if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_DEBUG)) {
       return this.wot.getSetting('totalRows');
-    } else if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_LEFT_CORNER)) {
+    } else if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_LEFT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_RIGHT_CORNER)) {
       return this.wot.getSetting('fixedRowsTop');
-    } else if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER)) {
+    } else if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER)) {
       return this.instance.getSetting('fixedRowsBottom');
     }
     return this.wot.wtViewport.rowsRenderCalculator.count;
@@ -3070,7 +3799,7 @@ var WalkontableTable = function WalkontableTable(wotInstance, table) {
 window.WalkontableTable = WalkontableTable;
 
 //# 
-},{"cell/coords":5,"cell/range":6,"filter/column":9,"filter/row":10,"helpers/dom/element":44,"tableRenderer":21}],21:[function(require,module,exports){
+},{"cell/coords":5,"cell/range":6,"filter/column":9,"filter/row":10,"helpers/dom/element":49,"tableRenderer":26}],26:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableTableRenderer: {get: function() {
@@ -3119,9 +3848,13 @@ var WalkontableTableRenderer = function WalkontableTableRenderer(wtTable) {
     var totalRows = this.wot.getSetting('totalRows');
     var workspaceWidth;
     var adjusted = false;
-    if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER)) {
+    if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER)) {
       this.columnHeaders = [];
       this.columnHeaderCount = 0;
+    }
+    if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_RIGHT) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_RIGHT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER)) {
+      this.rowHeaders = [];
+      this.rowHeaderCount = 0;
     }
     if (totalColumns > 0) {
       this.adjustAvailableNodes();
@@ -3152,6 +3885,9 @@ var WalkontableTableRenderer = function WalkontableTableRenderer(wtTable) {
         for (var i = firstRendered; i < lastRendered; i++) {
           var width = this.wtTable.getStretchedColumnWidth(i);
           var renderedIndex = this.columnFilter.sourceToRendered(i);
+          if (renderedIndex + this.rowHeaderCount === 0 && (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_RIGHT) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_RIGHT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER))) {
+            ++width;
+          }
           this.COLGROUP.childNodes[renderedIndex + this.rowHeaderCount].style.width = width + 'px';
         }
       }
@@ -3319,6 +4055,9 @@ var WalkontableTableRenderer = function WalkontableTableRenderer(wtTable) {
     this.wot.wtViewport.columnsRenderCalculator.refreshStretching(this.wot.wtViewport.getViewportWidth() - scrollbarCompensation);
     for (var renderedColIndex = 0; renderedColIndex < columnsToRender; renderedColIndex++) {
       var width = this.wtTable.getStretchedColumnWidth(this.columnFilter.renderedToSource(renderedColIndex));
+      if (renderedColIndex + this.rowHeaderCount === 0 && (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_RIGHT) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_RIGHT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER))) {
+        ++width;
+      }
       this.COLGROUP.childNodes[renderedColIndex + this.rowHeaderCount].style.width = width + 'px';
     }
   },
@@ -3472,7 +4211,7 @@ function replaceThWithTd(TH, TR) {
 window.WalkontableTableRenderer = WalkontableTableRenderer;
 
 //# 
-},{"helpers/dom/element":44}],22:[function(require,module,exports){
+},{"helpers/dom/element":49}],27:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableViewport: {get: function() {
@@ -3691,21 +4430,31 @@ var WalkontableViewport = function WalkontableViewport(wotInstance) {
     var width = this.getViewportWidth();
     var pos;
     var fixedColumnsLeft;
+    var fixedColumnsRight;
+    var fixedColumnsWidth;
+    var totalRows;
+    var totalColumns;
     this.columnHeaderHeight = NaN;
     pos = this.wot.wtOverlays.leftOverlay.getScrollPosition() - this.wot.wtOverlays.leftOverlay.getTableParentOffset();
     if (pos < 0) {
       pos = 0;
     }
     fixedColumnsLeft = this.wot.getSetting('fixedColumnsLeft');
+    fixedColumnsRight = this.wot.getSetting('fixedColumnsRight');
+    totalColumns = this.wot.getSetting('totalColumns');
     if (fixedColumnsLeft) {
-      var fixedColumnsWidth = this.wot.wtOverlays.leftOverlay.sumCellSizes(0, fixedColumnsLeft);
+      fixedColumnsWidth = this.wot.wtOverlays.leftOverlay.sumCellSizes(0, fixedColumnsLeft);
       pos += fixedColumnsWidth;
+      width -= fixedColumnsWidth;
+    }
+    if (fixedColumnsRight && this.wot.wtOverlays.rightOverlay.clone) {
+      fixedColumnsWidth = this.wot.wtOverlays.rightOverlay.sumCellSizes(totalColumns - fixedColumnsRight, totalColumns);
       width -= fixedColumnsWidth;
     }
     if (this.wot.wtTable.holder.clientWidth !== this.wot.wtTable.holder.offsetWidth) {
       width -= getScrollbarWidth();
     }
-    return new WalkontableViewportColumnsCalculator(width, pos, this.wot.getSetting('totalColumns'), (function(sourceCol) {
+    return new WalkontableViewportColumnsCalculator(width, pos, totalColumns, (function(sourceCol) {
       return $__4.wot.wtTable.getColumnWidth(sourceCol);
     }), visible ? null : this.wot.wtSettings.settings.viewportColumnCalculatorOverride, visible, this.wot.getSetting('stretchH'));
   },
@@ -3759,7 +4508,7 @@ var WalkontableViewport = function WalkontableViewport(wotInstance) {
 window.WalkontableViewport = WalkontableViewport;
 
 //# 
-},{"calculator/viewportColumns":3,"calculator/viewportRows":4,"eventManager":40,"helpers/dom/element":44}],23:[function(require,module,exports){
+},{"calculator/viewportColumns":3,"calculator/viewportRows":4,"eventManager":45,"helpers/dom/element":49}],28:[function(require,module,exports){
 "use strict";
 var $__shims_47_classes__,
     $__es6collections__,
@@ -3832,7 +4581,7 @@ arrayHelpers.arrayEach([domHelpers, domEventHelpers], (function(helper) {
 }));
 
 //# 
-},{"cellTypes":24,"core":25,"es6collections":"es6collections","helpers/array":41,"helpers/browser":42,"helpers/data":43,"helpers/dom/element":44,"helpers/dom/event":45,"helpers/function":46,"helpers/mixed":47,"helpers/number":48,"helpers/object":49,"helpers/setting":50,"helpers/string":51,"helpers/unicode":52,"pluginHooks":54,"plugins/jqueryHandsontable":1,"renderers/_cellDecorator":87,"shims/classes":94}],24:[function(require,module,exports){
+},{"cellTypes":29,"core":30,"es6collections":"es6collections","helpers/array":46,"helpers/browser":47,"helpers/data":48,"helpers/dom/element":49,"helpers/dom/event":50,"helpers/function":51,"helpers/mixed":52,"helpers/number":53,"helpers/object":54,"helpers/setting":55,"helpers/string":56,"helpers/unicode":57,"pluginHooks":59,"plugins/jqueryHandsontable":1,"renderers/_cellDecorator":92,"shims/classes":99}],29:[function(require,module,exports){
 "use strict";
 var $__helpers_47_browser__,
     $__editors__,
@@ -3933,7 +4682,7 @@ Handsontable.cellLookup = {validator: {
   }};
 
 //# 
-},{"editors":28,"editors/autocompleteEditor":30,"editors/checkboxEditor":31,"editors/dateEditor":32,"editors/dropdownEditor":33,"editors/handsontableEditor":34,"editors/mobileTextEditor":35,"editors/numericEditor":36,"editors/passwordEditor":37,"editors/selectEditor":38,"editors/textEditor":39,"helpers/browser":42,"renderers":86,"renderers/autocompleteRenderer":88,"renderers/checkboxRenderer":89,"renderers/htmlRenderer":90,"renderers/numericRenderer":91,"renderers/passwordRenderer":92,"renderers/textRenderer":93,"validators/autocompleteValidator":98,"validators/dateValidator":99,"validators/numericValidator":100}],25:[function(require,module,exports){
+},{"editors":33,"editors/autocompleteEditor":35,"editors/checkboxEditor":36,"editors/dateEditor":37,"editors/dropdownEditor":38,"editors/handsontableEditor":39,"editors/mobileTextEditor":40,"editors/numericEditor":41,"editors/passwordEditor":42,"editors/selectEditor":43,"editors/textEditor":44,"helpers/browser":47,"renderers":91,"renderers/autocompleteRenderer":93,"renderers/checkboxRenderer":94,"renderers/htmlRenderer":95,"renderers/numericRenderer":96,"renderers/passwordRenderer":97,"renderers/textRenderer":98,"validators/autocompleteValidator":103,"validators/dateValidator":104,"validators/numericValidator":105}],30:[function(require,module,exports){
 "use strict";
 var $__numeral__,
     $__helpers_47_dom_47_element__,
@@ -4077,6 +4826,10 @@ Handsontable.Core = function Core(rootElement, userSettings) {
           var fixedColumnsLeft = instance.getSettings().fixedColumnsLeft;
           if (fixedColumnsLeft >= index + 1) {
             instance.getSettings().fixedColumnsLeft -= Math.min(amount, fixedColumnsLeft - index);
+          }
+          var fixedColumnsRight = instance.getSettings().fixedColumnsRight;
+          if (fixedColumnsRight >= index + 1) {
+            instance.getSettings().fixedColumnsRight -= Math.min(amount, fixedColumnsRight - index);
           }
           if (Array.isArray(instance.getSettings().colHeaders)) {
             if (typeof index == 'undefined') {
@@ -5534,6 +6287,7 @@ DefaultSettings.prototype = {
   fixedRowsTop: 0,
   fixedRowsBottom: 0,
   fixedColumnsLeft: 0,
+  fixedColumnsRight: 0,
   outsideClickDeselects: true,
   enterBeginsEditing: true,
   enterMoves: {
@@ -5642,7 +6396,7 @@ DefaultSettings.prototype = {
 Handsontable.DefaultSettings = DefaultSettings;
 
 //# 
-},{"3rdparty/walkontable/src/calculator/viewportColumns":3,"3rdparty/walkontable/src/cell/coords":5,"3rdparty/walkontable/src/cell/range":6,"3rdparty/walkontable/src/selection":18,"dataMap":26,"editorManager":27,"eventManager":40,"helpers/array":41,"helpers/data":43,"helpers/dom/element":44,"helpers/number":48,"helpers/object":49,"helpers/setting":50,"helpers/string":51,"numeral":"numeral","plugins":55,"renderers":86,"tableView":95}],26:[function(require,module,exports){
+},{"3rdparty/walkontable/src/calculator/viewportColumns":3,"3rdparty/walkontable/src/cell/coords":5,"3rdparty/walkontable/src/cell/range":6,"3rdparty/walkontable/src/selection":23,"dataMap":31,"editorManager":32,"eventManager":45,"helpers/array":46,"helpers/data":48,"helpers/dom/element":49,"helpers/number":53,"helpers/object":54,"helpers/setting":55,"helpers/string":56,"numeral":"numeral","plugins":60,"renderers":91,"tableView":100}],31:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   DataMap: {get: function() {
@@ -6004,7 +6758,7 @@ DataMap.prototype.getCopyableText = function(start, end) {
 Handsontable.DataMap = DataMap;
 
 //# 
-},{"SheetClip":"SheetClip","helpers/array":41,"helpers/data":43,"helpers/object":49,"helpers/setting":50,"multiMap":53}],27:[function(require,module,exports){
+},{"SheetClip":"SheetClip","helpers/array":46,"helpers/data":48,"helpers/object":54,"helpers/setting":55,"multiMap":58}],32:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   EditorManager: {get: function() {
@@ -6300,7 +7054,7 @@ function EditorManager(instance, priv, selection) {
 }
 
 //# 
-},{"3rdparty/walkontable/src/cell/coords":5,"editors":28,"eventManager":40,"helpers/dom/event":45,"helpers/unicode":52}],28:[function(require,module,exports){
+},{"3rdparty/walkontable/src/cell/coords":5,"editors":33,"eventManager":45,"helpers/dom/event":50,"helpers/unicode":57}],33:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   registerEditor: {get: function() {
@@ -6382,7 +7136,7 @@ function hasEditor(editorName) {
 }
 
 //# 
-},{"helpers/string":51}],29:[function(require,module,exports){
+},{"helpers/string":56}],34:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   BaseEditor: {get: function() {
@@ -6567,29 +7321,31 @@ BaseEditor.prototype.isWaiting = function() {
 };
 BaseEditor.prototype.checkEditorSection = function() {
   var totalRows = this.instance.countRows();
-  var section = '';
+  var totalColumns = this.instance.countCols();
+  var vsection;
+  var hsection;
   if (this.row < this.instance.getSettings().fixedRowsTop) {
-    if (this.col < this.instance.getSettings().fixedColumnsLeft) {
-      section = 'top-left-corner';
-    } else {
-      section = 'top';
-    }
+    vsection = 'top';
   } else if (this.instance.getSettings().fixedRowsBottom && this.row >= totalRows - this.instance.getSettings().fixedRowsBottom) {
-    if (this.col < this.instance.getSettings().fixedColumnsLeft) {
-      section = 'bottom-left-corner';
-    } else {
-      section = 'bottom';
-    }
-  } else {
-    if (this.col < this.instance.getSettings().fixedColumnsLeft) {
-      section = 'left';
-    }
+    vsection = 'bottom';
   }
-  return section;
+  if (this.col < this.instance.getSettings().fixedColumnsLeft) {
+    hsection = 'left';
+  } else if (this.instance.getSettings().fixedColumnsRight && this.col >= totalColumns - this.instance.getSettings().fixedColumnsRight) {
+    hsection = 'right';
+  }
+  if (hsection && vsection) {
+    if (hsection === 'right') {
+      return hsection;
+    }
+    return vsection + '-' + hsection + '-corner';
+  } else {
+    return vsection || hsection || '';
+  }
 };
 
 //# 
-},{"3rdparty/walkontable/src/cell/coords":5,"helpers/mixed":47}],30:[function(require,module,exports){
+},{"3rdparty/walkontable/src/cell/coords":5,"helpers/mixed":52}],35:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   AutocompleteEditor: {get: function() {
@@ -6853,7 +7609,7 @@ AutocompleteEditor.prototype.allowKeyEventPropagation = function(keyCode) {
 registerEditor('autocomplete', AutocompleteEditor);
 
 //# 
-},{"editors":28,"handsontableEditor":34,"helpers/array":41,"helpers/dom/element":44,"helpers/mixed":47,"helpers/unicode":52}],31:[function(require,module,exports){
+},{"editors":33,"handsontableEditor":39,"helpers/array":46,"helpers/dom/element":49,"helpers/mixed":52,"helpers/unicode":57}],36:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   CheckboxEditor: {get: function() {
@@ -6890,7 +7646,7 @@ var $CheckboxEditor = CheckboxEditor;
 registerEditor('checkbox', CheckboxEditor);
 
 //# 
-},{"_baseEditor":29,"editors":28,"helpers/dom/element":44}],32:[function(require,module,exports){
+},{"_baseEditor":34,"editors":33,"helpers/dom/element":49}],37:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   DateEditor: {get: function() {
@@ -7077,7 +7833,7 @@ var $DateEditor = DateEditor;
 registerEditor('date', DateEditor);
 
 //# 
-},{"editors":28,"eventManager":40,"helpers/dom/element":44,"helpers/dom/event":45,"helpers/object":49,"helpers/unicode":52,"moment":undefined,"pikaday":undefined,"textEditor":39}],33:[function(require,module,exports){
+},{"editors":33,"eventManager":45,"helpers/dom/element":49,"helpers/dom/event":50,"helpers/object":54,"helpers/unicode":57,"moment":undefined,"pikaday":undefined,"textEditor":44}],38:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   DropdownEditor: {get: function() {
@@ -7113,7 +7869,7 @@ Handsontable.hooks.add('beforeValidate', function(value, row, col, source) {
 registerEditor('dropdown', DropdownEditor);
 
 //# 
-},{"autocompleteEditor":30,"editors":28}],34:[function(require,module,exports){
+},{"autocompleteEditor":35,"editors":33}],39:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   HandsontableEditor: {get: function() {
@@ -7264,7 +8020,7 @@ HandsontableEditor.prototype.assignHooks = function() {
 registerEditor('handsontable', HandsontableEditor);
 
 //# 
-},{"editors":28,"helpers/dom/element":44,"helpers/dom/event":45,"helpers/object":49,"helpers/unicode":52,"textEditor":39}],35:[function(require,module,exports){
+},{"editors":33,"helpers/dom/element":49,"helpers/dom/event":50,"helpers/object":54,"helpers/unicode":57,"textEditor":44}],40:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   MobileTextEditor: {get: function() {
@@ -7523,7 +8279,7 @@ MobileTextEditor.prototype.destroy = function() {
 registerEditor('mobile', MobileTextEditor);
 
 //# 
-},{"_baseEditor":29,"editors":28,"eventManager":40,"helpers/dom/element":44,"helpers/dom/event":45,"helpers/unicode":52}],36:[function(require,module,exports){
+},{"_baseEditor":34,"editors":33,"eventManager":45,"helpers/dom/element":49,"helpers/dom/event":50,"helpers/unicode":57}],41:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   NumericEditor: {get: function() {
@@ -7557,7 +8313,7 @@ var $NumericEditor = NumericEditor;
 registerEditor('numeric', NumericEditor);
 
 //# 
-},{"editors":28,"numeral":"numeral","textEditor":39}],37:[function(require,module,exports){
+},{"editors":33,"numeral":"numeral","textEditor":44}],42:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   PasswordEditor: {get: function() {
@@ -7592,7 +8348,7 @@ var $PasswordEditor = PasswordEditor;
 registerEditor('password', PasswordEditor);
 
 //# 
-},{"editors":28,"helpers/dom/element":44,"textEditor":39}],38:[function(require,module,exports){
+},{"editors":33,"helpers/dom/element":49,"textEditor":44}],43:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   SelectEditor: {get: function() {
@@ -7749,8 +8505,17 @@ SelectEditor.prototype.refreshDimensions = function() {
     case 'bottom-left-corner':
       cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.bottomLeftCornerOverlay.clone.wtTable.holder.parentNode);
       break;
+    case 'top-right-corner':
+      cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.topRightCornerOverlay.clone.wtTable.holder.parentNode);
+      break;
+    case 'bottom-right-corner':
+      cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.bottomRightCornerOverlay.clone.wtTable.holder.parentNode);
+      break;
     case 'bottom':
       cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.bottomOverlay.clone.wtTable.holder.parentNode);
+      break;
+    case 'right':
+      cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.rightOverlay.clone.wtTable.holder.parentNode);
       break;
   }
   if (this.instance.getSelected()[0] === 0) {
@@ -7814,7 +8579,7 @@ SelectEditor.prototype.getEditedCell = function() {
 registerEditor('select', SelectEditor);
 
 //# 
-},{"_baseEditor":29,"editors":28,"helpers/dom/element":44,"helpers/dom/event":45,"helpers/unicode":52}],39:[function(require,module,exports){
+},{"_baseEditor":34,"editors":33,"helpers/dom/element":49,"helpers/dom/event":50,"helpers/unicode":57}],44:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   TextEditor: {get: function() {
@@ -7998,6 +8763,20 @@ TextEditor.prototype.getEditedCell = function() {
       });
       this.textareaParentStyle.zIndex = 103;
       break;
+    case 'top-right-corner':
+      editedCell = this.instance.view.wt.wtOverlays.topRightCornerOverlay.clone.wtTable.getCell({
+        row: this.row,
+        col: this.col
+      });
+      this.textareaParentStyle.zIndex = 103;
+      break;
+    case 'bottom-right-corner':
+      editedCell = this.instance.view.wt.wtOverlays.bottomRightCornerOverlay.clone.wtTable.getCell({
+        row: this.row,
+        col: this.col
+      });
+      this.textareaParentStyle.zIndex = 103;
+      break;
     case 'left':
       editedCell = this.instance.view.wt.wtOverlays.leftOverlay.clone.wtTable.getCell({
         row: this.row,
@@ -8007,6 +8786,13 @@ TextEditor.prototype.getEditedCell = function() {
       break;
     case 'bottom':
       editedCell = this.instance.view.wt.wtOverlays.bottomOverlay.clone.wtTable.getCell({
+        row: this.row,
+        col: this.col
+      });
+      this.textareaParentStyle.zIndex = 102;
+      break;
+    case 'right':
+      editedCell = this.instance.view.wt.wtOverlays.rightOverlay.clone.wtTable.getCell({
         row: this.row,
         col: this.col
       });
@@ -8032,6 +8818,7 @@ TextEditor.prototype.refreshDimensions = function() {
       containerOffset = offset(this.instance.rootElement),
       scrollableContainer = getScrollableElement(this.TD),
       totalRowsCount = this.instance.countRows(),
+      totalColumnsCount = this.instance.countCols(),
       editTop = currentOffset.top - containerOffset.top - 1 - (scrollableContainer.scrollTop || 0),
       editLeft = currentOffset.left - containerOffset.left - 1 - (scrollableContainer.scrollLeft || 0),
       settings = this.instance.getSettings(),
@@ -8053,6 +8840,12 @@ TextEditor.prototype.refreshDimensions = function() {
     case 'bottom-left-corner':
       cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.bottomLeftCornerOverlay.clone.wtTable.holder.parentNode);
       break;
+    case 'top-right-corner':
+      cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.topRightCornerOverlay.clone.wtTable.holder.parentNode);
+      break;
+    case 'bottom-right-corner':
+      cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.bottomRightCornerOverlay.clone.wtTable.holder.parentNode);
+      break;
     case 'bottom':
       cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.bottomOverlay.clone.wtTable.holder.parentNode);
       break;
@@ -8060,7 +8853,7 @@ TextEditor.prototype.refreshDimensions = function() {
   if (colHeadersCount && this.instance.getSelected()[0] === 0 || (settings.fixedRowsBottom && this.instance.getSelected()[0] === totalRowsCount - settings.fixedRowsBottom)) {
     editTop += 1;
   }
-  if (this.instance.getSelected()[1] === 0) {
+  if (this.instance.getSelected()[1] === 0 || (settings.fixedColumnsRight && this.instance.getSelected()[1] === totalColumnsCount - settings.fixedColumnsRight)) {
     editLeft += 1;
   }
   if (cssTransformOffset && cssTransformOffset != -1) {
@@ -8119,7 +8912,7 @@ TextEditor.prototype.destroy = function() {
 registerEditor('text', TextEditor);
 
 //# 
-},{"_baseEditor":29,"autoResize":"autoResize","editors":28,"eventManager":40,"helpers/dom/element":44,"helpers/dom/event":45,"helpers/unicode":52}],40:[function(require,module,exports){
+},{"_baseEditor":34,"autoResize":"autoResize","editors":33,"eventManager":45,"helpers/dom/element":49,"helpers/dom/event":50,"helpers/unicode":57}],45:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   EventManager: {get: function() {
@@ -8316,7 +9109,7 @@ function eventManager(context) {
 }
 
 //# 
-},{"helpers/browser":42,"helpers/dom/element":44}],41:[function(require,module,exports){
+},{"helpers/browser":47,"helpers/dom/element":49}],46:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   to2dArray: {get: function() {
@@ -8459,7 +9252,7 @@ function arrayUnique(array) {
 }
 
 //# 
-},{}],42:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   isIE8: {get: function() {
@@ -8545,7 +9338,7 @@ function hasCaptionProblem() {
 }
 
 //# 
-},{}],43:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   spreadsheetColumnLabel: {get: function() {
@@ -8659,7 +9452,7 @@ function cellMethodLookupFactory(methodName, allowUndefined) {
 }
 
 //# 
-},{"object":49}],44:[function(require,module,exports){
+},{"object":54}],49:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   closest: {get: function() {
@@ -8766,6 +9559,9 @@ Object.defineProperties(exports, {
     }},
   getScrollbarWidth: {get: function() {
       return getScrollbarWidth;
+    }},
+  getScrollbarHeight: {get: function() {
+      return getScrollbarHeight;
     }},
   setOverlayPosition: {get: function() {
       return setOverlayPosition;
@@ -9257,34 +10053,61 @@ function setCaretPosition(element, pos, endPos) {
   }
 }
 var cachedScrollbarWidth;
+var cachedScrollbarHeight;
 function walkontableCalculateScrollbarWidth() {
   var inner = document.createElement('p');
-  inner.style.width = '100%';
-  inner.style.height = '200px';
+  inner.style.width = "100%";
+  inner.style.height = "200px";
   var outer = document.createElement('div');
-  outer.style.position = 'absolute';
-  outer.style.top = '0px';
-  outer.style.left = '0px';
-  outer.style.visibility = 'hidden';
-  outer.style.width = '200px';
-  outer.style.height = '150px';
-  outer.style.overflow = 'hidden';
+  outer.style.position = "absolute";
+  outer.style.top = "0px";
+  outer.style.left = "0px";
+  outer.style.visibility = "hidden";
+  outer.style.width = "200px";
+  outer.style.height = "150px";
+  outer.style.overflow = "hidden";
   outer.appendChild(inner);
-  (document.body || document.documentElement).appendChild(outer);
+  document.body.appendChild(outer);
   var w1 = inner.offsetWidth;
   outer.style.overflow = 'scroll';
   var w2 = inner.offsetWidth;
-  if (w1 == w2) {
+  if (w1 == w2)
     w2 = outer.clientWidth;
-  }
-  (document.body || document.documentElement).removeChild(outer);
+  document.body.removeChild(outer);
   return (w1 - w2);
 }
+;
+function walkontableCalculateScrollbarHeight() {
+  var inner = document.createElement('div');
+  inner.style.width = "200px";
+  inner.style.height = "200px";
+  var outer = document.createElement('div');
+  outer.style.position = "absolute";
+  outer.style.top = "0px";
+  outer.style.left = "0px";
+  outer.style.visibility = "hidden";
+  outer.style.width = "150px";
+  outer.style.height = "150px";
+  outer.style.overflow = 'scroll';
+  outer.appendChild(inner);
+  document.body.appendChild(outer);
+  var w1 = outer.offsetHeight;
+  var w2 = outer.clientHeight;
+  document.body.removeChild(outer);
+  return (w1 - w2);
+}
+;
 function getScrollbarWidth() {
   if (cachedScrollbarWidth === void 0) {
     cachedScrollbarWidth = walkontableCalculateScrollbarWidth();
   }
   return cachedScrollbarWidth;
+}
+function getScrollbarHeight() {
+  if (cachedScrollbarHeight === void 0) {
+    cachedScrollbarHeight = walkontableCalculateScrollbarHeight();
+  }
+  return cachedScrollbarHeight;
 }
 function setOverlayPosition(overlayElem, left, top) {
   if (isIE8() || isIE9()) {
@@ -9351,7 +10174,7 @@ function cancelAnimationFrame(id) {
 }
 
 //# 
-},{"../browser":42}],45:[function(require,module,exports){
+},{"../browser":47}],50:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   stopImmediatePropagation: {get: function() {
@@ -9403,7 +10226,7 @@ function pageY(event) {
 }
 
 //# 
-},{}],46:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   proxy: {get: function() {
@@ -9476,7 +10299,7 @@ function throttleAfterHits(func) {
 }
 
 //# 
-},{}],47:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   stringify: {get: function() {
@@ -9504,7 +10327,7 @@ function stringify(value) {
 }
 
 //# 
-},{}],48:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   isNumeric: {get: function() {
@@ -9554,7 +10377,7 @@ function valueAccordingPercent(value, percent) {
 }
 
 //# 
-},{}],49:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   duckSchema: {get: function() {
@@ -9743,7 +10566,7 @@ function objectEach(object, iteratee) {
 }
 
 //# 
-},{"array":41}],50:[function(require,module,exports){
+},{"array":46}],55:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   columnFactory: {get: function() {
@@ -9765,7 +10588,7 @@ function columnFactory(GridSettings, conflictList) {
 }
 
 //# 
-},{"object":49}],51:[function(require,module,exports){
+},{"object":54}],56:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   toUpperCaseFirst: {get: function() {
@@ -9844,7 +10667,7 @@ function isPercentValue(value) {
 }
 
 //# 
-},{"mixed":47,"number":48}],52:[function(require,module,exports){
+},{"mixed":52,"number":53}],57:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   KEY_CODES: {get: function() {
@@ -9933,7 +10756,7 @@ function isKey(keyCode, baseCode) {
 }
 
 //# 
-},{"array":41}],53:[function(require,module,exports){
+},{"array":46}],58:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   MultiMap: {get: function() {
@@ -9985,7 +10808,7 @@ function MultiMap() {
 }
 
 //# 
-},{}],54:[function(require,module,exports){
+},{}],59:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   Hooks: {get: function() {
@@ -10159,7 +10982,7 @@ Handsontable.utils.Hooks = Hooks;
 Handsontable.utils.localHooks = localHooks;
 
 //# 
-},{"helpers/array":41,"helpers/object":49}],55:[function(require,module,exports){
+},{"helpers/array":46,"helpers/object":54}],60:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   registerPlugin: {get: function() {
@@ -10232,7 +11055,7 @@ function getPluginName(hotInstance, plugin) {
 ;
 
 //# 
-},{"helpers/object":49,"helpers/string":51}],56:[function(require,module,exports){
+},{"helpers/object":54,"helpers/string":56}],61:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   default: {get: function() {
@@ -10360,7 +11183,7 @@ var BasePlugin = function BasePlugin(hotInstance) {
 var $__default = BasePlugin;
 
 //# 
-},{"helpers/array":41,"helpers/object":49,"plugins":55}],57:[function(require,module,exports){
+},{"helpers/array":46,"helpers/object":54,"plugins":60}],62:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   AutoColumnSize: {get: function() {
@@ -10632,7 +11455,7 @@ var $AutoColumnSize = AutoColumnSize;
 registerPlugin('autoColumnSize', AutoColumnSize);
 
 //# 
-},{"3rdparty/walkontable/src/calculator/viewportColumns":3,"_base":56,"helpers/array":41,"helpers/dom/element":44,"helpers/number":48,"helpers/object":49,"helpers/string":51,"plugins":55,"utils/ghostTable":96,"utils/samplesGenerator":97}],58:[function(require,module,exports){
+},{"3rdparty/walkontable/src/calculator/viewportColumns":3,"_base":61,"helpers/array":46,"helpers/dom/element":49,"helpers/number":53,"helpers/object":54,"helpers/string":56,"plugins":60,"utils/ghostTable":101,"utils/samplesGenerator":102}],63:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   AutoRowSize: {get: function() {
@@ -10937,7 +11760,7 @@ var $AutoRowSize = AutoRowSize;
 registerPlugin('autoRowSize', AutoRowSize);
 
 //# 
-},{"_base":56,"helpers/array":41,"helpers/dom/element":44,"helpers/number":48,"helpers/object":49,"helpers/string":51,"plugins":55,"utils/ghostTable":96,"utils/samplesGenerator":97}],59:[function(require,module,exports){
+},{"_base":61,"helpers/array":46,"helpers/dom/element":49,"helpers/number":53,"helpers/object":54,"helpers/string":56,"plugins":60,"utils/ghostTable":101,"utils/samplesGenerator":102}],64:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   Autofill: {get: function() {
@@ -11188,7 +12011,7 @@ Handsontable.hooks.add('afterInit', function() {
 Handsontable.Autofill = Autofill;
 
 //# 
-},{"3rdparty/walkontable/src/cell/coords":5,"eventManager":40,"helpers/dom/element":44,"plugins":55}],60:[function(require,module,exports){
+},{"3rdparty/walkontable/src/cell/coords":5,"eventManager":45,"helpers/dom/element":49,"plugins":60}],65:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   default: {get: function() {
@@ -11527,7 +12350,7 @@ var $__default = ColumnSorting;
 registerPlugin('columnSorting', ColumnSorting);
 
 //# 
-},{"_base":56,"eventManager":40,"helpers/dom/element":44,"plugins":55}],61:[function(require,module,exports){
+},{"_base":61,"eventManager":45,"helpers/dom/element":49,"plugins":60}],66:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   CommentEditor: {get: function() {
@@ -11615,7 +12438,7 @@ var $CommentEditor = CommentEditor;
 ;
 
 //# 
-},{"helpers/dom/element":44}],62:[function(require,module,exports){
+},{"helpers/dom/element":49}],67:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   Comments: {get: function() {
@@ -11907,7 +12730,7 @@ var $Comments = Comments;
 registerPlugin('comments', Comments);
 
 //# 
-},{"3rdparty/walkontable/src/cell/coords":5,"_base":56,"commentEditor":61,"eventManager":40,"helpers/dom/element":44,"plugins":55}],63:[function(require,module,exports){
+},{"3rdparty/walkontable/src/cell/coords":5,"_base":61,"commentEditor":66,"eventManager":45,"helpers/dom/element":49,"plugins":60}],68:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   CommandExecutor: {get: function() {
@@ -11980,7 +12803,7 @@ function findSubCommand(subCommandName, subCommands) {
 ;
 
 //# 
-},{"helpers/array":41}],64:[function(require,module,exports){
+},{"helpers/array":46}],69:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   ContextMenu: {get: function() {
@@ -12149,7 +12972,7 @@ Handsontable.hooks.register('afterContextMenuExecute');
 registerPlugin('contextMenu', ContextMenu);
 
 //# 
-},{"_base":56,"commandExecutor":63,"eventManager":40,"helpers/array":41,"helpers/dom/element":44,"helpers/dom/event":45,"helpers/object":49,"itemsFactory":66,"menu":67,"plugins":55,"predefinedItems":68}],65:[function(require,module,exports){
+},{"_base":61,"commandExecutor":68,"eventManager":45,"helpers/array":46,"helpers/dom/element":49,"helpers/dom/event":50,"helpers/object":54,"itemsFactory":71,"menu":72,"plugins":60,"predefinedItems":73}],70:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   Cursor: {get: function() {
@@ -12229,7 +13052,7 @@ Handsontable.plugins.utils = Handsontable.plugins.utils || {};
 Handsontable.plugins.utils.Cursor = Cursor;
 
 //# 
-},{"helpers/dom/element":44,"helpers/dom/event":45}],66:[function(require,module,exports){
+},{"helpers/dom/element":49,"helpers/dom/event":50}],71:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   ItemsFactory: {get: function() {
@@ -12348,7 +13171,7 @@ function getItems() {
 ;
 
 //# 
-},{"helpers/array":41,"helpers/object":49,"predefinedItems":68}],67:[function(require,module,exports){
+},{"helpers/array":46,"helpers/object":54,"predefinedItems":73}],72:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   Menu: {get: function() {
@@ -12822,7 +13645,7 @@ mixin(Menu, localHooks);
 ;
 
 //# 
-},{"cursor":65,"eventManager":40,"helpers/array":41,"helpers/dom/element":44,"helpers/dom/event":45,"helpers/object":49,"helpers/unicode":52,"pluginHooks":54,"predefinedItems":68,"utils":69}],68:[function(require,module,exports){
+},{"cursor":70,"eventManager":45,"helpers/array":46,"helpers/dom/element":49,"helpers/dom/event":50,"helpers/object":54,"helpers/unicode":57,"pluginHooks":59,"predefinedItems":73,"utils":74}],73:[function(require,module,exports){
 "use strict";
 var $__4;
 Object.defineProperties(exports, {
@@ -13377,7 +14200,7 @@ var _predefinedItems = ($__4 = {}, Object.defineProperty($__4, SEPARATOR, {
 }), $__4);
 
 //# 
-},{"helpers/number":48,"helpers/object":49,"utils":69}],69:[function(require,module,exports){
+},{"helpers/number":53,"helpers/object":54,"utils":74}],74:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   normalizeSelection: {get: function() {
@@ -13519,7 +14342,7 @@ function markLabelAsSelected(label) {
 }
 
 //# 
-},{"helpers/dom/element":44}],70:[function(require,module,exports){
+},{"helpers/dom/element":49}],75:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   ContextMenuCopyPaste: {get: function() {
@@ -13651,7 +14474,7 @@ var $ContextMenuCopyPaste = ContextMenuCopyPaste;
 registerPlugin('contextMenuCopyPaste', ContextMenuCopyPaste);
 
 //# 
-},{"_base":56,"eventManager":40,"helpers/array":41,"helpers/dom/element":44,"plugins":55,"zeroclipboard":undefined}],71:[function(require,module,exports){
+},{"_base":61,"eventManager":45,"helpers/array":46,"helpers/dom/element":49,"plugins":60,"zeroclipboard":undefined}],76:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   CopyPastePlugin: {get: function() {
@@ -13844,7 +14667,7 @@ Handsontable.hooks.register('modifyCopyableRange');
 ;
 
 //# 
-},{"3rdparty/walkontable/src/cell/coords":5,"3rdparty/walkontable/src/cell/range":6,"SheetClip":"SheetClip","copyPaste":"copyPaste","helpers/array":41,"helpers/dom/event":45,"helpers/function":46,"helpers/number":48,"helpers/unicode":52,"plugins":55}],72:[function(require,module,exports){
+},{"3rdparty/walkontable/src/cell/coords":5,"3rdparty/walkontable/src/cell/range":6,"SheetClip":"SheetClip","copyPaste":"copyPaste","helpers/array":46,"helpers/dom/event":50,"helpers/function":51,"helpers/number":53,"helpers/unicode":57,"plugins":60}],77:[function(require,module,exports){
 "use strict";
 var $___46__46__47__46__46__47_plugins__,
     $___46__46__47__46__46__47_3rdparty_47_walkontable_47_src_47_cell_47_range__,
@@ -14181,7 +15004,7 @@ Handsontable.hooks.add('afterInit', function() {
 Handsontable.CustomBorders = CustomBorders;
 
 //# 
-},{"3rdparty/walkontable/src/cell/range":6,"3rdparty/walkontable/src/selection":18,"plugins":55}],73:[function(require,module,exports){
+},{"3rdparty/walkontable/src/cell/range":6,"3rdparty/walkontable/src/selection":23,"plugins":60}],78:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   DragToScroll: {get: function() {
@@ -14269,7 +15092,7 @@ Handsontable.hooks.add('afterOnCellCornerMouseDown', function() {
 Handsontable.plugins.DragToScroll = DragToScroll;
 
 //# 
-},{"eventManager":40,"plugins":55}],74:[function(require,module,exports){
+},{"eventManager":45,"plugins":60}],79:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   ManualColumnFreeze: {get: function() {
@@ -14426,7 +15249,7 @@ var $ManualColumnFreeze = ManualColumnFreeze;
 registerPlugin('manualColumnFreeze', ManualColumnFreeze);
 
 //# 
-},{"_base":56,"plugins":55}],75:[function(require,module,exports){
+},{"_base":61,"plugins":60}],80:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   ManualColumnMove: {get: function() {
@@ -14694,7 +15517,7 @@ Handsontable.hooks.register('beforeColumnMove');
 Handsontable.hooks.register('afterColumnMove');
 
 //# 
-},{"eventManager":40,"helpers/dom/element":44,"helpers/dom/event":45,"plugins":55}],76:[function(require,module,exports){
+},{"eventManager":45,"helpers/dom/element":49,"helpers/dom/event":50,"plugins":60}],81:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   ManualColumnResize: {get: function() {
@@ -14938,7 +15761,7 @@ var $ManualColumnResize = ManualColumnResize;
 registerPlugin('manualColumnResize', ManualColumnResize);
 
 //# 
-},{"_base.js":56,"eventManager":40,"helpers/dom/element":44,"helpers/dom/event":45,"plugins":55}],77:[function(require,module,exports){
+},{"_base.js":61,"eventManager":45,"helpers/dom/element":49,"helpers/dom/event":50,"plugins":60}],82:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   ManualRowMove: {get: function() {
@@ -15160,7 +15983,7 @@ Handsontable.hooks.register('beforeRowMove');
 Handsontable.hooks.register('afterRowMove');
 
 //# 
-},{"eventManager":40,"helpers/dom/element":44,"helpers/dom/event":45,"plugins":55}],78:[function(require,module,exports){
+},{"eventManager":45,"helpers/dom/element":49,"helpers/dom/event":50,"plugins":60}],83:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   ManualRowResize: {get: function() {
@@ -15402,7 +16225,7 @@ var $ManualRowResize = ManualRowResize;
 registerPlugin('manualRowResize', ManualRowResize);
 
 //# 
-},{"_base.js":56,"eventManager":40,"helpers/dom/element":44,"helpers/dom/event":45,"plugins":55}],79:[function(require,module,exports){
+},{"_base.js":61,"eventManager":45,"helpers/dom/element":49,"helpers/dom/event":50,"plugins":60}],84:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   MergeCells: {get: function() {
@@ -15940,7 +16763,7 @@ Handsontable.hooks.add('afterRemoveRow', onAfterRemoveRow);
 Handsontable.MergeCells = MergeCells;
 
 //# 
-},{"3rdparty/walkontable/src/cell/coords":5,"3rdparty/walkontable/src/cell/range":6,"3rdparty/walkontable/src/table":20,"helpers/dom/event":45,"plugins":55}],80:[function(require,module,exports){
+},{"3rdparty/walkontable/src/cell/coords":5,"3rdparty/walkontable/src/cell/range":6,"3rdparty/walkontable/src/table":25,"helpers/dom/event":50,"plugins":60}],85:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   MultipleSelectionHandles: {get: function() {
@@ -16227,7 +17050,7 @@ var $MultipleSelectionHandles = MultipleSelectionHandles;
 registerPlugin('multipleSelectionHandles', MultipleSelectionHandles);
 
 //# 
-},{"_base":56,"eventManager":40,"helpers/dom/element":44,"plugins":55}],81:[function(require,module,exports){
+},{"_base":61,"eventManager":45,"helpers/dom/element":49,"plugins":60}],86:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   ObserveChanges: {get: function() {
@@ -16381,7 +17204,7 @@ function afterTableAlter() {
 }
 
 //# 
-},{"jsonpatch":"jsonpatch","plugins":55}],82:[function(require,module,exports){
+},{"jsonpatch":"jsonpatch","plugins":60}],87:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   HandsontablePersistentState: {get: function() {
@@ -16493,7 +17316,7 @@ Handsontable.hooks.add('beforeInit', htPersistentState.init);
 Handsontable.hooks.add('afterUpdateSettings', htPersistentState.init);
 
 //# 
-},{"plugins":55}],83:[function(require,module,exports){
+},{"plugins":60}],88:[function(require,module,exports){
 "use strict";
 var $___46__46__47__46__46__47_helpers_47_dom_47_element__,
     $___46__46__47__46__46__47_renderers__;
@@ -16601,7 +17424,7 @@ Handsontable.hooks.add('afterInit', init);
 Handsontable.hooks.add('afterUpdateSettings', init);
 
 //# 
-},{"helpers/dom/element":44,"renderers":86}],84:[function(require,module,exports){
+},{"helpers/dom/element":49,"renderers":91}],89:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   TouchScroll: {get: function() {
@@ -16645,11 +17468,20 @@ var $TouchScroll = TouchScroll;
         _this.scrollbars.push(wtOverlays.bottomOverlay);
       }
       _this.scrollbars.push(wtOverlays.leftOverlay);
+      if (wtOverlays.rightOverlay.clone) {
+        _this.scrollbars.push(wtOverlays.rightOverlay);
+      }
       if (wtOverlays.topLeftCornerOverlay) {
         _this.scrollbars.push(wtOverlays.topLeftCornerOverlay);
       }
       if (wtOverlays.bottomLeftCornerOverlay && wtOverlays.bottomLeftCornerOverlay.clone) {
         _this.scrollbars.push(wtOverlays.bottomLeftCornerOverlay);
+      }
+      if (wtOverlays.topRightCornerOverlay && wtOverlays.topRightCornerOverlay.clone) {
+        _this.scrollbars.push(wtOverlays.topRightCornerOverlay);
+      }
+      if (wtOverlays.bottomRightCornerOverlay && wtOverlays.bottomRightCornerOverlay.clone) {
+        _this.scrollbars.push(wtOverlays.bottomRightCornerOverlay);
       }
       _this.clones = [];
       if (wtOverlays.topOverlay.needFullRender) {
@@ -16661,11 +17493,20 @@ var $TouchScroll = TouchScroll;
       if (wtOverlays.leftOverlay.needFullRender) {
         _this.clones.push(wtOverlays.leftOverlay.clone.wtTable.holder.parentNode);
       }
+      if (wtOverlays.rightOverlay.needFullRender) {
+        _this.clones.push(wtOverlays.rightOverlay.clone.wtTable.holder.parentNode);
+      }
       if (wtOverlays.topLeftCornerOverlay) {
         _this.clones.push(wtOverlays.topLeftCornerOverlay.clone.wtTable.holder.parentNode);
       }
       if (wtOverlays.bottomLeftCornerOverlay && wtOverlays.bottomLeftCornerOverlay.clone) {
         _this.clones.push(wtOverlays.bottomLeftCornerOverlay.clone.wtTable.holder.parentNode);
+      }
+      if (wtOverlays.topRightCornerOverlay && wtOverlays.topRightCornerOverlay.clone) {
+        _this.clones.push(wtOverlays.topRightCornerOverlay.clone.wtTable.holder.parentNode);
+      }
+      if (wtOverlays.bottomRightCornerOverlay && wtOverlays.bottomRightCornerOverlay.clone) {
+        _this.clones.push(wtOverlays.bottomRightCornerOverlay.clone.wtTable.holder.parentNode);
       }
     });
   },
@@ -16714,7 +17555,7 @@ var $TouchScroll = TouchScroll;
 registerPlugin('touchScroll', TouchScroll);
 
 //# 
-},{"_base":56,"helpers/dom/element":44,"plugins":55}],85:[function(require,module,exports){
+},{"_base":61,"helpers/dom/element":49,"plugins":60}],90:[function(require,module,exports){
 "use strict";
 var $___46__46__47__46__46__47_helpers_47_object__,
     $___46__46__47__46__46__47_helpers_47_dom_47_event__;
@@ -17020,7 +17861,7 @@ Handsontable.hooks.add('afterInit', init);
 Handsontable.hooks.add('afterUpdateSettings', init);
 
 //# 
-},{"helpers/dom/event":45,"helpers/object":49}],86:[function(require,module,exports){
+},{"helpers/dom/event":50,"helpers/object":54}],91:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   registerRenderer: {get: function() {
@@ -17065,7 +17906,7 @@ function hasRenderer(rendererName) {
 ;
 
 //# 
-},{"helpers/string":51}],87:[function(require,module,exports){
+},{"helpers/string":56}],92:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   cellDecorator: {get: function() {
@@ -17107,7 +17948,7 @@ function cellDecorator(instance, TD, row, col, prop, value, cellProperties) {
 }
 
 //# 
-},{"helpers/dom/element":44,"renderers":86}],88:[function(require,module,exports){
+},{"helpers/dom/element":49,"renderers":91}],93:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   autocompleteRenderer: {get: function() {
@@ -17164,7 +18005,7 @@ function autocompleteRenderer(instance, TD, row, col, prop, value, cellPropertie
 registerRenderer('autocomplete', autocompleteRenderer);
 
 //# 
-},{"3rdparty/walkontable/src/cell/coords":5,"eventManager":40,"helpers/dom/element":44,"renderers":86}],89:[function(require,module,exports){
+},{"3rdparty/walkontable/src/cell/coords":5,"eventManager":45,"helpers/dom/element":49,"renderers":91}],94:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   checkboxRenderer: {get: function() {
@@ -17321,7 +18162,7 @@ function preventDefault(event) {
 }
 
 //# 
-},{"eventManager":40,"helpers/dom/element":44,"helpers/dom/event":45,"helpers/string":51,"helpers/unicode":52,"renderers":86}],90:[function(require,module,exports){
+},{"eventManager":45,"helpers/dom/element":49,"helpers/dom/event":50,"helpers/string":56,"helpers/unicode":57,"renderers":91}],95:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   htmlRenderer: {get: function() {
@@ -17343,7 +18184,7 @@ function htmlRenderer(instance, TD, row, col, prop, value, cellProperties) {
 registerRenderer('html', htmlRenderer);
 
 //# 
-},{"helpers/dom/element":44,"renderers":86}],91:[function(require,module,exports){
+},{"helpers/dom/element":49,"renderers":91}],96:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   numericRenderer: {get: function() {
@@ -17375,7 +18216,7 @@ function numericRenderer(instance, TD, row, col, prop, value, cellProperties) {
 registerRenderer('numeric', numericRenderer);
 
 //# 
-},{"helpers/dom/element":44,"helpers/number":48,"numeral":"numeral","renderers":86}],92:[function(require,module,exports){
+},{"helpers/dom/element":49,"helpers/number":53,"numeral":"numeral","renderers":91}],97:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   passwordRenderer: {get: function() {
@@ -17402,7 +18243,7 @@ function passwordRenderer(instance, TD, row, col, prop, value, cellProperties) {
 registerRenderer('password', passwordRenderer);
 
 //# 
-},{"helpers/dom/element":44,"renderers":86}],93:[function(require,module,exports){
+},{"helpers/dom/element":49,"renderers":91}],98:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   textRenderer: {get: function() {
@@ -17445,7 +18286,7 @@ function textRenderer(instance, TD, row, col, prop, value, cellProperties) {
 registerRenderer('text', textRenderer);
 
 //# 
-},{"helpers/dom/element":44,"helpers/mixed":47,"renderers":86}],94:[function(require,module,exports){
+},{"helpers/dom/element":49,"helpers/mixed":52,"renderers":91}],99:[function(require,module,exports){
 "use strict";
 (function(global) {
   'use strict';
@@ -17828,7 +18669,7 @@ registerRenderer('text', textRenderer);
 })();
 
 //# 
-},{}],95:[function(require,module,exports){
+},{}],100:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   TableView: {get: function() {
@@ -18012,6 +18853,9 @@ function TableView(instance) {
     },
     fixedRowsBottom: function() {
       return that.settings.fixedRowsBottom;
+    },
+    fixedColumnsRight: function() {
+      return that.settings.fixedColumnsRight;
     },
     minSpareRows: function() {
       return that.settings.minSpareRows;
@@ -18311,7 +19155,7 @@ TableView.prototype.destroy = function() {
 ;
 
 //# 
-},{"3rdparty/walkontable/src/cell/coords":5,"3rdparty/walkontable/src/core":7,"3rdparty/walkontable/src/selection":18,"eventManager":40,"helpers/dom/element":44,"helpers/dom/event":45}],96:[function(require,module,exports){
+},{"3rdparty/walkontable/src/cell/coords":5,"3rdparty/walkontable/src/core":7,"3rdparty/walkontable/src/selection":23,"eventManager":45,"helpers/dom/element":49,"helpers/dom/event":50}],101:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   GhostTable: {get: function() {
@@ -18536,7 +19380,7 @@ Handsontable.utils = Handsontable.utils || {};
 Handsontable.utils.GhostTable = GhostTable;
 
 //# 
-},{"helpers/array":41,"helpers/dom/element":44,"helpers/mixed":47,"helpers/number":48,"helpers/object":49}],97:[function(require,module,exports){
+},{"helpers/array":46,"helpers/dom/element":49,"helpers/mixed":52,"helpers/number":53,"helpers/object":54}],102:[function(require,module,exports){
 "use strict";
 var $__7;
 Object.defineProperties(exports, {
@@ -18650,7 +19494,7 @@ Handsontable.utils = Handsontable.utils || {};
 Handsontable.utils.SamplesGenerator = SamplesGenerator;
 
 //# 
-},{"helpers/array":41,"helpers/dom/element":44,"helpers/mixed":47,"helpers/number":48,"helpers/object":49}],98:[function(require,module,exports){
+},{"helpers/array":46,"helpers/dom/element":49,"helpers/mixed":52,"helpers/number":53,"helpers/object":54}],103:[function(require,module,exports){
 "use strict";
 var $___46__46__47_helpers_47_mixed__;
 var stringify = ($___46__46__47_helpers_47_mixed__ = require("helpers/mixed"), $___46__46__47_helpers_47_mixed__ && $___46__46__47_helpers_47_mixed__.__esModule && $___46__46__47_helpers_47_mixed__ || {default: $___46__46__47_helpers_47_mixed__}).stringify;
@@ -18685,7 +19529,7 @@ function process(value, callback) {
 }
 
 //# 
-},{"helpers/mixed":47}],99:[function(require,module,exports){
+},{"helpers/mixed":52}],104:[function(require,module,exports){
 "use strict";
 var $__moment__,
     $___46__46__47_editors__;
@@ -18731,7 +19575,7 @@ var correctFormat = function correctFormat(value, dateFormat) {
 };
 
 //# 
-},{"editors":28,"moment":undefined}],100:[function(require,module,exports){
+},{"editors":33,"moment":undefined}],105:[function(require,module,exports){
 "use strict";
 Handsontable.NumericValidator = function(value, callback) {
   if (value === null) {
@@ -20332,5 +21176,5 @@ if (typeof exports !== "undefined") {
 }).call(window);
 
 //# 
-},{}]},{},[23,57,59,58,60,81,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,82,83,84,85,98,99,100,88,89,90,91,92,93,30,34,31,32,39,33,35,36,37,38])("numeral")
+},{}]},{},[28,62,63,64,65,86,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,87,88,89,90,103,104,105,93,94,95,96,97,98,35,39,36,37,44,38,40,41,42,43])("numeral")
 });
