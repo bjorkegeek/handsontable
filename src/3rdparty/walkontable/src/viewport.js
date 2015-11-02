@@ -336,6 +336,10 @@ class WalkontableViewport {
     let width = this.getViewportWidth();
     let pos;
     let fixedColumnsLeft;
+    let fixedColumnsRight;
+    let fixedColumnsWidth;
+    let totalRows;
+    let totalColumns;
 
     this.columnHeaderHeight = NaN;
 
@@ -345,10 +349,17 @@ class WalkontableViewport {
       pos = 0;
     }
     fixedColumnsLeft = this.wot.getSetting('fixedColumnsLeft');
+    fixedColumnsRight = this.wot.getSetting('fixedColumnsRight');
+    totalColumns = this.wot.getSetting('totalColumns');
 
     if (fixedColumnsLeft) {
-      let fixedColumnsWidth = this.wot.wtOverlays.leftOverlay.sumCellSizes(0, fixedColumnsLeft);
+      fixedColumnsWidth = this.wot.wtOverlays.leftOverlay.sumCellSizes(0, fixedColumnsLeft);
       pos += fixedColumnsWidth;
+      width -= fixedColumnsWidth;
+    }
+    if (fixedColumnsRight && this.wot.wtOverlays.rightOverlay.clone) {
+      fixedColumnsWidth = this.wot.wtOverlays.rightOverlay.sumCellSizes(totalColumns - fixedColumnsRight, totalColumns);
+
       width -= fixedColumnsWidth;
     }
     if (this.wot.wtTable.holder.clientWidth !== this.wot.wtTable.holder.offsetWidth) {
@@ -358,7 +369,7 @@ class WalkontableViewport {
     return new WalkontableViewportColumnsCalculator(
       width,
       pos,
-      this.wot.getSetting('totalColumns'),
+      totalColumns,
       (sourceCol) => {
         return this.wot.wtTable.getColumnWidth(sourceCol);
       },

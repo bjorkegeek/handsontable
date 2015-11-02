@@ -153,6 +153,11 @@
   overflow-y: auto;
 }
 
+.ht_clone_right .wtHolder {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 .ht_clone_top .wtHolder {
   overflow-x: auto;
   overflow-y: hidden;
