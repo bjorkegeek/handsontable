@@ -29,6 +29,7 @@ class WalkontableSettings {
       //data source
       data: void 0,
       fixedColumnsLeft: 0,
+      fixedColumnsRight: 0,
       fixedRowsTop: 0,
       fixedRowsBottom: 0,
       minSpareRows: 0,

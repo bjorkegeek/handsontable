@@ -39,14 +39,39 @@ class WalkontableOverlays {
 
     this.leftOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_LEFT, this.wot);
 
+    if (typeof WalkontableRightOverlay === 'undefined') {
+      this.rightOverlay = {
+        needFullRender: false
+      };
+
+    } else {
+      this.rightOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_RIGHT, this.wot);
+    }
+
     if (this.topOverlay.needFullRender && this.leftOverlay.needFullRender) {
       this.topLeftCornerOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_TOP_LEFT_CORNER, this.wot);
+    }
+
+    if (this.topOverlay.needFullRender && this.rightOverlay.needFullRender && typeof WalkontableTopRightCornerOverlay !== 'undefined') {
+      this.topRightCornerOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_TOP_RIGHT_CORNER, this.wot);
+    } else {
+      this.topRightCornerOverlay = {
+        needFullRender: false
+      };
     }
 
     if (this.bottomOverlay.needFullRender && this.leftOverlay.needFullRender && typeof WalkontableBottomLeftCornerOverlay !== 'undefined') {
       this.bottomLeftCornerOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER, this.wot);
     } else {
       this.bottomLeftCornerOverlay = {
+        needFullRender: false
+      };
+    }
+
+    if (this.bottomOverlay.needFullRender && this.rightOverlay.needFullRender && typeof WalkontableBottomRightCornerOverlay !== 'undefined') {
+      this.bottomRightCornerOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER, this.wot);
+    } else {
+      this.bottomRightCornerOverlay = {
         needFullRender: false
       };
     }
@@ -76,6 +101,10 @@ class WalkontableOverlays {
 
       },
       left: {
+        top: 0,
+        left: null
+      },
+      right: {
         top: 0,
         left: null
       }
@@ -127,6 +156,11 @@ class WalkontableOverlays {
       this.eventManager.addEventListener(this.leftOverlay.clone.wtTable.holder, 'wheel', (event) => this.onTableScroll(event));
     }
 
+    if (this.rightOverlay.needFullRender) {
+      this.eventManager.addEventListener(this.rightOverlay.clone.wtTable.holder, 'scroll', (event) => this.onTableScroll(event));
+      this.eventManager.addEventListener(this.rightOverlay.clone.wtTable.holder, 'wheel', (event) => this.onTableScroll(event));
+    }
+
     if (this.topOverlay.trimmingContainer !== window && this.leftOverlay.trimmingContainer !== window) {
       // This is necessary?
       //eventManager.addEventListener(window, 'scroll', (event) => this.refreshAll(event));
@@ -142,6 +176,8 @@ class WalkontableOverlays {
           overlay = 'bottom';
 
         } else if (this.leftOverlay.clone.wtTable.holder.contains(event.realTarget)) {
+          overlay = 'left';
+        } else if (this.rightOverlay.clone.wtTable.holder.contains(event.realTarget)) {
           overlay = 'left';
         }
 
@@ -204,6 +240,7 @@ class WalkontableOverlays {
     let topOverlay = this.topOverlay.clone.wtTable.holder;
     let bottomOverlay = this.bottomOverlay.clone ? this.bottomOverlay.clone.wtTable.holder : null;
     let leftOverlay = this.leftOverlay.clone.wtTable.holder;
+    let rightOverlay = this.rightOverlay.clone ? this.rightOverlay.clone.wtTable.holder : null;
     let eventMockup = {type: 'wheel'};
     let tempElem = event.target;
     let deltaY = event.wheelDeltaY || (-1) * event.deltaY;
@@ -226,6 +263,8 @@ class WalkontableOverlays {
       this.syncScrollPositions(eventMockup, (-0.2) * deltaY);
 
     } else if (parentHolder == leftOverlay) {
+      this.syncScrollPositions(eventMockup, (-0.2) * deltaX);
+    } else if (parentHolder == rightOverlay) {
       this.syncScrollPositions(eventMockup, (-0.2) * deltaX);
     }
 
@@ -254,6 +293,7 @@ class WalkontableOverlays {
     let topOverlay;
     let leftOverlay;
     let bottomOverlay;
+    let rightOverlay;
 
     if (this.topOverlay.needFullRender) {
       topOverlay = this.topOverlay.clone.wtTable.holder;
@@ -265,6 +305,10 @@ class WalkontableOverlays {
 
     if (this.leftOverlay.needFullRender) {
       leftOverlay = this.leftOverlay.clone.wtTable.holder;
+    }
+
+    if (this.rightOverlay.needFullRender) {
+      rightOverlay = this.rightOverlay.clone.wtTable.holder;
     }
 
     if (target === document) {
@@ -295,6 +339,9 @@ class WalkontableOverlays {
 
         if (leftOverlay) {
           leftOverlay.scrollTop = tempScrollValue;
+        }
+        if (rightOverlay) {
+          rightOverlay.scrollTop = tempScrollValue;
         }
       }
 
@@ -348,6 +395,22 @@ class WalkontableOverlays {
         scrollValueChanged = true;
         master.scrollLeft += fakeScrollValue;
       }
+    } else if (target === rightOverlay) {
+      tempScrollValue = getScrollTop(target);
+
+      // if scrolling the right overlay - populate the vertical scroll to the master table
+      if (this.overlayScrollPositions.right.top !== tempScrollValue) {
+        this.overlayScrollPositions.right.top = tempScrollValue;
+        scrollValueChanged = true;
+
+        master.scrollTop = tempScrollValue;
+      }
+
+      // "fake" scroll value calculated from the mousewheel event
+      if (fakeScrollValue !== null) {
+        scrollValueChanged = true;
+        master.scrollLeft += fakeScrollValue;
+      }
     }
 
     if (!this.keyPressed && scrollValueChanged && event.type === 'scroll') {
@@ -380,6 +443,9 @@ class WalkontableOverlays {
       this.bottomOverlay.destroy();
     }
     this.leftOverlay.destroy();
+    if (this.rightOverlay.clone) {
+      this.rightOverlay.destroy();
+    }
 
     if (this.topLeftCornerOverlay) {
       this.topLeftCornerOverlay.destroy();
@@ -387,6 +453,14 @@ class WalkontableOverlays {
 
     if (this.bottomLeftCornerOverlay && this.bottomLeftCornerOverlay.clone) {
       this.bottomLeftCornerOverlay.destroy();
+    }
+
+    if (this.topRightCornerOverlay && this.topRightCornerOverlay.clone) {
+      this.topRightCornerOverlay.destroy();
+    }
+
+    if (this.bottomRightCornerOverlay && this.bottomRightCornerOverlay.clone) {
+      this.bottomRightCornerOverlay.destroy();
     }
 
     if (this.debug) {
@@ -418,12 +492,24 @@ class WalkontableOverlays {
     this.leftOverlay.refresh(fastDraw);
     this.topOverlay.refresh(fastDraw);
 
+    if (this.rightOverlay.clone) {
+      this.rightOverlay.refresh(fastDraw);
+    }
+
     if (this.topLeftCornerOverlay) {
       this.topLeftCornerOverlay.refresh(fastDraw);
     }
 
     if (this.bottomLeftCornerOverlay && this.bottomLeftCornerOverlay.clone) {
       this.bottomLeftCornerOverlay.refresh(fastDraw);
+    }
+
+    if (this.topRightCornerOverlay && this.topRightCornerOverlay.clone) {
+      this.topRightCornerOverlay.refresh(fastDraw);
+    }
+
+    if (this.bottomRightCornerOverlay && this.bottomRightCornerOverlay.clone) {
+      this.bottomRightCornerOverlay.refresh(fastDraw);
     }
 
     if (this.debug) {
@@ -452,6 +538,9 @@ class WalkontableOverlays {
     if (this.bottomOverlay.clone) {
       this.bottomOverlay.adjustElementsSize(force);
     }
+    if (this.rightOverlay.clone) {
+      this.rightOverlay.adjustElementsSize(force);
+    }
   }
 
   /**
@@ -468,6 +557,9 @@ class WalkontableOverlays {
     }
 
     this.leftOverlay.applyToDOM();
+    if (this.rightOverlay.clone) {
+      this.rightOverlay.applyToDOM();
+    }
   }
 }
 

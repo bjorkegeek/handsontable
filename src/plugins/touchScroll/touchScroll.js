@@ -40,6 +40,9 @@ class TouchScroll extends BasePlugin {
         _this.scrollbars.push(wtOverlays.bottomOverlay);
       }
       _this.scrollbars.push(wtOverlays.leftOverlay);
+      if (wtOverlays.rightOverlay.clone) {
+        _this.scrollbars.push(wtOverlays.rightOverlay);
+      }
 
       if (wtOverlays.topLeftCornerOverlay) {
         _this.scrollbars.push(wtOverlays.topLeftCornerOverlay);
@@ -47,6 +50,14 @@ class TouchScroll extends BasePlugin {
 
       if (wtOverlays.bottomLeftCornerOverlay && wtOverlays.bottomLeftCornerOverlay.clone) {
         _this.scrollbars.push(wtOverlays.bottomLeftCornerOverlay);
+      }
+
+      if (wtOverlays.topRightCornerOverlay && wtOverlays.topRightCornerOverlay.clone) {
+        _this.scrollbars.push(wtOverlays.topRightCornerOverlay);
+      }
+
+      if (wtOverlays.bottomRightCornerOverlay && wtOverlays.bottomRightCornerOverlay.clone) {
+        _this.scrollbars.push(wtOverlays.bottomRightCornerOverlay);
       }
 
       _this.clones = [];
@@ -60,11 +71,20 @@ class TouchScroll extends BasePlugin {
       if (wtOverlays.leftOverlay.needFullRender) {
         _this.clones.push(wtOverlays.leftOverlay.clone.wtTable.holder.parentNode);
       }
+      if (wtOverlays.rightOverlay.needFullRender) {
+        _this.clones.push(wtOverlays.rightOverlay.clone.wtTable.holder.parentNode);
+      }
       if (wtOverlays.topLeftCornerOverlay) {
         _this.clones.push(wtOverlays.topLeftCornerOverlay.clone.wtTable.holder.parentNode);
       }
       if (wtOverlays.bottomLeftCornerOverlay && wtOverlays.bottomLeftCornerOverlay.clone) {
         _this.clones.push(wtOverlays.bottomLeftCornerOverlay.clone.wtTable.holder.parentNode);
+      }
+      if (wtOverlays.topRightCornerOverlay && wtOverlays.topRightCornerOverlay.clone) {
+        _this.clones.push(wtOverlays.topRightCornerOverlay.clone.wtTable.holder.parentNode);
+      }
+      if (wtOverlays.bottomRightCornerOverlay && wtOverlays.bottomRightCornerOverlay.clone) {
+        _this.clones.push(wtOverlays.bottomRightCornerOverlay.clone.wtTable.holder.parentNode);
       }
     });
   }

@@ -119,7 +119,7 @@
   border-left: 1px solid #CCC;
 }
 
-.handsontable.htRowHeaders thead tr th:nth-child(2) {
+.handsontable.htRowHeaders .handsontable:not(.ht_clone_top_right_corner) thead tr th:nth-child(2) {
   border-left: 1px solid #CCC;
 }
 
@@ -129,7 +129,7 @@
 }
 
 .ht_master:not(.innerBorderLeft) ~ .handsontable tbody tr th,
-.ht_master:not(.innerBorderLeft) ~ .handsontable:not(.ht_clone_top) thead tr th:first-child
+.ht_master:not(.innerBorderLeft) ~ .handsontable:not(.ht_clone_top):not(.ht_clone_top_right_corner) thead tr th:first-child
 {
   border-right-width: 0;
 }
@@ -611,12 +611,15 @@ Comment For Cell
   z-index: 101;
 }
 
-.ht_clone_left {
+.ht_clone_left,
+.ht_clone_right {
   z-index: 102;
 }
 
 .ht_clone_top_left_corner,
-.ht_clone_bottom_left_corner {
+.ht_clone_bottom_left_corner,
+.ht_clone_top_right_corner,
+.ht_clone_bottom_right_corner {
   z-index: 103;
 }
 
@@ -776,6 +779,7 @@ thead .htCollapseButton:after {
 
 .ht_master,
 .ht_clone_left,
+.ht_clone_right,
 .ht_clone_top,
 .ht_clone_bottom {
   overflow: hidden;
@@ -785,7 +789,8 @@ thead .htCollapseButton:after {
   overflow: auto;
 }
 
-.ht_clone_left .wtHolder {
+.ht_clone_left .wtHolder,
+.ht_clone_right .wtHolder {
   overflow-x: hidden;
   overflow-y: auto;
 }

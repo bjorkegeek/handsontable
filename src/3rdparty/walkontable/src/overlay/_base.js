@@ -39,6 +39,13 @@ class WalkontableOverlay {
   /**
    * @type {String}
    */
+  static get CLONE_RIGHT() {
+    return 'right';
+  }
+
+  /**
+   * @type {String}
+   */
   static get CLONE_TOP_LEFT_CORNER() {
     return 'top_left_corner';
   }
@@ -48,6 +55,20 @@ class WalkontableOverlay {
    */
   static get CLONE_BOTTOM_LEFT_CORNER() {
     return 'bottom_left_corner';
+  }
+
+  /**
+   * @type {String}
+   */
+  static get CLONE_TOP_RIGHT_CORNER() {
+    return 'top_right_corner';
+  }
+
+  /**
+   * @type {String}
+   */
+  static get CLONE_BOTTOM_RIGHT_CORNER() {
+    return 'bottom_right_corner';
   }
 
   /**
@@ -67,8 +88,11 @@ class WalkontableOverlay {
       WalkontableOverlay.CLONE_TOP,
       WalkontableOverlay.CLONE_BOTTOM,
       WalkontableOverlay.CLONE_LEFT,
+      WalkontableOverlay.CLONE_RIGHT,
       WalkontableOverlay.CLONE_TOP_LEFT_CORNER,
       WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER,
+      WalkontableOverlay.CLONE_TOP_RIGHT_CORNER,
+      WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER,
       WalkontableOverlay.CLONE_DEBUG,
     ];
   }
