@@ -211,6 +211,20 @@ TextEditor.prototype.getEditedCell = function() {
       });
       this.textareaParentStyle.zIndex = 103;
       break;
+    case 'top-right-corner':
+      editedCell = this.instance.view.wt.wtOverlays.topRightCornerOverlay.clone.wtTable.getCell({
+        row: this.row,
+        col: this.col
+      });
+      this.textareaParentStyle.zIndex = 103;
+      break;
+    case 'bottom-right-corner':
+      editedCell = this.instance.view.wt.wtOverlays.bottomRightCornerOverlay.clone.wtTable.getCell({
+        row: this.row,
+        col: this.col
+      });
+      this.textareaParentStyle.zIndex = 103;
+      break;
     case 'left':
       editedCell = this.instance.view.wt.wtOverlays.leftOverlay.clone.wtTable.getCell({
         row: this.row,
@@ -220,6 +234,13 @@ TextEditor.prototype.getEditedCell = function() {
       break;
     case 'bottom':
       editedCell = this.instance.view.wt.wtOverlays.bottomOverlay.clone.wtTable.getCell({
+        row: this.row,
+        col: this.col
+      });
+      this.textareaParentStyle.zIndex = 102;
+      break;
+    case 'right':
+      editedCell = this.instance.view.wt.wtOverlays.rightOverlay.clone.wtTable.getCell({
         row: this.row,
         col: this.col
       });
@@ -250,6 +271,7 @@ TextEditor.prototype.refreshDimensions = function() {
       containerOffset = offset(this.instance.rootElement),
       scrollableContainer = getScrollableElement(this.TD),
       totalRowsCount = this.instance.countRows(),
+      totalColumnsCount = this.instance.countCols(),
       editTop = currentOffset.top - containerOffset.top - 1 - (scrollableContainer.scrollTop || 0),
       editLeft = currentOffset.left - containerOffset.left - 1 - (scrollableContainer.scrollLeft || 0),
 
@@ -274,6 +296,12 @@ TextEditor.prototype.refreshDimensions = function() {
     case 'bottom-left-corner':
       cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.bottomLeftCornerOverlay.clone.wtTable.holder.parentNode);
       break;
+    case 'top-right-corner':
+      cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.topRightCornerOverlay.clone.wtTable.holder.parentNode);
+      break;
+    case 'bottom-right-corner':
+      cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.bottomRightCornerOverlay.clone.wtTable.holder.parentNode);
+      break;
     case 'bottom':
       cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.bottomOverlay.clone.wtTable.holder.parentNode);
       break;
@@ -285,7 +313,8 @@ TextEditor.prototype.refreshDimensions = function() {
     editTop += 1;
   }
 
-  if (this.instance.getSelected()[1] === 0) {
+  if (this.instance.getSelected()[1] === 0 ||
+      (settings.fixedColumnsRight && this.instance.getSelected()[1] === totalColumnsCount - settings.fixedColumnsRight)) {
     editLeft += 1;
   }
 

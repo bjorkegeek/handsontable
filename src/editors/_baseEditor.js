@@ -236,25 +236,29 @@ BaseEditor.prototype.isWaiting = function() {
 
 BaseEditor.prototype.checkEditorSection = function() {
   var totalRows = this.instance.countRows();
-  var section = '';
+  var totalColumns = this.instance.countCols();
+
+  var vsection;
+  var hsection;
 
   if (this.row < this.instance.getSettings().fixedRowsTop) {
-    if (this.col < this.instance.getSettings().fixedColumnsLeft) {
-      section = 'top-left-corner';
-    } else {
-      section = 'top';
-    }
+    vsection = 'top';
   } else if (this.instance.getSettings().fixedRowsBottom && this.row >= totalRows - this.instance.getSettings().fixedRowsBottom) {
-    if (this.col < this.instance.getSettings().fixedColumnsLeft) {
-      section = 'bottom-left-corner';
-    } else {
-      section = 'bottom';
-    }
-  } else {
-    if (this.col < this.instance.getSettings().fixedColumnsLeft) {
-      section = 'left';
-    }
+    vsection = 'bottom';
   }
 
-  return section;
+  if (this.col < this.instance.getSettings().fixedColumnsLeft) {
+    hsection = 'left';
+  } else if (this.instance.getSettings().fixedColumnsRight && this.col >= totalColumns - this.instance.getSettings().fixedColumnsRight) {
+    hsection = 'right';
+  }
+
+  if (hsection && vsection) {
+    if (hsection === 'right') {  //DFIXME: Remove when support for right corners is in
+      return hsection;
+    }
+    return vsection + '-' + hsection + '-corner';
+  } else {
+    return vsection || hsection || '';
+  }
 };

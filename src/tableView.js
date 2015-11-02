@@ -216,6 +216,9 @@ function TableView(instance) {
     fixedRowsBottom: function() {
       return that.settings.fixedRowsBottom;
     },
+    fixedColumnsRight: function() {
+      return that.settings.fixedColumnsRight;
+    },
     minSpareRows: function() {
       return that.settings.minSpareRows;
     },
@@ -401,7 +404,7 @@ function TableView(instance) {
       let cols = instance.countCols();
       let viewportOffset = that.settings.viewportColumnRenderingOffset;
 
-      if (viewportOffset === 'auto' && that.settings.fixedColumnsLeft) {
+      if (viewportOffset === 'auto' && that.settings.fixedColumnsLeft) { //DFIXME: Do something here?
         viewportOffset = 10;
       }
       if (typeof viewportOffset === 'number') {
