@@ -181,6 +181,11 @@ Handsontable.Core = function Core(rootElement, userSettings) {
             instance.getSettings().fixedColumnsLeft -= Math.min(amount, fixedColumnsLeft - index);
           }
 
+          var fixedColumnsRight = instance.getSettings().fixedColumnsRight;
+
+          if (fixedColumnsRight >= index + 1) {
+            instance.getSettings().fixedColumnsRight -= Math.min(amount, fixedColumnsRight - index);
+          }
           if (Array.isArray(instance.getSettings().colHeaders)) {
             if (typeof index == 'undefined') {
               index = -1;
@@ -3384,6 +3389,14 @@ DefaultSettings.prototype = {
    * @default 0
    */
   fixedColumnsLeft: 0,
+
+  /**
+   * Allows to specify the number of columns fixed (aka freezed) on the right side of the table.
+   *
+   * @type {Number}
+   * @default 0
+   */
+  fixedColumnsRight: 0,
 
   /**
    * If `true`, mouse click outside the grid will deselect the current selection.

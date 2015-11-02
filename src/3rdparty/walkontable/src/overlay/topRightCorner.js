@@ -3,20 +3,20 @@ import {
   outerHeight,
   outerWidth,
   setOverlayPosition,
-  getScrollbarHeight,
+  getScrollbarWidth,
 } from './../../../../helpers/dom/element';
 import {WalkontableOverlay} from './_base';
 
 /**
- * @class WalkontableBottomLeftCornerOverlay
+ * @class WalkontableTopRightCornerOverlay
  */
-class WalkontableBottomLeftCornerOverlay extends WalkontableOverlay {
+class WalkontableTopRightCornerOverlay extends WalkontableOverlay {
   /**
    * @param {Walkontable} wotInstance
    */
   constructor(wotInstance) {
     super(wotInstance);
-    this.clone = this.makeClone(WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER);
+    this.clone = this.makeClone(WalkontableOverlay.CLONE_TOP_RIGHT_CORNER);
   }
 
   /**
@@ -26,7 +26,7 @@ class WalkontableBottomLeftCornerOverlay extends WalkontableOverlay {
    */
   shouldBeRendered() {
     return this.wot.getSetting('fixedRowsBottom') &&
-        (this.wot.getSetting('fixedColumnsLeft') || this.wot.getSetting('rowHeaders').length) ? true : false;
+        (this.wot.getSetting('fixedColumnsRight') || this.wot.getSetting('rowHeaders').length) ? true : false;
   }
 
   /**
@@ -47,13 +47,13 @@ class WalkontableBottomLeftCornerOverlay extends WalkontableOverlay {
       let left = Math.ceil(box.left);
       let bottom = Math.ceil(box.bottom);
       let right = Math.ceil(box.right);
-      let finalLeft;
+      let finalRight;
       let finalTop;
 
-      if (left < 0 && (right - overlayRoot.offsetWidth) > 0) {
-        finalLeft = -left + 'px';
+      if (right < 0 && (right - overlayRoot.offsetWidth) > 0) {
+        finalRight = -right + 'px';
       } else {
-        finalLeft = '0';
+        finalRight = '0';
       }
 
       if (top < 0 && (bottom - overlayRoot.offsetHeight) > 0) {
@@ -61,21 +61,23 @@ class WalkontableBottomLeftCornerOverlay extends WalkontableOverlay {
       } else {
         finalTop = '0';
       }
-      setOverlayPosition(overlayRoot, finalLeft, finalTop);
+      setOverlayPosition(overlayRoot, finalRight, finalTop);
     }
     overlayRoot.style.height = (tableHeight === 0 ? tableHeight : tableHeight + 4) + 'px';
     overlayRoot.style.width = (tableWidth === 0 ? tableWidth : tableWidth + 4) + 'px';
-    if (this.wot.wtOverlays.leftOverlay.trimmingContainer !== window) {
-      let scrollBarHeight = getScrollbarHeight();
-      setOverlayPosition(overlayRoot, '0px',
-          this.wot.wtViewport.getWorkspaceHeight() -
-          scrollBarHeight - tableHeight + 'px');
+    if (this.wot.wtOverlays.rightOverlay.trimmingContainer !== window) {
+      let scrollBarWidth = getScrollbarWidth();
+      setOverlayPosition(overlayRoot,
+          this.wot.wtViewport.getWorkspaceWidth() -
+          scrollBarWidth -
+          outerWidth(this.clone.wtTable.TABLE) + 'px',
+          '0px');
     }
   }
 }
 
-export {WalkontableBottomLeftCornerOverlay};
+export {WalkontableTopRightCornerOverlay};
 
-window.WalkontableBottomLeftCornerOverlay = WalkontableBottomLeftCornerOverlay;
+window.WalkontableTopRightCornerOverlay = WalkontableTopRightCornerOverlay;
 
-WalkontableOverlay.registerOverlay(WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER, WalkontableBottomLeftCornerOverlay);
+WalkontableOverlay.registerOverlay(WalkontableOverlay.CLONE_TOP_RIGHT_CORNER, WalkontableTopRightCornerOverlay);
