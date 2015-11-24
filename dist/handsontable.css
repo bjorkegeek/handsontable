@@ -1,29 +1,3 @@
-/*!
-(The MIT License)
-
-Copyright (c) 2012-2014 Marcin Warpechowski
-Copyright (c) 2015 Handsoncode sp. z o.o. <hello@handsoncode.net>
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-'Software'), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-*/
 .handsontable {
   position: relative;
 }
@@ -145,7 +119,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   border-left: 1px solid #CCC;
 }
 
-.handsontable.htRowHeaders thead tr th:nth-child(2) {
+.handsontable.htRowHeaders .handsontable:not(.ht_clone_top_right_corner) thead tr th:nth-child(2) {
   border-left: 1px solid #CCC;
 }
 
@@ -155,7 +129,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 }
 
 .ht_master:not(.innerBorderLeft) ~ .handsontable tbody tr th,
-.ht_master:not(.innerBorderLeft) ~ .handsontable:not(.ht_clone_top) thead tr th:first-child
+.ht_master:not(.innerBorderLeft) ~ .handsontable:not(.ht_clone_top):not(.ht_clone_top_right_corner) thead tr th:first-child
 {
   border-right-width: 0;
 }
@@ -632,16 +606,20 @@ Comment For Cell
   background: #eee;
 }
 
-.ht_clone_top {
+.ht_clone_top,
+.ht_clone_bottom {
   z-index: 101;
 }
 
-.ht_clone_left {
+.ht_clone_left,
+.ht_clone_right {
   z-index: 102;
 }
 
 .ht_clone_top_left_corner,
-.ht_clone_bottom_left_corner {
+.ht_clone_bottom_left_corner,
+.ht_clone_top_right_corner,
+.ht_clone_bottom_right_corner {
   z-index: 103;
 }
 
@@ -801,6 +779,7 @@ thead .htCollapseButton:after {
 
 .ht_master,
 .ht_clone_left,
+.ht_clone_right,
 .ht_clone_top,
 .ht_clone_bottom {
   overflow: hidden;
@@ -810,7 +789,8 @@ thead .htCollapseButton:after {
   overflow: auto;
 }
 
-.ht_clone_left .wtHolder {
+.ht_clone_left .wtHolder,
+.ht_clone_right .wtHolder {
   overflow-x: hidden;
   overflow-y: auto;
 }
