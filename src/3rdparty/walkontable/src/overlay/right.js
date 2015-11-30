@@ -2,6 +2,7 @@
 import {
   addClass,
   getScrollbarWidth,
+  hasVerticalScrollbar,
   getScrollLeft,
   getWindowScrollTop,
   hasClass,
@@ -70,7 +71,7 @@ class WalkontableRightOverlay extends WalkontableOverlay {
 
     this.adjustElementsSize();
     if (this.wot.wtOverlays.leftOverlay.trimmingContainer !== window) {
-      let scrollBarWidth = getScrollbarWidth();
+      let scrollBarWidth = hasVerticalScrollbar(this.wot.wtTable.holder) ? getScrollbarWidth() : 0;
       setOverlayPosition(overlayRoot,
           this.wot.wtViewport.getWorkspaceWidth() -
           scrollBarWidth -
