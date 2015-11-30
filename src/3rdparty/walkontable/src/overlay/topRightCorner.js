@@ -4,6 +4,7 @@ import {
   outerWidth,
   setOverlayPosition,
   getScrollbarWidth,
+  hasVerticalScrollbar,
 } from './../../../../helpers/dom/element';
 import {WalkontableOverlay} from './_base';
 
@@ -66,10 +67,10 @@ class WalkontableTopRightCornerOverlay extends WalkontableOverlay {
     overlayRoot.style.height = (tableHeight === 0 ? tableHeight : tableHeight + 4) + 'px';
     overlayRoot.style.width = (tableWidth === 0 ? tableWidth : tableWidth + 4) + 'px';
     if (this.wot.wtOverlays.rightOverlay.trimmingContainer !== window) {
-      let scrollBarWidth = getScrollbarWidth();
+      let scrollBarWidth = hasVerticalScrollbar(this.wot.wtTable.holder) ? getScrollbarWidth() : 0;
       setOverlayPosition(overlayRoot,
           this.wot.wtViewport.getWorkspaceWidth() -
-          scrollBarWidth -
+          scrollBarWidth *  -
           outerWidth(this.clone.wtTable.TABLE) + 'px',
           '0px');
     }
