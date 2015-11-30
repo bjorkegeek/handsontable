@@ -70,7 +70,7 @@ class WalkontableTopRightCornerOverlay extends WalkontableOverlay {
       let scrollBarWidth = hasVerticalScrollbar(this.wot.wtTable.holder) ? getScrollbarWidth() : 0;
       setOverlayPosition(overlayRoot,
           this.wot.wtViewport.getWorkspaceWidth() -
-          scrollBarWidth *  -
+          scrollBarWidth -
           outerWidth(this.clone.wtTable.TABLE) + 'px',
           '0px');
     }
