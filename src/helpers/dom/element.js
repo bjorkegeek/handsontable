@@ -519,6 +519,10 @@ export function getScrollLeft(element) {
   }
 }
 
+export function hasVerticalScrollbar(element) {
+  return element.scrollHeight > element.clientHeight;
+}
+
 /**
  * Returns a DOM element responsible for scrolling of the provided element.
  *
