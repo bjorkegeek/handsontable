@@ -48,11 +48,11 @@ class WalkontableOverlays {
       this.rightOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_RIGHT, this.wot);
     }
 
-    if (this.topOverlay.needFullRender && this.leftOverlay.needFullRender) {
+    if (this.topOverlay instanceof WalkontableOverlay && this.leftOverlay instanceof WalkontableOverlay) {
       this.topLeftCornerOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_TOP_LEFT_CORNER, this.wot);
     }
 
-    if (this.topOverlay.needFullRender && this.rightOverlay.needFullRender && typeof WalkontableTopRightCornerOverlay !== 'undefined') {
+    if (this.topOverlay instanceof WalkontableOverlay && this.rightOverlay instanceof WalkontableOverlay && typeof WalkontableTopRightCornerOverlay !== 'undefined') {
       this.topRightCornerOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_TOP_RIGHT_CORNER, this.wot);
     } else {
       this.topRightCornerOverlay = {
@@ -60,7 +60,7 @@ class WalkontableOverlays {
       };
     }
 
-    if (this.bottomOverlay.needFullRender && this.leftOverlay.needFullRender && typeof WalkontableBottomLeftCornerOverlay !== 'undefined') {
+    if (this.bottomOverlay instanceof WalkontableOverlay && this.leftOverlay instanceof WalkontableOverlay && typeof WalkontableBottomLeftCornerOverlay !== 'undefined') {
       this.bottomLeftCornerOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER, this.wot);
     } else {
       this.bottomLeftCornerOverlay = {
@@ -68,7 +68,7 @@ class WalkontableOverlays {
       };
     }
 
-    if (this.bottomOverlay.needFullRender && this.rightOverlay.needFullRender && typeof WalkontableBottomRightCornerOverlay !== 'undefined') {
+    if (this.bottomOverlay instanceof WalkontableOverlay && this.rightOverlay instanceof WalkontableOverlay && typeof WalkontableBottomRightCornerOverlay !== 'undefined') {
       this.bottomRightCornerOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER, this.wot);
     } else {
       this.bottomRightCornerOverlay = {
