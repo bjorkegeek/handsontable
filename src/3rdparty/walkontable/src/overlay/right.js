@@ -30,7 +30,7 @@ class WalkontableRightOverlay extends WalkontableOverlay {
    * @returns {Boolean}
    */
   shouldBeRendered() {
-    return this.wot.getSetting('fixedColumnsLeft') || this.wot.getSetting('rowHeaders').length ? true : false;
+    return !!this.wot.getSetting('fixedColumnsRight');
   }
 
   /**

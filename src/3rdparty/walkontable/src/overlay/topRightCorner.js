@@ -26,8 +26,8 @@ class WalkontableTopRightCornerOverlay extends WalkontableOverlay {
    * @returns {Boolean}
    */
   shouldBeRendered() {
-    return this.wot.getSetting('fixedRowsTop') &&
-        (this.wot.getSetting('fixedColumnsRight') || this.wot.getSetting('rowHeaders').length) ? true : false;
+    return !!(this.wot.getSetting('fixedRowsTop') &&
+        this.wot.getSetting('fixedColumnsRight'));
   }
 
   /**
