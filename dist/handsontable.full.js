@@ -393,9 +393,9 @@ var WalkontableBorder = function WalkontableBorder(wotInstance, settings) {
         trimmingContainer,
         cornerOverlappingContainer,
         ilen;
-    if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_LEFT_CORNER)) {
+    if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_LEFT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_RIGHT_CORNER)) {
       ilen = this.wot.getSetting('fixedRowsTop');
-    } else if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER)) {
+    } else if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER)) {
       ilen = this.wot.getSetting('fixedRowsBottom');
     } else {
       ilen = this.wot.wtTable.getRenderedRowsCount();
@@ -521,7 +521,7 @@ var WalkontableBorder = function WalkontableBorder(wotInstance, settings) {
 window.WalkontableBorder = WalkontableBorder;
 
 //# 
-},{"cell/coords":5,"eventManager":41,"helpers/dom/element":45,"helpers/dom/event":46,"overlay/_base.js":11}],3:[function(require,module,exports){
+},{"cell/coords":5,"eventManager":46,"helpers/dom/element":50,"helpers/dom/event":51,"overlay/_base.js":11}],3:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableViewportColumnsCalculator: {get: function() {
@@ -1099,8 +1099,13 @@ var $___46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__,
     $__overlay_47__95_base_46_js__,
     $__overlay_47_top_46_js__,
     $__overlay_47_left_46_js__,
+    $__overlay_47_bottom_46_js__,
+    $__overlay_47_right_46_js__,
     $__overlay_47_debug_46_js__,
-    $__overlay_47_topLeftCorner_46_js__;
+    $__overlay_47_topLeftCorner_46_js__,
+    $__overlay_47_bottomLeftCorner_46_js__,
+    $__overlay_47_topRightCorner_46_js__,
+    $__overlay_47_bottomRightCorner_46_js__;
 var $__0 = ($___46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ = require("helpers/dom/element"), $___46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ && $___46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__.__esModule && $___46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ || {default: $___46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__}),
     addClass = $__0.addClass,
     fastInnerText = $__0.fastInnerText,
@@ -1119,8 +1124,13 @@ var WalkontableViewport = ($__viewport__ = require("viewport"), $__viewport__ &&
 var WalkontableOverlay = ($__overlay_47__95_base_46_js__ = require("overlay/_base.js"), $__overlay_47__95_base_46_js__ && $__overlay_47__95_base_46_js__.__esModule && $__overlay_47__95_base_46_js__ || {default: $__overlay_47__95_base_46_js__}).WalkontableOverlay;
 var WalkontableTopOverlay = ($__overlay_47_top_46_js__ = require("overlay/top.js"), $__overlay_47_top_46_js__ && $__overlay_47_top_46_js__.__esModule && $__overlay_47_top_46_js__ || {default: $__overlay_47_top_46_js__}).WalkontableTopOverlay;
 var WalkontableLeftOverlay = ($__overlay_47_left_46_js__ = require("overlay/left.js"), $__overlay_47_left_46_js__ && $__overlay_47_left_46_js__.__esModule && $__overlay_47_left_46_js__ || {default: $__overlay_47_left_46_js__}).WalkontableLeftOverlay;
+var WalkontableBottomOverlay = ($__overlay_47_bottom_46_js__ = require("overlay/bottom.js"), $__overlay_47_bottom_46_js__ && $__overlay_47_bottom_46_js__.__esModule && $__overlay_47_bottom_46_js__ || {default: $__overlay_47_bottom_46_js__}).WalkontableBottomOverlay;
+var WalkontableRightOverlay = ($__overlay_47_right_46_js__ = require("overlay/right.js"), $__overlay_47_right_46_js__ && $__overlay_47_right_46_js__.__esModule && $__overlay_47_right_46_js__ || {default: $__overlay_47_right_46_js__}).WalkontableRightOverlay;
 var WalkontableDebugOverlay = ($__overlay_47_debug_46_js__ = require("overlay/debug.js"), $__overlay_47_debug_46_js__ && $__overlay_47_debug_46_js__.__esModule && $__overlay_47_debug_46_js__ || {default: $__overlay_47_debug_46_js__}).WalkontableDebugOverlay;
 var WalkontableTopLeftCornerOverlay = ($__overlay_47_topLeftCorner_46_js__ = require("overlay/topLeftCorner.js"), $__overlay_47_topLeftCorner_46_js__ && $__overlay_47_topLeftCorner_46_js__.__esModule && $__overlay_47_topLeftCorner_46_js__ || {default: $__overlay_47_topLeftCorner_46_js__}).WalkontableTopLeftCornerOverlay;
+var WalkontableBottomLeftCornerOverlay = ($__overlay_47_bottomLeftCorner_46_js__ = require("overlay/bottomLeftCorner.js"), $__overlay_47_bottomLeftCorner_46_js__ && $__overlay_47_bottomLeftCorner_46_js__.__esModule && $__overlay_47_bottomLeftCorner_46_js__ || {default: $__overlay_47_bottomLeftCorner_46_js__}).WalkontableBottomLeftCornerOverlay;
+var WalkontableTopRightCornerOverlay = ($__overlay_47_topRightCorner_46_js__ = require("overlay/topRightCorner.js"), $__overlay_47_topRightCorner_46_js__ && $__overlay_47_topRightCorner_46_js__.__esModule && $__overlay_47_topRightCorner_46_js__ || {default: $__overlay_47_topRightCorner_46_js__}).WalkontableTopRightCornerOverlay;
+var WalkontableBottomRightCornerOverlay = ($__overlay_47_bottomRightCorner_46_js__ = require("overlay/bottomRightCorner.js"), $__overlay_47_bottomRightCorner_46_js__ && $__overlay_47_bottomRightCorner_46_js__.__esModule && $__overlay_47_bottomRightCorner_46_js__ || {default: $__overlay_47_bottomRightCorner_46_js__}).WalkontableBottomRightCornerOverlay;
 var Walkontable = function Walkontable(settings) {
   var originalHeaders = [];
   this.guid = 'wt_' + randomString();
@@ -1174,25 +1184,58 @@ var Walkontable = function Walkontable(settings) {
       return this.wtTable.getCell(coords);
     }
     var totalRows = this.wtSettings.getSetting('totalRows');
+    var totalColumns = this.wtSettings.getSetting('totalColumns');
     var fixedRowsTop = this.wtSettings.getSetting('fixedRowsTop');
     var fixedRowsBottom = this.wtSettings.getSetting('fixedRowsBottom');
-    var fixedColumns = this.wtSettings.getSetting('fixedColumnsLeft');
-    if (coords.row < fixedRowsTop && coords.col < fixedColumns) {
-      return this.wtOverlays.topLeftCornerOverlay.clone.wtTable.getCell(coords);
-    } else if (coords.row < fixedRowsTop) {
-      return this.wtOverlays.topOverlay.clone.wtTable.getCell(coords);
-    } else if (coords.col < fixedColumns && coords.row >= totalRows - fixedRowsBottom) {
-      if (this.wtOverlays.bottomLeftCornerOverlay.clone) {
-        return this.wtOverlays.bottomLeftCornerOverlay.clone.wtTable.getCell(coords);
-      }
-    } else if (coords.col < fixedColumns) {
-      return this.wtOverlays.leftOverlay.clone.wtTable.getCell(coords);
+    var fixedColumnsLeft = this.wtSettings.getSetting('fixedColumnsLeft');
+    var fixedColumnsRight = this.wtSettings.getSetting('fixedRowsBottom');
+    var vDir;
+    if (coords.row < fixedRowsTop) {
+      vDir = 't';
     } else if (coords.row > totalRows - fixedRowsBottom) {
-      if (this.wtOverlays.bottomOverlay.clone) {
-        return this.wtOverlays.bottomOverlay.clone.wtTable.getCell(coords);
-      }
+      vDir = 'b';
+    } else {
+      vDir = 'c';
     }
-    return this.wtTable.getCell(coords);
+    var hDir;
+    if (coords.col < fixedColumnsLeft) {
+      hDir = 'l';
+    } else if (coords.col >= totalColumns - fixedColumnsRight) {
+      hDir = 'r';
+    } else {
+      hDir = 'c';
+    }
+    var table;
+    switch (vDir + hDir) {
+      case 'tl':
+        table = this.wtOverlays.topLeftCornerOverlay.clone.wtTable;
+        break;
+      case 'tr':
+        table = this.wtOverlays.topRightCornerOverlay.clone.wtTable;
+        break;
+      case 'tc':
+        table = this.wtOverlays.topOverlay.clone.wtTable;
+        break;
+      case 'cl':
+        table = this.wtOverlays.leftOverlay.clone.wtTable;
+        break;
+      case 'cc':
+        table = this.wtTable;
+        break;
+      case 'cr':
+        table = this.wtOverlays.rightOverlay.clone.wtTable;
+        break;
+      case 'bl':
+        table = this.wtOverlays.bottomLeftCornerOverlay.clone.wtTable;
+        break;
+      case 'bc':
+        table = this.wtOverlays.bottomOverlay.clone.wtTable;
+        break;
+      case 'br':
+        table = this.wtOverlays.bottomRightCornerOverlay.clone.wtTable;
+        break;
+    }
+    return table.getCell(coords);
   },
   update: function(settings, value) {
     return this.wtSettings.update(settings, value);
@@ -1218,7 +1261,7 @@ var Walkontable = function Walkontable(settings) {
     return this.cloneOverlay ? this.cloneOverlay.type : 'master';
   },
   exportSettingsAsClassNames: function() {
-    var $__14 = this;
+    var $__19 = this;
     var toExport = {
       rowHeaders: ['array'],
       columnHeaders: ['array']
@@ -1226,7 +1269,7 @@ var Walkontable = function Walkontable(settings) {
     var allClassNames = [];
     var newClassNames = [];
     objectEach(toExport, (function(optionType, key) {
-      if (optionType.indexOf('array') > -1 && $__14.getSetting(key).length) {
+      if (optionType.indexOf('array') > -1 && $__19.getSetting(key).length) {
         newClassNames.push('ht' + toUpperCaseFirst(key));
       }
       allClassNames.push('ht' + toUpperCaseFirst(key));
@@ -1249,7 +1292,7 @@ var Walkontable = function Walkontable(settings) {
 window.Walkontable = Walkontable;
 
 //# 
-},{"event":8,"helpers/dom/element":45,"helpers/object":50,"helpers/string":52,"overlay/_base.js":11,"overlay/debug.js":12,"overlay/left.js":13,"overlay/top.js":14,"overlay/topLeftCorner.js":15,"overlays":16,"scroll":17,"settings":19,"table":20,"viewport":22}],8:[function(require,module,exports){
+},{"event":8,"helpers/dom/element":50,"helpers/object":55,"helpers/string":57,"overlay/_base.js":11,"overlay/bottom.js":12,"overlay/bottomLeftCorner.js":13,"overlay/bottomRightCorner.js":14,"overlay/debug.js":15,"overlay/left.js":16,"overlay/right.js":17,"overlay/top.js":18,"overlay/topLeftCorner.js":19,"overlay/topRightCorner.js":20,"overlays":21,"scroll":22,"settings":24,"table":25,"viewport":27}],8:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableEvent: {get: function() {
@@ -1411,7 +1454,7 @@ WalkontableEvent.prototype.parentCell = function(elem) {
 window.WalkontableEvent = WalkontableEvent;
 
 //# 
-},{"eventManager":41,"helpers/dom/element":45}],9:[function(require,module,exports){
+},{"eventManager":46,"helpers/dom/element":50}],9:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableColumnFilter: {get: function() {
@@ -1575,17 +1618,26 @@ var $WalkontableOverlay = WalkontableOverlay;
   get CLONE_LEFT() {
     return 'left';
   },
+  get CLONE_RIGHT() {
+    return 'right';
+  },
   get CLONE_TOP_LEFT_CORNER() {
     return 'top_left_corner';
   },
   get CLONE_BOTTOM_LEFT_CORNER() {
     return 'bottom_left_corner';
   },
+  get CLONE_TOP_RIGHT_CORNER() {
+    return 'top_right_corner';
+  },
+  get CLONE_BOTTOM_RIGHT_CORNER() {
+    return 'bottom_right_corner';
+  },
   get CLONE_DEBUG() {
     return 'debug';
   },
   get CLONE_TYPES() {
-    return [$WalkontableOverlay.CLONE_TOP, $WalkontableOverlay.CLONE_BOTTOM, $WalkontableOverlay.CLONE_LEFT, $WalkontableOverlay.CLONE_TOP_LEFT_CORNER, $WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER, $WalkontableOverlay.CLONE_DEBUG];
+    return [$WalkontableOverlay.CLONE_TOP, $WalkontableOverlay.CLONE_BOTTOM, $WalkontableOverlay.CLONE_LEFT, $WalkontableOverlay.CLONE_RIGHT, $WalkontableOverlay.CLONE_TOP_LEFT_CORNER, $WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER, $WalkontableOverlay.CLONE_TOP_RIGHT_CORNER, $WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER, $WalkontableOverlay.CLONE_DEBUG];
   },
   registerOverlay: function(type, overlayClass) {
     if ($WalkontableOverlay.CLONE_TYPES.indexOf(type) === -1) {
@@ -1607,7 +1659,337 @@ var $WalkontableOverlay = WalkontableOverlay;
 window.WalkontableOverlay = WalkontableOverlay;
 
 //# 
-},{"eventManager":41,"helpers/dom/element":45,"helpers/object":50}],12:[function(require,module,exports){
+},{"eventManager":46,"helpers/dom/element":50,"helpers/object":55}],12:[function(require,module,exports){
+"use strict";
+Object.defineProperties(exports, {
+  WalkontableBottomOverlay: {get: function() {
+      return WalkontableBottomOverlay;
+    }},
+  __esModule: {value: true}
+});
+var $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__,
+    $___95_base__;
+var $__0 = ($___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ = require("helpers/dom/element"), $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ && $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__.__esModule && $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ || {default: $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__}),
+    addClass = $__0.addClass,
+    getScrollbarWidth = $__0.getScrollbarWidth,
+    getScrollbarHeight = $__0.getScrollbarHeight,
+    getScrollTop = $__0.getScrollTop,
+    getWindowScrollLeft = $__0.getWindowScrollLeft,
+    hasClass = $__0.hasClass,
+    outerHeight = $__0.outerHeight,
+    removeClass = $__0.removeClass,
+    setOverlayPosition = $__0.setOverlayPosition;
+var WalkontableOverlay = ($___95_base__ = require("_base"), $___95_base__ && $___95_base__.__esModule && $___95_base__ || {default: $___95_base__}).WalkontableOverlay;
+var WalkontableBottomOverlay = function WalkontableBottomOverlay(wotInstance) {
+  $traceurRuntime.superConstructor($WalkontableBottomOverlay).call(this, wotInstance);
+  this.clone = this.makeClone(WalkontableOverlay.CLONE_BOTTOM);
+};
+var $WalkontableBottomOverlay = WalkontableBottomOverlay;
+($traceurRuntime.createClass)(WalkontableBottomOverlay, {
+  shouldBeRendered: function() {
+    return !!this.wot.getSetting('fixedRowsBottom');
+  },
+  resetFixedPosition: function() {
+    if (!this.needFullRender || !this.wot.wtTable.holder.parentNode) {
+      return;
+    }
+    var overlayRoot = this.clone.wtTable.holder.parentNode;
+    var headerPosition = 0;
+    if (this.wot.wtOverlays.leftOverlay.trimmingContainer === window) {
+      var box = this.wot.wtTable.hider.getBoundingClientRect();
+      var top = Math.ceil(box.top);
+      var bottom = Math.ceil(box.bottom);
+      var finalLeft;
+      var finalTop;
+      finalLeft = this.wot.wtTable.hider.style.left;
+      finalLeft = finalLeft === '' ? 0 : finalLeft;
+      if (top < 0 && (bottom - overlayRoot.offsetHeight) > 0) {
+        finalTop = -top;
+      } else {
+        finalTop = 0;
+      }
+      headerPosition = finalTop;
+      finalTop = finalTop + 'px';
+      setOverlayPosition(overlayRoot, finalLeft, finalTop);
+    } else {
+      headerPosition = this.getScrollPosition();
+    }
+    this.adjustHeaderBordersPosition(headerPosition);
+    this.adjustElementsSize();
+    if (this.wot.wtOverlays.leftOverlay.trimmingContainer !== window) {
+      var scrollBarHeight = getScrollbarHeight();
+      setOverlayPosition(overlayRoot, '0px', this.wot.wtViewport.getWorkspaceHeight() - scrollBarHeight - outerHeight(this.clone.wtTable.TABLE) + 'px');
+    }
+  },
+  setScrollPosition: function(pos) {
+    if (this.mainTableScrollableElement === window) {
+      window.scrollTo(getWindowScrollLeft(), pos);
+    } else {
+      this.mainTableScrollableElement.scrollTop = pos;
+    }
+  },
+  onScroll: function() {
+    this.wot.getSetting('onScrollVertically');
+  },
+  sumCellSizes: function(from, to) {
+    var sum = 0;
+    var defaultRowHeight = this.wot.wtSettings.settings.defaultRowHeight;
+    while (from < to) {
+      sum += this.wot.wtTable.getRowHeight(from) || defaultRowHeight;
+      from++;
+    }
+    return sum;
+  },
+  adjustElementsSize: function() {
+    var force = arguments[0] !== (void 0) ? arguments[0] : false;
+    if (this.needFullRender || force) {
+      this.adjustRootElementSize();
+      this.adjustRootChildrenSize();
+      if (!force) {
+        this.areElementSizesAdjusted = true;
+      }
+    }
+  },
+  adjustRootElementSize: function() {
+    var masterHolder = this.wot.wtTable.holder;
+    var scrollbarWidth = masterHolder.clientWidth === masterHolder.offsetWidth ? 0 : getScrollbarWidth();
+    var overlayRoot = this.clone.wtTable.holder.parentNode;
+    var overlayRootStyle = overlayRoot.style;
+    var tableHeight;
+    if (this.trimmingContainer !== window) {
+      overlayRootStyle.width = this.wot.wtViewport.getWorkspaceWidth() - scrollbarWidth + 'px';
+    }
+    this.clone.wtTable.holder.style.width = overlayRootStyle.width;
+    tableHeight = outerHeight(this.clone.wtTable.TABLE);
+    overlayRootStyle.height = (tableHeight === 0 ? tableHeight : tableHeight + 4) + 'px';
+  },
+  adjustRootChildrenSize: function() {
+    var scrollbarHeight = getScrollbarHeight();
+    this.clone.wtTable.hider.style.width = this.hider.style.width;
+    this.clone.wtTable.holder.style.width = this.clone.wtTable.holder.parentNode.style.width;
+    if (scrollbarHeight === 0) {
+      scrollbarHeight = 30;
+    }
+    this.clone.wtTable.holder.style.height = parseInt(this.clone.wtTable.holder.parentNode.style.height, 10) + scrollbarHeight + 'px';
+  },
+  applyToDOM: function() {
+    var total = this.wot.getSetting('totalRows');
+    if (!this.areElementSizesAdjusted) {
+      this.adjustElementsSize();
+    }
+    if (typeof this.wot.wtViewport.rowsRenderCalculator.startPosition === 'number') {
+      this.spreader.style.top = this.wot.wtViewport.rowsRenderCalculator.startPosition + 'px';
+    } else if (total === 0) {
+      this.spreader.style.top = '0';
+    } else {
+      throw new Error('Incorrect value of the rowsRenderCalculator');
+    }
+    this.spreader.style.bottom = '';
+    if (this.needFullRender) {
+      this.syncOverlayOffset();
+    }
+  },
+  syncOverlayOffset: function() {
+    if (typeof this.wot.wtViewport.columnsRenderCalculator.startPosition === 'number') {
+      this.clone.wtTable.spreader.style.left = this.wot.wtViewport.columnsRenderCalculator.startPosition + 'px';
+    } else {
+      this.clone.wtTable.spreader.style.left = '';
+    }
+  },
+  scrollTo: function(sourceRow, bottomEdge) {
+    var newY = this.getTableParentOffset();
+    var sourceInstance = this.wot.cloneSource ? this.wot.cloneSource : this.wot;
+    var mainHolder = sourceInstance.wtTable.holder;
+    var scrollbarCompensation = 0;
+    if (bottomEdge && mainHolder.offsetHeight !== mainHolder.clientHeight) {
+      scrollbarCompensation = getScrollbarWidth();
+    }
+    if (bottomEdge) {
+      var fixedRowsBottom = this.wot.getSetting('fixedRowsBottom');
+      var fixedRowsTop = this.wot.getSetting('fixedRowsTop');
+      var totalRows = this.wot.getSetting('totalRows');
+      newY += this.sumCellSizes(0, sourceRow + 1);
+      newY -= this.wot.wtViewport.getViewportHeight() - this.sumCellSizes(totalRows - fixedRowsBottom, totalRows);
+      newY += 1;
+    } else {
+      newY += this.sumCellSizes(this.wot.getSetting('fixedRowsTop'), sourceRow);
+    }
+    newY += scrollbarCompensation;
+    this.setScrollPosition(newY);
+  },
+  getTableParentOffset: function() {
+    if (this.mainTableScrollableElement === window) {
+      return this.wot.wtTable.holderOffset.top;
+    } else {
+      return 0;
+    }
+  },
+  getScrollPosition: function() {
+    return getScrollTop(this.mainTableScrollableElement);
+  },
+  adjustHeaderBordersPosition: function(position) {
+    if (this.wot.getSetting('fixedRowsTop') === 0 && this.wot.getSetting('columnHeaders').length > 0) {
+      var masterParent = this.wot.wtTable.holder.parentNode;
+      var previousState = hasClass(masterParent, 'innerBorderTop');
+      if (position) {
+        addClass(masterParent, 'innerBorderTop');
+      } else {
+        removeClass(masterParent, 'innerBorderTop');
+      }
+      if (!previousState && position || previousState && !position) {
+        this.wot.wtOverlays.adjustElementsSize();
+      }
+    }
+    if (this.wot.getSetting('rowHeaders').length === 0) {
+      var secondHeaderCell = this.clone.wtTable.THEAD.querySelectorAll('th:nth-of-type(2)');
+      if (secondHeaderCell) {
+        for (var i = 0; i < secondHeaderCell.length; i++) {
+          secondHeaderCell[i].style['border-left-width'] = 0;
+        }
+      }
+    }
+  },
+  markOversizedFixedBottomRows: function() {}
+}, {}, WalkontableOverlay);
+;
+window.WalkontableBottomOverlay = WalkontableBottomOverlay;
+WalkontableOverlay.registerOverlay(WalkontableOverlay.CLONE_BOTTOM, WalkontableBottomOverlay);
+
+//# 
+},{"_base":11,"helpers/dom/element":50}],13:[function(require,module,exports){
+"use strict";
+Object.defineProperties(exports, {
+  WalkontableBottomLeftCornerOverlay: {get: function() {
+      return WalkontableBottomLeftCornerOverlay;
+    }},
+  __esModule: {value: true}
+});
+var $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__,
+    $___95_base__;
+var $__0 = ($___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ = require("helpers/dom/element"), $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ && $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__.__esModule && $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ || {default: $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__}),
+    outerHeight = $__0.outerHeight,
+    outerWidth = $__0.outerWidth,
+    setOverlayPosition = $__0.setOverlayPosition,
+    getScrollbarHeight = $__0.getScrollbarHeight;
+var WalkontableOverlay = ($___95_base__ = require("_base"), $___95_base__ && $___95_base__.__esModule && $___95_base__ || {default: $___95_base__}).WalkontableOverlay;
+var WalkontableBottomLeftCornerOverlay = function WalkontableBottomLeftCornerOverlay(wotInstance) {
+  $traceurRuntime.superConstructor($WalkontableBottomLeftCornerOverlay).call(this, wotInstance);
+  this.clone = this.makeClone(WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER);
+};
+var $WalkontableBottomLeftCornerOverlay = WalkontableBottomLeftCornerOverlay;
+($traceurRuntime.createClass)(WalkontableBottomLeftCornerOverlay, {
+  shouldBeRendered: function() {
+    return this.wot.getSetting('fixedRowsBottom') && (this.wot.getSetting('fixedColumnsLeft') || this.wot.getSetting('rowHeaders').length) ? true : false;
+  },
+  resetFixedPosition: function() {
+    if (!this.wot.wtTable.holder.parentNode) {
+      return;
+    }
+    var overlayRoot = this.clone.wtTable.holder.parentNode;
+    var tableHeight = outerHeight(this.clone.wtTable.TABLE);
+    var tableWidth = outerWidth(this.clone.wtTable.TABLE);
+    if (this.trimmingContainer === window) {
+      var box = this.wot.wtTable.hider.getBoundingClientRect();
+      var top = Math.ceil(box.top);
+      var left = Math.ceil(box.left);
+      var bottom = Math.ceil(box.bottom);
+      var right = Math.ceil(box.right);
+      var finalLeft;
+      var finalTop;
+      if (left < 0 && (right - overlayRoot.offsetWidth) > 0) {
+        finalLeft = -left + 'px';
+      } else {
+        finalLeft = '0';
+      }
+      if (top < 0 && (bottom - overlayRoot.offsetHeight) > 0) {
+        finalTop = -top + 'px';
+      } else {
+        finalTop = '0';
+      }
+      setOverlayPosition(overlayRoot, finalLeft, finalTop);
+    }
+    overlayRoot.style.height = (tableHeight === 0 ? tableHeight : tableHeight + 4) + 'px';
+    overlayRoot.style.width = (tableWidth === 0 ? tableWidth : tableWidth + 4) + 'px';
+    if (this.wot.wtOverlays.leftOverlay.trimmingContainer !== window) {
+      var scrollBarHeight = getScrollbarHeight();
+      setOverlayPosition(overlayRoot, '0px', this.wot.wtViewport.getWorkspaceHeight() - scrollBarHeight - tableHeight + 'px');
+    }
+  }
+}, {}, WalkontableOverlay);
+;
+window.WalkontableBottomLeftCornerOverlay = WalkontableBottomLeftCornerOverlay;
+WalkontableOverlay.registerOverlay(WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER, WalkontableBottomLeftCornerOverlay);
+
+//# 
+},{"_base":11,"helpers/dom/element":50}],14:[function(require,module,exports){
+"use strict";
+Object.defineProperties(exports, {
+  WalkontableBottomRightCornerOverlay: {get: function() {
+      return WalkontableBottomRightCornerOverlay;
+    }},
+  __esModule: {value: true}
+});
+var $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__,
+    $___95_base__;
+var $__0 = ($___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ = require("helpers/dom/element"), $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ && $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__.__esModule && $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ || {default: $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__}),
+    outerHeight = $__0.outerHeight,
+    outerWidth = $__0.outerWidth,
+    setOverlayPosition = $__0.setOverlayPosition,
+    getScrollbarWidth = $__0.getScrollbarWidth,
+    getScrollbarHeight = $__0.getScrollbarHeight,
+    hasVerticalScrollbar = $__0.hasVerticalScrollbar;
+var WalkontableOverlay = ($___95_base__ = require("_base"), $___95_base__ && $___95_base__.__esModule && $___95_base__ || {default: $___95_base__}).WalkontableOverlay;
+var WalkontableBottomRightCornerOverlay = function WalkontableBottomRightCornerOverlay(wotInstance) {
+  $traceurRuntime.superConstructor($WalkontableBottomRightCornerOverlay).call(this, wotInstance);
+  this.clone = this.makeClone(WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER);
+};
+var $WalkontableBottomRightCornerOverlay = WalkontableBottomRightCornerOverlay;
+($traceurRuntime.createClass)(WalkontableBottomRightCornerOverlay, {
+  shouldBeRendered: function() {
+    return this.wot.getSetting('fixedRowsBottom') && (this.wot.getSetting('fixedColumnsRight') || this.wot.getSetting('rowHeaders').length) ? true : false;
+  },
+  resetFixedPosition: function() {
+    if (!this.wot.wtTable.holder.parentNode) {
+      return;
+    }
+    var overlayRoot = this.clone.wtTable.holder.parentNode;
+    var tableHeight = outerHeight(this.clone.wtTable.TABLE);
+    var tableWidth = outerWidth(this.clone.wtTable.TABLE);
+    if (this.trimmingContainer === window) {
+      var box = this.wot.wtTable.hider.getBoundingClientRect();
+      var top = Math.ceil(box.top);
+      var left = Math.ceil(box.left);
+      var bottom = Math.ceil(box.bottom);
+      var right = Math.ceil(box.right);
+      var finalRight;
+      var finalTop;
+      if (right < 0 && (right - overlayRoot.offsetWidth) > 0) {
+        finalRight = -right + 'px';
+      } else {
+        finalRight = '0';
+      }
+      if (top < 0 && (bottom - overlayRoot.offsetHeight) > 0) {
+        finalTop = -top + 'px';
+      } else {
+        finalTop = '0';
+      }
+      setOverlayPosition(overlayRoot, finalRight, finalTop);
+    }
+    overlayRoot.style.height = (tableHeight === 0 ? tableHeight : tableHeight + 4) + 'px';
+    overlayRoot.style.width = (tableWidth === 0 ? tableWidth : tableWidth + 4) + 'px';
+    if (this.wot.wtOverlays.rightOverlay.trimmingContainer !== window) {
+      var scrollBarWidth = hasVerticalScrollbar(this.wot.wtTable.holder) ? getScrollbarWidth() : 0;
+      var scrollBarHeight = getScrollbarHeight();
+      setOverlayPosition(overlayRoot, this.wot.wtViewport.getWorkspaceWidth() - scrollBarWidth - outerWidth(this.clone.wtTable.TABLE) + 'px', this.wot.wtViewport.getWorkspaceHeight() - scrollBarHeight - outerHeight(this.clone.wtTable.TABLE) + 'px');
+    }
+  }
+}, {}, WalkontableOverlay);
+;
+window.WalkontableBottomRightCornerOverlay = WalkontableBottomRightCornerOverlay;
+WalkontableOverlay.registerOverlay(WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER, WalkontableBottomRightCornerOverlay);
+
+//# 
+},{"_base":11,"helpers/dom/element":50}],15:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableDebugOverlay: {get: function() {
@@ -1633,7 +2015,7 @@ window.WalkontableDebugOverlay = WalkontableDebugOverlay;
 WalkontableOverlay.registerOverlay(WalkontableOverlay.CLONE_DEBUG, WalkontableDebugOverlay);
 
 //# 
-},{"_base":11,"helpers/dom/element":45}],13:[function(require,module,exports){
+},{"_base":11,"helpers/dom/element":50}],16:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableLeftOverlay: {get: function() {
@@ -1774,8 +2156,10 @@ var $WalkontableLeftOverlay = WalkontableLeftOverlay;
       scrollbarCompensation = getScrollbarWidth();
     }
     if (beyondRendered) {
+      var fixedColumnsRight = this.wot.getSetting('fixedColumnsRight');
+      var totalColumns = this.wot.getSetting('totalColumns');
       newX += this.sumCellSizes(0, sourceCol + 1);
-      newX -= this.wot.wtViewport.getViewportWidth();
+      newX -= this.wot.wtViewport.getViewportWidth() - this.sumCellSizes(totalColumns - fixedColumnsRight, totalColumns);
     } else {
       newX += this.sumCellSizes(this.wot.getSetting('fixedColumnsLeft'), sourceCol);
     }
@@ -1816,7 +2200,195 @@ window.WalkontableLeftOverlay = WalkontableLeftOverlay;
 WalkontableOverlay.registerOverlay(WalkontableOverlay.CLONE_LEFT, WalkontableLeftOverlay);
 
 //# 
-},{"_base":11,"helpers/dom/element":45}],14:[function(require,module,exports){
+},{"_base":11,"helpers/dom/element":50}],17:[function(require,module,exports){
+"use strict";
+Object.defineProperties(exports, {
+  WalkontableRightOverlay: {get: function() {
+      return WalkontableRightOverlay;
+    }},
+  __esModule: {value: true}
+});
+var $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__,
+    $___95_base__;
+var $__0 = ($___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ = require("helpers/dom/element"), $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ && $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__.__esModule && $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ || {default: $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__}),
+    addClass = $__0.addClass,
+    getScrollbarWidth = $__0.getScrollbarWidth,
+    hasVerticalScrollbar = $__0.hasVerticalScrollbar,
+    getScrollLeft = $__0.getScrollLeft,
+    getWindowScrollTop = $__0.getWindowScrollTop,
+    hasClass = $__0.hasClass,
+    outerWidth = $__0.outerWidth,
+    removeClass = $__0.removeClass,
+    setOverlayPosition = $__0.setOverlayPosition;
+var WalkontableOverlay = ($___95_base__ = require("_base"), $___95_base__ && $___95_base__.__esModule && $___95_base__ || {default: $___95_base__}).WalkontableOverlay;
+var WalkontableRightOverlay = function WalkontableRightOverlay(wotInstance) {
+  $traceurRuntime.superConstructor($WalkontableRightOverlay).call(this, wotInstance);
+  this.clone = this.makeClone(WalkontableOverlay.CLONE_RIGHT);
+};
+var $WalkontableRightOverlay = WalkontableRightOverlay;
+($traceurRuntime.createClass)(WalkontableRightOverlay, {
+  shouldBeRendered: function() {
+    return !!this.wot.getSetting('fixedColumnsRight');
+  },
+  resetFixedPosition: function() {
+    if (!this.needFullRender || !this.wot.wtTable.holder.parentNode) {
+      return;
+    }
+    var overlayRoot = this.clone.wtTable.holder.parentNode;
+    var headerPosition = 0;
+    if (this.trimmingContainer === window) {
+      var box = this.wot.wtTable.hider.getBoundingClientRect();
+      var left = Math.ceil(box.left);
+      var right = Math.ceil(box.right);
+      var finalLeft;
+      var finalTop;
+      finalTop = this.wot.wtTable.hider.style.top;
+      finalTop = finalTop === '' ? 0 : finalTop;
+      if (left < 0 && (right - overlayRoot.offsetWidth) > 0) {
+        finalLeft = -left;
+      } else {
+        finalLeft = 0;
+      }
+      headerPosition = finalLeft;
+      finalLeft = finalLeft + 'px';
+      setOverlayPosition(overlayRoot, finalLeft, finalTop);
+    } else {
+      headerPosition = this.getScrollPosition();
+    }
+    this.adjustHeaderBordersPosition(headerPosition);
+    this.adjustElementsSize();
+    if (this.wot.wtOverlays.leftOverlay.trimmingContainer !== window) {
+      var scrollBarWidth = hasVerticalScrollbar(this.wot.wtTable.holder) ? getScrollbarWidth() : 0;
+      setOverlayPosition(overlayRoot, this.wot.wtViewport.getWorkspaceWidth() - scrollBarWidth - outerWidth(this.clone.wtTable.TABLE) + 'px', '0px');
+    }
+  },
+  setScrollPosition: function(pos) {
+    if (this.mainTableScrollableElement === window) {
+      window.scrollTo(pos, getWindowScrollTop());
+    } else {
+      this.mainTableScrollableElement.scrollLeft = pos;
+    }
+  },
+  onScroll: function() {
+    this.wot.getSetting('onScrollHorizontally');
+  },
+  sumCellSizes: function(from, to) {
+    var sum = 0;
+    var defaultColumnWidth = this.wot.wtSettings.defaultColumnWidth;
+    while (from < to) {
+      sum += this.wot.wtTable.getStretchedColumnWidth(from) || defaultColumnWidth;
+      from++;
+    }
+    return sum;
+  },
+  adjustElementsSize: function() {
+    var force = arguments[0] !== (void 0) ? arguments[0] : false;
+    if (this.needFullRender || force) {
+      this.adjustRootElementSize();
+      this.adjustRootChildrenSize();
+      if (!force) {
+        this.areElementSizesAdjusted = true;
+      }
+    }
+  },
+  adjustRootElementSize: function() {
+    var masterHolder = this.wot.wtTable.holder;
+    var scrollbarHeight = masterHolder.clientHeight === masterHolder.offsetHeight ? 0 : getScrollbarWidth();
+    var overlayRoot = this.clone.wtTable.holder.parentNode;
+    var overlayRootStyle = overlayRoot.style;
+    var tableWidth;
+    if (this.trimmingContainer !== window) {
+      overlayRootStyle.height = this.wot.wtViewport.getWorkspaceHeight() - scrollbarHeight + 'px';
+    }
+    this.clone.wtTable.holder.style.height = overlayRootStyle.height;
+    tableWidth = outerWidth(this.clone.wtTable.TABLE);
+    overlayRootStyle.width = (tableWidth === 0 ? tableWidth : tableWidth + 4) + 'px';
+  },
+  adjustRootChildrenSize: function() {
+    var scrollbarWidth = getScrollbarWidth();
+    this.clone.wtTable.hider.style.height = this.hider.style.height;
+    this.clone.wtTable.holder.style.height = this.clone.wtTable.holder.parentNode.style.height;
+    if (scrollbarWidth === 0) {
+      scrollbarWidth = 30;
+    }
+    this.clone.wtTable.holder.style.width = parseInt(this.clone.wtTable.holder.parentNode.style.width, 10) + scrollbarWidth + 'px';
+  },
+  applyToDOM: function() {
+    var total = this.wot.getSetting('totalColumns');
+    if (!this.areElementSizesAdjusted) {
+      this.adjustElementsSize();
+    }
+    if (typeof this.wot.wtViewport.columnsRenderCalculator.startPosition === 'number') {
+      this.spreader.style.left = this.wot.wtViewport.columnsRenderCalculator.startPosition + 'px';
+    } else if (total === 0) {
+      this.spreader.style.left = '0';
+    } else {
+      throw new Error('Incorrect value of the columnsRenderCalculator');
+    }
+    this.spreader.style.right = '';
+    if (this.needFullRender) {
+      this.syncOverlayOffset();
+    }
+  },
+  syncOverlayOffset: function() {
+    if (typeof this.wot.wtViewport.rowsRenderCalculator.startPosition === 'number') {
+      this.clone.wtTable.spreader.style.top = this.wot.wtViewport.rowsRenderCalculator.startPosition + 'px';
+    } else {
+      this.clone.wtTable.spreader.style.top = '';
+    }
+  },
+  scrollTo: function(sourceCol, beyondRendered) {
+    var newX = this.getTableParentOffset();
+    var sourceInstance = this.wot.cloneSource ? this.wot.cloneSource : this.wot;
+    var mainHolder = sourceInstance.wtTable.holder;
+    var scrollbarCompensation = 0;
+    if (beyondRendered && mainHolder.offsetWidth !== mainHolder.clientWidth) {
+      scrollbarCompensation = getScrollbarWidth();
+    }
+    if (beyondRendered) {
+      newX += this.sumCellSizes(0, sourceCol + 1);
+      newX -= this.wot.wtViewport.getViewportWidth();
+    } else {
+      newX += this.sumCellSizes(this.wot.getSetting('fixedColumnsLeft'), sourceCol);
+    }
+    newX += scrollbarCompensation;
+    this.setScrollPosition(newX);
+  },
+  getTableParentOffset: function() {
+    if (this.trimmingContainer === window) {
+      return this.wot.wtTable.holderOffset.left;
+    } else {
+      return 0;
+    }
+  },
+  getScrollPosition: function() {
+    return getScrollLeft(this.mainTableScrollableElement);
+  },
+  adjustHeaderBordersPosition: function(position) {
+    var masterParent = this.wot.wtTable.holder.parentNode;
+    var rowHeaders = this.wot.getSetting('rowHeaders');
+    var fixedColumnsLeft = this.wot.getSetting('fixedColumnsLeft');
+    if (fixedColumnsLeft && !rowHeaders.length) {
+      addClass(masterParent, 'innerBorderLeft');
+    } else if (!fixedColumnsLeft && rowHeaders.length) {
+      var previousState = hasClass(masterParent, 'innerBorderLeft');
+      if (position) {
+        addClass(masterParent, 'innerBorderLeft');
+      } else {
+        removeClass(masterParent, 'innerBorderLeft');
+      }
+      if (!previousState && position || previousState && !position) {
+        this.wot.wtOverlays.adjustElementsSize();
+      }
+    }
+  }
+}, {}, WalkontableOverlay);
+;
+window.WalkontableRightOverlay = WalkontableRightOverlay;
+WalkontableOverlay.registerOverlay(WalkontableOverlay.CLONE_RIGHT, WalkontableRightOverlay);
+
+//# 
+},{"_base":11,"helpers/dom/element":50}],18:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableTopOverlay: {get: function() {
@@ -2008,7 +2580,7 @@ window.WalkontableTopOverlay = WalkontableTopOverlay;
 WalkontableOverlay.registerOverlay(WalkontableOverlay.CLONE_TOP, WalkontableTopOverlay);
 
 //# 
-},{"_base":11,"helpers/dom/element":45}],15:[function(require,module,exports){
+},{"_base":11,"helpers/dom/element":50}],19:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableTopLeftCornerOverlay: {get: function() {
@@ -2068,7 +2640,73 @@ window.WalkontableTopLeftCornerOverlay = WalkontableTopLeftCornerOverlay;
 WalkontableOverlay.registerOverlay(WalkontableOverlay.CLONE_TOP_LEFT_CORNER, WalkontableTopLeftCornerOverlay);
 
 //# 
-},{"_base":11,"helpers/dom/element":45}],16:[function(require,module,exports){
+},{"_base":11,"helpers/dom/element":50}],20:[function(require,module,exports){
+"use strict";
+Object.defineProperties(exports, {
+  WalkontableTopRightCornerOverlay: {get: function() {
+      return WalkontableTopRightCornerOverlay;
+    }},
+  __esModule: {value: true}
+});
+var $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__,
+    $___95_base__;
+var $__0 = ($___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ = require("helpers/dom/element"), $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ && $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__.__esModule && $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__ || {default: $___46__46__47__46__46__47__46__46__47__46__46__47_helpers_47_dom_47_element__}),
+    outerHeight = $__0.outerHeight,
+    outerWidth = $__0.outerWidth,
+    setOverlayPosition = $__0.setOverlayPosition,
+    getScrollbarWidth = $__0.getScrollbarWidth,
+    hasVerticalScrollbar = $__0.hasVerticalScrollbar;
+var WalkontableOverlay = ($___95_base__ = require("_base"), $___95_base__ && $___95_base__.__esModule && $___95_base__ || {default: $___95_base__}).WalkontableOverlay;
+var WalkontableTopRightCornerOverlay = function WalkontableTopRightCornerOverlay(wotInstance) {
+  $traceurRuntime.superConstructor($WalkontableTopRightCornerOverlay).call(this, wotInstance);
+  this.clone = this.makeClone(WalkontableOverlay.CLONE_TOP_RIGHT_CORNER);
+};
+var $WalkontableTopRightCornerOverlay = WalkontableTopRightCornerOverlay;
+($traceurRuntime.createClass)(WalkontableTopRightCornerOverlay, {
+  shouldBeRendered: function() {
+    return !!(this.wot.getSetting('fixedRowsTop') && this.wot.getSetting('fixedColumnsRight'));
+  },
+  resetFixedPosition: function() {
+    if (!this.wot.wtTable.holder.parentNode) {
+      return;
+    }
+    var overlayRoot = this.clone.wtTable.holder.parentNode;
+    var tableHeight = outerHeight(this.clone.wtTable.TABLE);
+    var tableWidth = outerWidth(this.clone.wtTable.TABLE);
+    if (this.trimmingContainer === window) {
+      var box = this.wot.wtTable.hider.getBoundingClientRect();
+      var top = Math.ceil(box.top);
+      var left = Math.ceil(box.left);
+      var bottom = Math.ceil(box.bottom);
+      var right = Math.ceil(box.right);
+      var finalRight;
+      var finalTop;
+      if (right < 0 && (right - overlayRoot.offsetWidth) > 0) {
+        finalRight = -right + 'px';
+      } else {
+        finalRight = '0';
+      }
+      if (top < 0 && (bottom - overlayRoot.offsetHeight) > 0) {
+        finalTop = -top + 'px';
+      } else {
+        finalTop = '0';
+      }
+      setOverlayPosition(overlayRoot, finalRight, finalTop);
+    }
+    overlayRoot.style.height = (tableHeight === 0 ? tableHeight : tableHeight + 4) + 'px';
+    overlayRoot.style.width = (tableWidth === 0 ? tableWidth : tableWidth + 4) + 'px';
+    if (this.wot.wtOverlays.rightOverlay.trimmingContainer !== window) {
+      var scrollBarWidth = hasVerticalScrollbar(this.wot.wtTable.holder) ? getScrollbarWidth() : 0;
+      setOverlayPosition(overlayRoot, this.wot.wtViewport.getWorkspaceWidth() - scrollBarWidth - outerWidth(this.clone.wtTable.TABLE) + 'px', '0px');
+    }
+  }
+}, {}, WalkontableOverlay);
+;
+window.WalkontableTopRightCornerOverlay = WalkontableTopRightCornerOverlay;
+WalkontableOverlay.registerOverlay(WalkontableOverlay.CLONE_TOP_RIGHT_CORNER, WalkontableTopRightCornerOverlay);
+
+//# 
+},{"_base":11,"helpers/dom/element":50}],21:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableOverlays: {get: function() {
@@ -2100,13 +2738,28 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
     this.bottomOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_BOTTOM, this.wot);
   }
   this.leftOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_LEFT, this.wot);
-  if (this.topOverlay.needFullRender && this.leftOverlay.needFullRender) {
+  if (typeof WalkontableRightOverlay === 'undefined') {
+    this.rightOverlay = {needFullRender: false};
+  } else {
+    this.rightOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_RIGHT, this.wot);
+  }
+  if (this.topOverlay instanceof WalkontableOverlay && this.leftOverlay instanceof WalkontableOverlay) {
     this.topLeftCornerOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_TOP_LEFT_CORNER, this.wot);
   }
-  if (this.bottomOverlay.needFullRender && this.leftOverlay.needFullRender && typeof WalkontableBottomLeftCornerOverlay !== 'undefined') {
+  if (this.topOverlay instanceof WalkontableOverlay && this.rightOverlay instanceof WalkontableOverlay && typeof WalkontableTopRightCornerOverlay !== 'undefined') {
+    this.topRightCornerOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_TOP_RIGHT_CORNER, this.wot);
+  } else {
+    this.topRightCornerOverlay = {needFullRender: false};
+  }
+  if (this.bottomOverlay instanceof WalkontableOverlay && this.leftOverlay instanceof WalkontableOverlay && typeof WalkontableBottomLeftCornerOverlay !== 'undefined') {
     this.bottomLeftCornerOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER, this.wot);
   } else {
     this.bottomLeftCornerOverlay = {needFullRender: false};
+  }
+  if (this.bottomOverlay instanceof WalkontableOverlay && this.rightOverlay instanceof WalkontableOverlay && typeof WalkontableBottomRightCornerOverlay !== 'undefined') {
+    this.bottomRightCornerOverlay = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER, this.wot);
+  } else {
+    this.bottomRightCornerOverlay = {needFullRender: false};
   }
   if (this.wot.getSetting('debug')) {
     this.debug = WalkontableOverlay.createOverlay(WalkontableOverlay.CLONE_DEBUG, this.wot);
@@ -2131,6 +2784,10 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
       left: 0
     },
     left: {
+      top: 0,
+      left: null
+    },
+    right: {
       top: 0,
       left: null
     }
@@ -2197,6 +2854,14 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
         return $__3.onTableScroll(event);
       }));
     }
+    if (this.rightOverlay.needFullRender) {
+      this.eventManager.addEventListener(this.rightOverlay.clone.wtTable.holder, 'scroll', (function(event) {
+        return $__3.onTableScroll(event);
+      }));
+      this.eventManager.addEventListener(this.rightOverlay.clone.wtTable.holder, 'wheel', (function(event) {
+        return $__3.onTableScroll(event);
+      }));
+    }
     if (this.topOverlay.trimmingContainer !== window && this.leftOverlay.trimmingContainer !== window) {
       this.eventManager.addEventListener(window, 'wheel', (function(event) {
         var overlay;
@@ -2207,6 +2872,8 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
         } else if ($__3.bottomOverlay.clone && $__3.bottomOverlay.clone.wtTable.holder.contains(event.realTarget)) {
           overlay = 'bottom';
         } else if ($__3.leftOverlay.clone.wtTable.holder.contains(event.realTarget)) {
+          overlay = 'left';
+        } else if ($__3.rightOverlay.clone.wtTable.holder.contains(event.realTarget)) {
           overlay = 'left';
         }
         if (overlay == 'top' && deltaY !== 0) {
@@ -2242,6 +2909,7 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
     var topOverlay = this.topOverlay.clone.wtTable.holder;
     var bottomOverlay = this.bottomOverlay.clone ? this.bottomOverlay.clone.wtTable.holder : null;
     var leftOverlay = this.leftOverlay.clone.wtTable.holder;
+    var rightOverlay = this.rightOverlay.clone ? this.rightOverlay.clone.wtTable.holder : null;
     var eventMockup = {type: 'wheel'};
     var tempElem = event.target;
     var deltaY = event.wheelDeltaY || (-1) * event.deltaY;
@@ -2260,6 +2928,8 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
     } else if (parentHolder == bottomOverlay) {
       this.syncScrollPositions(eventMockup, (-0.2) * deltaY);
     } else if (parentHolder == leftOverlay) {
+      this.syncScrollPositions(eventMockup, (-0.2) * deltaX);
+    } else if (parentHolder == rightOverlay) {
       this.syncScrollPositions(eventMockup, (-0.2) * deltaX);
     }
     return false;
@@ -2281,6 +2951,7 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
     var leftOverlay;
     var bottomOverlay;
     var delegatedScroll = false;
+    var rightOverlay;
     if (this.topOverlay.needFullRender) {
       topOverlay = this.topOverlay.clone.wtTable.holder;
     }
@@ -2289,6 +2960,9 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
     }
     if (this.leftOverlay.needFullRender) {
       leftOverlay = this.leftOverlay.clone.wtTable.holder;
+    }
+    if (this.rightOverlay.needFullRender) {
+      rightOverlay = this.rightOverlay.clone.wtTable.holder;
     }
     if (target === document) {
       target = window;
@@ -2316,6 +2990,9 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
         if (leftOverlay) {
           leftOverlay.scrollTop = tempScrollValue;
           delegatedScroll = (this.mainTableScrollableElement !== window);
+        }
+        if (rightOverlay) {
+          rightOverlay.scrollTop = tempScrollValue;
         }
       }
     } else if (target === bottomOverlay) {
@@ -2354,6 +3031,17 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
         scrollValueChanged = true;
         master.scrollLeft += fakeScrollValue;
       }
+    } else if (target === rightOverlay) {
+      tempScrollValue = getScrollTop(target);
+      if (this.overlayScrollPositions.right.top !== tempScrollValue) {
+        this.overlayScrollPositions.right.top = tempScrollValue;
+        scrollValueChanged = true;
+        master.scrollTop = tempScrollValue;
+      }
+      if (fakeScrollValue !== null) {
+        scrollValueChanged = true;
+        master.scrollLeft += fakeScrollValue;
+      }
     }
     if (!this.keyPressed && scrollValueChanged && event.type === 'scroll') {
       if (this.delegatedScrollCallback) {
@@ -2382,11 +3070,20 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
       this.bottomOverlay.destroy();
     }
     this.leftOverlay.destroy();
+    if (this.rightOverlay.clone) {
+      this.rightOverlay.destroy();
+    }
     if (this.topLeftCornerOverlay) {
       this.topLeftCornerOverlay.destroy();
     }
     if (this.bottomLeftCornerOverlay && this.bottomLeftCornerOverlay.clone) {
       this.bottomLeftCornerOverlay.destroy();
+    }
+    if (this.topRightCornerOverlay && this.topRightCornerOverlay.clone) {
+      this.topRightCornerOverlay.destroy();
+    }
+    if (this.bottomRightCornerOverlay && this.bottomRightCornerOverlay.clone) {
+      this.bottomRightCornerOverlay.destroy();
     }
     if (this.debug) {
       this.debug.destroy();
@@ -2410,11 +3107,20 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
     }
     this.leftOverlay.refresh(fastDraw);
     this.topOverlay.refresh(fastDraw);
+    if (this.rightOverlay.clone) {
+      this.rightOverlay.refresh(fastDraw);
+    }
     if (this.topLeftCornerOverlay) {
       this.topLeftCornerOverlay.refresh(fastDraw);
     }
     if (this.bottomLeftCornerOverlay && this.bottomLeftCornerOverlay.clone) {
       this.bottomLeftCornerOverlay.refresh(fastDraw);
+    }
+    if (this.topRightCornerOverlay && this.topRightCornerOverlay.clone) {
+      this.topRightCornerOverlay.refresh(fastDraw);
+    }
+    if (this.bottomRightCornerOverlay && this.bottomRightCornerOverlay.clone) {
+      this.bottomRightCornerOverlay.refresh(fastDraw);
     }
     if (this.debug) {
       this.debug.refresh(fastDraw);
@@ -2434,6 +3140,9 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
     if (this.bottomOverlay.clone) {
       this.bottomOverlay.adjustElementsSize(force);
     }
+    if (this.rightOverlay.clone) {
+      this.rightOverlay.adjustElementsSize(force);
+    }
   },
   applyToDOM: function() {
     if (!this.topOverlay.areElementSizesAdjusted || !this.leftOverlay.areElementSizesAdjusted) {
@@ -2444,13 +3153,16 @@ var WalkontableOverlays = function WalkontableOverlays(wotInstance) {
       this.bottomOverlay.applyToDOM();
     }
     this.leftOverlay.applyToDOM();
+    if (this.rightOverlay.clone) {
+      this.rightOverlay.applyToDOM();
+    }
   }
 }, {});
 ;
 window.WalkontableOverlays = WalkontableOverlays;
 
 //# 
-},{"eventManager":41,"helpers/dom/element":45,"helpers/unicode":53}],17:[function(require,module,exports){
+},{"eventManager":46,"helpers/dom/element":50,"helpers/unicode":58}],22:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableScroll: {get: function() {
@@ -2471,6 +3183,7 @@ var WalkontableScroll = function WalkontableScroll(wotInstance) {
     var fixedRowsTop = this.instance.getSetting('fixedRowsTop');
     var fixedRowsBottom = this.instance.getSetting('fixedRowsBottom');
     var fixedColumnsLeft = this.instance.getSetting('fixedColumnsLeft');
+    var fixedColumnsRight = this.instance.getSetting('fixedColumnsRight');
     if (coords.row < 0 || coords.row > totalRows - 1) {
       throw new Error('row ' + coords.row + ' does not exist');
     }
@@ -2482,7 +3195,7 @@ var WalkontableScroll = function WalkontableScroll(wotInstance) {
     } else if (coords.row >= fixedRowsTop && coords.row < this.instance.wtTable.getFirstVisibleRow()) {
       this.wot.wtOverlays.topOverlay.scrollTo(coords.row);
     }
-    if (coords.col > this.instance.wtTable.getLastVisibleColumn()) {
+    if (coords.col > this.instance.wtTable.getLastVisibleColumn() && coords.col < totalColumns - fixedColumnsRight) {
       this.wot.wtOverlays.leftOverlay.scrollTo(coords.col, true);
     } else if (coords.col >= fixedColumnsLeft && coords.col < this.instance.wtTable.getFirstVisibleColumn()) {
       this.wot.wtOverlays.leftOverlay.scrollTo(coords.col);
@@ -2492,7 +3205,7 @@ var WalkontableScroll = function WalkontableScroll(wotInstance) {
 window.WalkontableScroll = WalkontableScroll;
 
 //# 
-},{}],18:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableSelection: {get: function() {
@@ -2620,7 +3333,7 @@ var WalkontableSelection = function WalkontableSelection(settings, cellRange) {
 window.WalkontableSelection = WalkontableSelection;
 
 //# 
-},{"border":2,"cell/coords":5,"cell/range":6,"helpers/dom/element":45}],19:[function(require,module,exports){
+},{"border":2,"cell/coords":5,"cell/range":6,"helpers/dom/element":50}],24:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableSettings: {get: function() {
@@ -2643,6 +3356,7 @@ var WalkontableSettings = function WalkontableSettings(wotInstance, settings) {
     currentColumnClassName: null,
     data: void 0,
     fixedColumnsLeft: 0,
+    fixedColumnsRight: 0,
     fixedRowsTop: 0,
     fixedRowsBottom: 0,
     minSpareRows: 0,
@@ -2730,7 +3444,7 @@ var WalkontableSettings = function WalkontableSettings(wotInstance, settings) {
 window.WalkontableSettings = WalkontableSettings;
 
 //# 
-},{"helpers/dom/element":45}],20:[function(require,module,exports){
+},{"helpers/dom/element":50}],25:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableTable: {get: function() {
@@ -2864,6 +3578,7 @@ var WalkontableTable = function WalkontableTable(wotInstance, table) {
   },
   draw: function(fastDraw) {
     var totalRows = this.instance.getSetting('totalRows');
+    var totalColumns = this.instance.getSetting('totalColumns');
     if (!this.isWorkingOnClone()) {
       this.holderOffset = offset(this.holder);
       fastDraw = this.wot.wtViewport.createRenderCalculators(fastDraw);
@@ -2882,21 +3597,27 @@ var WalkontableTable = function WalkontableTable(wotInstance, table) {
         this.tableOffset = offset(this.TABLE);
       }
       var startRow;
-      if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_DEBUG) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_LEFT_CORNER)) {
+      var numColumnHeaders = this.wot.getSetting('columnHeaders').length;
+      var numRowHeaders = this.wot.getSetting('rowHeaders').length;
+      if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_DEBUG) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_LEFT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_RIGHT_CORNER)) {
         startRow = 0;
-      } else if (WalkontableOverlay.isOverlayTypeOf(this.instance.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM) || WalkontableOverlay.isOverlayTypeOf(this.instance.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER)) {
+      } else if (WalkontableOverlay.isOverlayTypeOf(this.instance.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM) || WalkontableOverlay.isOverlayTypeOf(this.instance.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.instance.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER)) {
         startRow = totalRows - this.wot.getSetting('fixedRowsBottom');
+        numColumnHeaders = 0;
       } else {
         startRow = this.wot.wtViewport.rowsRenderCalculator.startRow;
       }
       var startColumn;
       if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_DEBUG) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_LEFT) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_LEFT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER)) {
         startColumn = 0;
+      } else if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_RIGHT) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_RIGHT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER)) {
+        startColumn = totalColumns - this.wot.getSetting('fixedColumnsRight');
+        numRowHeaders = 0;
       } else {
         startColumn = this.wot.wtViewport.columnsRenderCalculator.startColumn;
       }
-      this.rowFilter = new WalkontableRowFilter(startRow, totalRows, this.wot.getSetting('columnHeaders').length);
-      this.columnFilter = new WalkontableColumnFilter(startColumn, this.wot.getSetting('totalColumns'), this.wot.getSetting('rowHeaders').length);
+      this.rowFilter = new WalkontableRowFilter(startRow, totalRows, numColumnHeaders);
+      this.columnFilter = new WalkontableColumnFilter(startColumn, totalColumns, numRowHeaders);
       this._doDraw();
       this.alignOverlaysWithTrimmingContainer();
     }
@@ -2907,11 +3628,20 @@ var WalkontableTable = function WalkontableTable(wotInstance, table) {
         this.wot.wtOverlays.bottomOverlay.resetFixedPosition();
       }
       this.wot.wtOverlays.leftOverlay.resetFixedPosition();
+      if (this.wot.wtOverlays.rightOverlay.clone) {
+        this.wot.wtOverlays.rightOverlay.resetFixedPosition();
+      }
       if (this.wot.wtOverlays.topLeftCornerOverlay) {
         this.wot.wtOverlays.topLeftCornerOverlay.resetFixedPosition();
       }
       if (this.instance.wtOverlays.bottomLeftCornerOverlay && this.instance.wtOverlays.bottomLeftCornerOverlay.clone) {
         this.wot.wtOverlays.bottomLeftCornerOverlay.resetFixedPosition();
+      }
+      if (this.instance.wtOverlays.topRightCornerOverlay && this.instance.wtOverlays.topRightCornerOverlay.clone) {
+        this.wot.wtOverlays.topRightCornerOverlay.resetFixedPosition();
+      }
+      if (this.instance.wtOverlays.bottomRightCornerOverlay && this.instance.wtOverlays.bottomRightCornerOverlay.clone) {
+        this.wot.wtOverlays.bottomRightCornerOverlay.resetFixedPosition();
       }
     }
     this.wot.drawn = true;
@@ -3041,6 +3771,8 @@ var WalkontableTable = function WalkontableTable(wotInstance, table) {
       return this.wot.getSetting('totalColumns');
     } else if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_LEFT) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_LEFT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER)) {
       return this.wot.getSetting('fixedColumnsLeft');
+    } else if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_RIGHT) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_RIGHT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER)) {
+      return this.wot.getSetting('fixedColumnsRight');
     } else {
       return this.wot.wtViewport.columnsRenderCalculator.count;
     }
@@ -3048,9 +3780,9 @@ var WalkontableTable = function WalkontableTable(wotInstance, table) {
   getRenderedRowsCount: function() {
     if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_DEBUG)) {
       return this.wot.getSetting('totalRows');
-    } else if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_LEFT_CORNER)) {
+    } else if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_LEFT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_RIGHT_CORNER)) {
       return this.wot.getSetting('fixedRowsTop');
-    } else if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER)) {
+    } else if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER)) {
       return this.instance.getSetting('fixedRowsBottom');
     }
     return this.wot.wtViewport.rowsRenderCalculator.count;
@@ -3109,7 +3841,7 @@ var WalkontableTable = function WalkontableTable(wotInstance, table) {
 window.WalkontableTable = WalkontableTable;
 
 //# 
-},{"cell/coords":5,"cell/range":6,"filter/column":9,"filter/row":10,"helpers/dom/element":45,"tableRenderer":21}],21:[function(require,module,exports){
+},{"cell/coords":5,"cell/range":6,"filter/column":9,"filter/row":10,"helpers/dom/element":50,"tableRenderer":26}],26:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableTableRenderer: {get: function() {
@@ -3158,9 +3890,13 @@ var WalkontableTableRenderer = function WalkontableTableRenderer(wtTable) {
     var totalRows = this.wot.getSetting('totalRows');
     var workspaceWidth;
     var adjusted = false;
-    if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER)) {
+    if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_LEFT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER)) {
       this.columnHeaders = [];
       this.columnHeaderCount = 0;
+    }
+    if (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_RIGHT) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_RIGHT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER)) {
+      this.rowHeaders = [];
+      this.rowHeaderCount = 0;
     }
     if (totalColumns > 0) {
       this.adjustAvailableNodes();
@@ -3191,6 +3927,9 @@ var WalkontableTableRenderer = function WalkontableTableRenderer(wtTable) {
         for (var i = firstRendered; i < lastRendered; i++) {
           var width = this.wtTable.getStretchedColumnWidth(i);
           var renderedIndex = this.columnFilter.sourceToRendered(i);
+          if (renderedIndex + this.rowHeaderCount === 0 && (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_RIGHT) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_RIGHT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER))) {
+            ++width;
+          }
           this.COLGROUP.childNodes[renderedIndex + this.rowHeaderCount].style.width = width + 'px';
         }
       }
@@ -3358,6 +4097,9 @@ var WalkontableTableRenderer = function WalkontableTableRenderer(wtTable) {
     this.wot.wtViewport.columnsRenderCalculator.refreshStretching(this.wot.wtViewport.getViewportWidth() - scrollbarCompensation);
     for (var renderedColIndex = 0; renderedColIndex < columnsToRender; renderedColIndex++) {
       var width = this.wtTable.getStretchedColumnWidth(this.columnFilter.renderedToSource(renderedColIndex));
+      if (renderedColIndex + this.rowHeaderCount === 0 && (WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_RIGHT) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_TOP_RIGHT_CORNER) || WalkontableOverlay.isOverlayTypeOf(this.wot.cloneOverlay, WalkontableOverlay.CLONE_BOTTOM_RIGHT_CORNER))) {
+        ++width;
+      }
       this.COLGROUP.childNodes[renderedColIndex + this.rowHeaderCount].style.width = width + 'px';
     }
   },
@@ -3511,7 +4253,7 @@ function replaceThWithTd(TH, TR) {
 window.WalkontableTableRenderer = WalkontableTableRenderer;
 
 //# 
-},{"helpers/dom/element":45}],22:[function(require,module,exports){
+},{"helpers/dom/element":50}],27:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   WalkontableViewport: {get: function() {
@@ -3730,21 +4472,31 @@ var WalkontableViewport = function WalkontableViewport(wotInstance) {
     var width = this.getViewportWidth();
     var pos;
     var fixedColumnsLeft;
+    var fixedColumnsRight;
+    var fixedColumnsWidth;
+    var totalRows;
+    var totalColumns;
     this.columnHeaderHeight = NaN;
     pos = this.wot.wtOverlays.leftOverlay.getScrollPosition() - this.wot.wtOverlays.leftOverlay.getTableParentOffset();
     if (pos < 0) {
       pos = 0;
     }
     fixedColumnsLeft = this.wot.getSetting('fixedColumnsLeft');
+    fixedColumnsRight = this.wot.getSetting('fixedColumnsRight');
+    totalColumns = this.wot.getSetting('totalColumns');
     if (fixedColumnsLeft) {
-      var fixedColumnsWidth = this.wot.wtOverlays.leftOverlay.sumCellSizes(0, fixedColumnsLeft);
+      fixedColumnsWidth = this.wot.wtOverlays.leftOverlay.sumCellSizes(0, fixedColumnsLeft);
       pos += fixedColumnsWidth;
+      width -= fixedColumnsWidth;
+    }
+    if (fixedColumnsRight && this.wot.wtOverlays.rightOverlay.clone) {
+      fixedColumnsWidth = this.wot.wtOverlays.rightOverlay.sumCellSizes(totalColumns - fixedColumnsRight, totalColumns);
       width -= fixedColumnsWidth;
     }
     if (this.wot.wtTable.holder.clientWidth !== this.wot.wtTable.holder.offsetWidth) {
       width -= getScrollbarWidth();
     }
-    return new WalkontableViewportColumnsCalculator(width, pos, this.wot.getSetting('totalColumns'), (function(sourceCol) {
+    return new WalkontableViewportColumnsCalculator(width, pos, totalColumns, (function(sourceCol) {
       return $__4.wot.wtTable.getColumnWidth(sourceCol);
     }), visible ? null : this.wot.wtSettings.settings.viewportColumnCalculatorOverride, visible, this.wot.getSetting('stretchH'));
   },
@@ -3798,7 +4550,7 @@ var WalkontableViewport = function WalkontableViewport(wotInstance) {
 window.WalkontableViewport = WalkontableViewport;
 
 //# 
-},{"calculator/viewportColumns":3,"calculator/viewportRows":4,"eventManager":41,"helpers/dom/element":45}],23:[function(require,module,exports){
+},{"calculator/viewportColumns":3,"calculator/viewportRows":4,"eventManager":46,"helpers/dom/element":50}],28:[function(require,module,exports){
 "use strict";
 var $__shims_47_classes__,
     $__es6collections__,
@@ -3848,7 +4600,7 @@ var domHelpers = ($__helpers_47_dom_47_element__ = require("helpers/dom/element"
 var domEventHelpers = ($__helpers_47_dom_47_event__ = require("helpers/dom/event"), $__helpers_47_dom_47_event__ && $__helpers_47_dom_47_event__.__esModule && $__helpers_47_dom_47_event__ || {default: $__helpers_47_dom_47_event__});
 var HELPERS = [arrayHelpers, browserHelpers, dataHelpers, functionHelpers, mixedHelpers, numberHelpers, objectHelpers, settingHelpers, stringHelpers, unicodeHelpers];
 var DOM = [domHelpers, domEventHelpers];
-Handsontable.buildDate = 'Fri Dec 04 2015 11:56:12 GMT+0100 (CET)';
+Handsontable.buildDate = 'Thu Mar 24 2016 11:57:42 GMT+0100 (CET)';
 Handsontable.packageName = 'handsontable';
 Handsontable.version = '0.20.2';
 var baseVersion = '@@baseVersion';
@@ -3875,7 +4627,7 @@ arrayHelpers.arrayEach(DOM, (function(helper) {
 }));
 
 //# 
-},{"cellTypes":24,"core":25,"es6collections":"es6collections","helpers/array":42,"helpers/browser":43,"helpers/data":44,"helpers/dom/element":45,"helpers/dom/event":46,"helpers/function":47,"helpers/mixed":48,"helpers/number":49,"helpers/object":50,"helpers/setting":51,"helpers/string":52,"helpers/unicode":53,"pluginHooks":56,"plugins/jqueryHandsontable":1,"renderers/_cellDecorator":89,"shims/classes":96}],24:[function(require,module,exports){
+},{"cellTypes":29,"core":30,"es6collections":"es6collections","helpers/array":47,"helpers/browser":48,"helpers/data":49,"helpers/dom/element":50,"helpers/dom/event":51,"helpers/function":52,"helpers/mixed":53,"helpers/number":54,"helpers/object":55,"helpers/setting":56,"helpers/string":57,"helpers/unicode":58,"pluginHooks":61,"plugins/jqueryHandsontable":1,"renderers/_cellDecorator":94,"shims/classes":101}],29:[function(require,module,exports){
 "use strict";
 var $__helpers_47_browser__,
     $__editors__,
@@ -3976,7 +4728,7 @@ Handsontable.cellLookup = {validator: {
   }};
 
 //# 
-},{"editors":29,"editors/autocompleteEditor":31,"editors/checkboxEditor":32,"editors/dateEditor":33,"editors/dropdownEditor":34,"editors/handsontableEditor":35,"editors/mobileTextEditor":36,"editors/numericEditor":37,"editors/passwordEditor":38,"editors/selectEditor":39,"editors/textEditor":40,"helpers/browser":43,"renderers":88,"renderers/autocompleteRenderer":90,"renderers/checkboxRenderer":91,"renderers/htmlRenderer":92,"renderers/numericRenderer":93,"renderers/passwordRenderer":94,"renderers/textRenderer":95,"validators/autocompleteValidator":100,"validators/dateValidator":101,"validators/numericValidator":102}],25:[function(require,module,exports){
+},{"editors":34,"editors/autocompleteEditor":36,"editors/checkboxEditor":37,"editors/dateEditor":38,"editors/dropdownEditor":39,"editors/handsontableEditor":40,"editors/mobileTextEditor":41,"editors/numericEditor":42,"editors/passwordEditor":43,"editors/selectEditor":44,"editors/textEditor":45,"helpers/browser":48,"renderers":93,"renderers/autocompleteRenderer":95,"renderers/checkboxRenderer":96,"renderers/htmlRenderer":97,"renderers/numericRenderer":98,"renderers/passwordRenderer":99,"renderers/textRenderer":100,"validators/autocompleteValidator":105,"validators/dateValidator":106,"validators/numericValidator":107}],30:[function(require,module,exports){
 "use strict";
 var $__numeral__,
     $__helpers_47_dom_47_element__,
@@ -4122,6 +4874,10 @@ Handsontable.Core = function Core(rootElement, userSettings) {
           var fixedColumnsLeft = instance.getSettings().fixedColumnsLeft;
           if (fixedColumnsLeft >= index + 1) {
             instance.getSettings().fixedColumnsLeft -= Math.min(amount, fixedColumnsLeft - index);
+          }
+          var fixedColumnsRight = instance.getSettings().fixedColumnsRight;
+          if (fixedColumnsRight >= index + 1) {
+            instance.getSettings().fixedColumnsRight -= Math.min(amount, fixedColumnsRight - index);
           }
           if (Array.isArray(instance.getSettings().colHeaders)) {
             if (typeof index == 'undefined') {
@@ -5600,6 +6356,7 @@ DefaultSettings.prototype = {
   fixedRowsTop: 0,
   fixedRowsBottom: 0,
   fixedColumnsLeft: 0,
+  fixedColumnsRight: 0,
   outsideClickDeselects: true,
   enterBeginsEditing: true,
   enterMoves: {
@@ -5708,7 +6465,7 @@ DefaultSettings.prototype = {
 Handsontable.DefaultSettings = DefaultSettings;
 
 //# 
-},{"3rdparty/walkontable/src/calculator/viewportColumns":3,"3rdparty/walkontable/src/cell/coords":5,"3rdparty/walkontable/src/cell/range":6,"3rdparty/walkontable/src/selection":18,"dataMap":26,"dataSource":27,"editorManager":28,"eventManager":41,"helpers/array":42,"helpers/data":44,"helpers/dom/element":45,"helpers/number":49,"helpers/object":50,"helpers/setting":51,"helpers/string":52,"numeral":"numeral","plugins":57,"renderers":88,"tableView":97}],26:[function(require,module,exports){
+},{"3rdparty/walkontable/src/calculator/viewportColumns":3,"3rdparty/walkontable/src/cell/coords":5,"3rdparty/walkontable/src/cell/range":6,"3rdparty/walkontable/src/selection":23,"dataMap":31,"dataSource":32,"editorManager":33,"eventManager":46,"helpers/array":47,"helpers/data":49,"helpers/dom/element":50,"helpers/number":54,"helpers/object":55,"helpers/setting":56,"helpers/string":57,"numeral":"numeral","plugins":62,"renderers":93,"tableView":102}],31:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   DataMap: {get: function() {
@@ -6106,7 +6863,7 @@ DataMap.prototype.getCopyableText = function(start, end) {
 Handsontable.DataMap = DataMap;
 
 //# 
-},{"SheetClip":"SheetClip","helpers/array":42,"helpers/data":44,"helpers/number":49,"helpers/object":50,"helpers/setting":51,"multiMap":55}],27:[function(require,module,exports){
+},{"SheetClip":"SheetClip","helpers/array":47,"helpers/data":49,"helpers/number":54,"helpers/object":55,"helpers/setting":56,"multiMap":60}],32:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   DataSource: {get: function() {
@@ -6191,7 +6948,7 @@ var DataSource = function DataSource(hotInstance, dataSource) {
 ;
 
 //# 
-},{"helpers/array":42,"helpers/data":44,"helpers/number":49,"helpers/object":50,"helpers/setting":51}],28:[function(require,module,exports){
+},{"helpers/array":47,"helpers/data":49,"helpers/number":54,"helpers/object":55,"helpers/setting":56}],33:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   EditorManager: {get: function() {
@@ -6487,7 +7244,7 @@ function EditorManager(instance, priv, selection) {
 }
 
 //# 
-},{"3rdparty/walkontable/src/cell/coords":5,"editors":29,"eventManager":41,"helpers/dom/event":46,"helpers/unicode":53}],29:[function(require,module,exports){
+},{"3rdparty/walkontable/src/cell/coords":5,"editors":34,"eventManager":46,"helpers/dom/event":51,"helpers/unicode":58}],34:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   registerEditor: {get: function() {
@@ -6569,7 +7326,7 @@ function hasEditor(editorName) {
 }
 
 //# 
-},{"helpers/string":52}],30:[function(require,module,exports){
+},{"helpers/string":57}],35:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   BaseEditor: {get: function() {
@@ -6759,29 +7516,31 @@ BaseEditor.prototype.isWaiting = function() {
 };
 BaseEditor.prototype.checkEditorSection = function() {
   var totalRows = this.instance.countRows();
-  var section = '';
+  var totalColumns = this.instance.countCols();
+  var vsection;
+  var hsection;
   if (this.row < this.instance.getSettings().fixedRowsTop) {
-    if (this.col < this.instance.getSettings().fixedColumnsLeft) {
-      section = 'top-left-corner';
-    } else {
-      section = 'top';
-    }
+    vsection = 'top';
   } else if (this.instance.getSettings().fixedRowsBottom && this.row >= totalRows - this.instance.getSettings().fixedRowsBottom) {
-    if (this.col < this.instance.getSettings().fixedColumnsLeft) {
-      section = 'bottom-left-corner';
-    } else {
-      section = 'bottom';
-    }
-  } else {
-    if (this.col < this.instance.getSettings().fixedColumnsLeft) {
-      section = 'left';
-    }
+    vsection = 'bottom';
   }
-  return section;
+  if (this.col < this.instance.getSettings().fixedColumnsLeft) {
+    hsection = 'left';
+  } else if (this.instance.getSettings().fixedColumnsRight && this.col >= totalColumns - this.instance.getSettings().fixedColumnsRight) {
+    hsection = 'right';
+  }
+  if (hsection && vsection) {
+    if (hsection === 'right') {
+      return hsection;
+    }
+    return vsection + '-' + hsection + '-corner';
+  } else {
+    return vsection || hsection || '';
+  }
 };
 
 //# 
-},{"3rdparty/walkontable/src/cell/coords":5,"helpers/mixed":48}],31:[function(require,module,exports){
+},{"3rdparty/walkontable/src/cell/coords":5,"helpers/mixed":53}],36:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   AutocompleteEditor: {get: function() {
@@ -7045,7 +7804,7 @@ AutocompleteEditor.prototype.allowKeyEventPropagation = function(keyCode) {
 registerEditor('autocomplete', AutocompleteEditor);
 
 //# 
-},{"editors":29,"handsontableEditor":35,"helpers/array":42,"helpers/dom/element":45,"helpers/mixed":48,"helpers/unicode":53}],32:[function(require,module,exports){
+},{"editors":34,"handsontableEditor":40,"helpers/array":47,"helpers/dom/element":50,"helpers/mixed":53,"helpers/unicode":58}],37:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   CheckboxEditor: {get: function() {
@@ -7082,7 +7841,7 @@ var $CheckboxEditor = CheckboxEditor;
 registerEditor('checkbox', CheckboxEditor);
 
 //# 
-},{"_baseEditor":30,"editors":29,"helpers/dom/element":45}],33:[function(require,module,exports){
+},{"_baseEditor":35,"editors":34,"helpers/dom/element":50}],38:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   DateEditor: {get: function() {
@@ -7269,7 +8028,7 @@ var $DateEditor = DateEditor;
 registerEditor('date', DateEditor);
 
 //# 
-},{"editors":29,"eventManager":41,"helpers/dom/element":45,"helpers/dom/event":46,"helpers/object":50,"helpers/unicode":53,"moment":"moment","pikaday":"pikaday","textEditor":40}],34:[function(require,module,exports){
+},{"editors":34,"eventManager":46,"helpers/dom/element":50,"helpers/dom/event":51,"helpers/object":55,"helpers/unicode":58,"moment":"moment","pikaday":"pikaday","textEditor":45}],39:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   DropdownEditor: {get: function() {
@@ -7305,7 +8064,7 @@ Handsontable.hooks.add('beforeValidate', function(value, row, col, source) {
 registerEditor('dropdown', DropdownEditor);
 
 //# 
-},{"autocompleteEditor":31,"editors":29}],35:[function(require,module,exports){
+},{"autocompleteEditor":36,"editors":34}],40:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   HandsontableEditor: {get: function() {
@@ -7456,7 +8215,7 @@ HandsontableEditor.prototype.assignHooks = function() {
 registerEditor('handsontable', HandsontableEditor);
 
 //# 
-},{"editors":29,"helpers/dom/element":45,"helpers/dom/event":46,"helpers/object":50,"helpers/unicode":53,"textEditor":40}],36:[function(require,module,exports){
+},{"editors":34,"helpers/dom/element":50,"helpers/dom/event":51,"helpers/object":55,"helpers/unicode":58,"textEditor":45}],41:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   MobileTextEditor: {get: function() {
@@ -7715,7 +8474,7 @@ MobileTextEditor.prototype.destroy = function() {
 registerEditor('mobile', MobileTextEditor);
 
 //# 
-},{"_baseEditor":30,"editors":29,"eventManager":41,"helpers/dom/element":45,"helpers/dom/event":46,"helpers/unicode":53}],37:[function(require,module,exports){
+},{"_baseEditor":35,"editors":34,"eventManager":46,"helpers/dom/element":50,"helpers/dom/event":51,"helpers/unicode":58}],42:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   NumericEditor: {get: function() {
@@ -7749,7 +8508,7 @@ var $NumericEditor = NumericEditor;
 registerEditor('numeric', NumericEditor);
 
 //# 
-},{"editors":29,"numeral":"numeral","textEditor":40}],38:[function(require,module,exports){
+},{"editors":34,"numeral":"numeral","textEditor":45}],43:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   PasswordEditor: {get: function() {
@@ -7784,7 +8543,7 @@ var $PasswordEditor = PasswordEditor;
 registerEditor('password', PasswordEditor);
 
 //# 
-},{"editors":29,"helpers/dom/element":45,"textEditor":40}],39:[function(require,module,exports){
+},{"editors":34,"helpers/dom/element":50,"textEditor":45}],44:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   SelectEditor: {get: function() {
@@ -7944,8 +8703,17 @@ SelectEditor.prototype.refreshDimensions = function() {
     case 'bottom-left-corner':
       cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.bottomLeftCornerOverlay.clone.wtTable.holder.parentNode);
       break;
+    case 'top-right-corner':
+      cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.topRightCornerOverlay.clone.wtTable.holder.parentNode);
+      break;
+    case 'bottom-right-corner':
+      cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.bottomRightCornerOverlay.clone.wtTable.holder.parentNode);
+      break;
     case 'bottom':
       cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.bottomOverlay.clone.wtTable.holder.parentNode);
+      break;
+    case 'right':
+      cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.rightOverlay.clone.wtTable.holder.parentNode);
       break;
   }
   if (this.instance.getSelected()[0] === 0) {
@@ -8009,7 +8777,7 @@ SelectEditor.prototype.getEditedCell = function() {
 registerEditor('select', SelectEditor);
 
 //# 
-},{"_baseEditor":30,"editors":29,"helpers/dom/element":45,"helpers/dom/event":46,"helpers/unicode":53}],40:[function(require,module,exports){
+},{"_baseEditor":35,"editors":34,"helpers/dom/element":50,"helpers/dom/event":51,"helpers/unicode":58}],45:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   TextEditor: {get: function() {
@@ -8193,6 +8961,20 @@ TextEditor.prototype.getEditedCell = function() {
       });
       this.textareaParentStyle.zIndex = 103;
       break;
+    case 'top-right-corner':
+      editedCell = this.instance.view.wt.wtOverlays.topRightCornerOverlay.clone.wtTable.getCell({
+        row: this.row,
+        col: this.col
+      });
+      this.textareaParentStyle.zIndex = 103;
+      break;
+    case 'bottom-right-corner':
+      editedCell = this.instance.view.wt.wtOverlays.bottomRightCornerOverlay.clone.wtTable.getCell({
+        row: this.row,
+        col: this.col
+      });
+      this.textareaParentStyle.zIndex = 103;
+      break;
     case 'left':
       editedCell = this.instance.view.wt.wtOverlays.leftOverlay.clone.wtTable.getCell({
         row: this.row,
@@ -8202,6 +8984,13 @@ TextEditor.prototype.getEditedCell = function() {
       break;
     case 'bottom':
       editedCell = this.instance.view.wt.wtOverlays.bottomOverlay.clone.wtTable.getCell({
+        row: this.row,
+        col: this.col
+      });
+      this.textareaParentStyle.zIndex = 102;
+      break;
+    case 'right':
+      editedCell = this.instance.view.wt.wtOverlays.rightOverlay.clone.wtTable.getCell({
         row: this.row,
         col: this.col
       });
@@ -8227,6 +9016,7 @@ TextEditor.prototype.refreshDimensions = function() {
       containerOffset = offset(this.instance.rootElement),
       scrollableContainer = getScrollableElement(this.TD),
       totalRowsCount = this.instance.countRows(),
+      totalColumnsCount = this.instance.countCols(),
       editTop = currentOffset.top - containerOffset.top - 1 - (scrollableContainer.scrollTop || 0),
       editLeft = currentOffset.left - containerOffset.left - 1 - (scrollableContainer.scrollLeft || 0),
       settings = this.instance.getSettings(),
@@ -8248,6 +9038,12 @@ TextEditor.prototype.refreshDimensions = function() {
     case 'bottom-left-corner':
       cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.bottomLeftCornerOverlay.clone.wtTable.holder.parentNode);
       break;
+    case 'top-right-corner':
+      cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.topRightCornerOverlay.clone.wtTable.holder.parentNode);
+      break;
+    case 'bottom-right-corner':
+      cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.bottomRightCornerOverlay.clone.wtTable.holder.parentNode);
+      break;
     case 'bottom':
       cssTransformOffset = getCssTransform(this.instance.view.wt.wtOverlays.bottomOverlay.clone.wtTable.holder.parentNode);
       break;
@@ -8255,7 +9051,7 @@ TextEditor.prototype.refreshDimensions = function() {
   if (colHeadersCount && this.instance.getSelected()[0] === 0 || (settings.fixedRowsBottom && this.instance.getSelected()[0] === totalRowsCount - settings.fixedRowsBottom)) {
     editTop += 1;
   }
-  if (this.instance.getSelected()[1] === 0) {
+  if (this.instance.getSelected()[1] === 0 || (settings.fixedColumnsRight && this.instance.getSelected()[1] === totalColumnsCount - settings.fixedColumnsRight)) {
     editLeft += 1;
   }
   if (cssTransformOffset && cssTransformOffset != -1) {
@@ -8317,7 +9113,7 @@ TextEditor.prototype.destroy = function() {
 registerEditor('text', TextEditor);
 
 //# 
-},{"_baseEditor":30,"autoResize":"autoResize","editors":29,"eventManager":41,"helpers/dom/element":45,"helpers/dom/event":46,"helpers/unicode":53}],41:[function(require,module,exports){
+},{"_baseEditor":35,"autoResize":"autoResize","editors":34,"eventManager":46,"helpers/dom/element":50,"helpers/dom/event":51,"helpers/unicode":58}],46:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   EventManager: {get: function() {
@@ -8514,7 +9310,7 @@ function eventManager(context) {
 }
 
 //# 
-},{"helpers/browser":43,"helpers/dom/element":45}],42:[function(require,module,exports){
+},{"helpers/browser":48,"helpers/dom/element":50}],47:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   to2dArray: {get: function() {
@@ -8673,7 +9469,7 @@ function arrayUnique(array) {
 }
 
 //# 
-},{}],43:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   isIE8: {get: function() {
@@ -8759,7 +9555,7 @@ function hasCaptionProblem() {
 }
 
 //# 
-},{}],44:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   spreadsheetColumnLabel: {get: function() {
@@ -8888,7 +9684,7 @@ function cellMethodLookupFactory(methodName, allowUndefined) {
 }
 
 //# 
-},{"object":50}],45:[function(require,module,exports){
+},{"object":55}],50:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   closest: {get: function() {
@@ -8954,6 +9750,9 @@ Object.defineProperties(exports, {
   getScrollLeft: {get: function() {
       return getScrollLeft;
     }},
+  hasVerticalScrollbar: {get: function() {
+      return hasVerticalScrollbar;
+    }},
   getScrollableElement: {get: function() {
       return getScrollableElement;
     }},
@@ -8998,6 +9797,9 @@ Object.defineProperties(exports, {
     }},
   getScrollbarWidth: {get: function() {
       return getScrollbarWidth;
+    }},
+  getScrollbarHeight: {get: function() {
+      return getScrollbarHeight;
     }},
   setOverlayPosition: {get: function() {
       return setOverlayPosition;
@@ -9330,6 +10132,9 @@ function getScrollLeft(element) {
     return element.scrollLeft;
   }
 }
+function hasVerticalScrollbar(element) {
+  return element.scrollHeight > element.clientHeight;
+}
 function getScrollableElement(element) {
   var el = element.parentNode,
       props = ['auto', 'scroll'],
@@ -9498,34 +10303,61 @@ function setCaretPosition(element, pos, endPos) {
   }
 }
 var cachedScrollbarWidth;
+var cachedScrollbarHeight;
 function walkontableCalculateScrollbarWidth() {
   var inner = document.createElement('p');
-  inner.style.width = '100%';
-  inner.style.height = '200px';
+  inner.style.width = "100%";
+  inner.style.height = "200px";
   var outer = document.createElement('div');
-  outer.style.position = 'absolute';
-  outer.style.top = '0px';
-  outer.style.left = '0px';
-  outer.style.visibility = 'hidden';
-  outer.style.width = '200px';
-  outer.style.height = '150px';
-  outer.style.overflow = 'hidden';
+  outer.style.position = "absolute";
+  outer.style.top = "0px";
+  outer.style.left = "0px";
+  outer.style.visibility = "hidden";
+  outer.style.width = "200px";
+  outer.style.height = "150px";
+  outer.style.overflow = "hidden";
   outer.appendChild(inner);
-  (document.body || document.documentElement).appendChild(outer);
+  document.body.appendChild(outer);
   var w1 = inner.offsetWidth;
   outer.style.overflow = 'scroll';
   var w2 = inner.offsetWidth;
-  if (w1 == w2) {
+  if (w1 == w2)
     w2 = outer.clientWidth;
-  }
-  (document.body || document.documentElement).removeChild(outer);
+  document.body.removeChild(outer);
   return (w1 - w2);
 }
+;
+function walkontableCalculateScrollbarHeight() {
+  var inner = document.createElement('div');
+  inner.style.width = "200px";
+  inner.style.height = "200px";
+  var outer = document.createElement('div');
+  outer.style.position = "absolute";
+  outer.style.top = "0px";
+  outer.style.left = "0px";
+  outer.style.visibility = "hidden";
+  outer.style.width = "150px";
+  outer.style.height = "150px";
+  outer.style.overflow = 'scroll';
+  outer.appendChild(inner);
+  document.body.appendChild(outer);
+  var w1 = outer.offsetHeight;
+  var w2 = outer.clientHeight;
+  document.body.removeChild(outer);
+  return (w1 - w2);
+}
+;
 function getScrollbarWidth() {
   if (cachedScrollbarWidth === void 0) {
     cachedScrollbarWidth = walkontableCalculateScrollbarWidth();
   }
   return cachedScrollbarWidth;
+}
+function getScrollbarHeight() {
+  if (cachedScrollbarHeight === void 0) {
+    cachedScrollbarHeight = walkontableCalculateScrollbarHeight();
+  }
+  return cachedScrollbarHeight;
 }
 function setOverlayPosition(overlayElem, left, top) {
   if (isIE8() || isIE9()) {
@@ -9592,7 +10424,7 @@ function cancelAnimationFrame(id) {
 }
 
 //# 
-},{"../browser":43}],46:[function(require,module,exports){
+},{"../browser":48}],51:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   stopImmediatePropagation: {get: function() {
@@ -9644,7 +10476,7 @@ function pageY(event) {
 }
 
 //# 
-},{}],47:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   proxy: {get: function() {
@@ -9717,7 +10549,7 @@ function throttleAfterHits(func) {
 }
 
 //# 
-},{}],48:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   stringify: {get: function() {
@@ -9745,7 +10577,7 @@ function stringify(value) {
 }
 
 //# 
-},{}],49:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   isNumeric: {get: function() {
@@ -9799,7 +10631,7 @@ function valueAccordingPercent(value, percent) {
 }
 
 //# 
-},{}],50:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   duckSchema: {get: function() {
@@ -10010,7 +10842,7 @@ function getProperty(object, name) {
 }
 
 //# 
-},{"array":42}],51:[function(require,module,exports){
+},{"array":47}],56:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   columnFactory: {get: function() {
@@ -10032,7 +10864,7 @@ function columnFactory(GridSettings, conflictList) {
 }
 
 //# 
-},{"object":50}],52:[function(require,module,exports){
+},{"object":55}],57:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   toUpperCaseFirst: {get: function() {
@@ -10147,7 +10979,7 @@ function padStart(string, maxLength) {
 ;
 
 //# 
-},{"mixed":48,"number":49}],53:[function(require,module,exports){
+},{"mixed":53,"number":54}],58:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   KEY_CODES: {get: function() {
@@ -10236,7 +11068,7 @@ function isKey(keyCode, baseCode) {
 }
 
 //# 
-},{"array":42}],54:[function(require,module,exports){
+},{"array":47}],59:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   localHooks: {get: function() {
@@ -10281,7 +11113,7 @@ Handsontable.utils = Handsontable.utils || {};
 Handsontable.utils.localHooks = localHooks;
 
 //# 
-},{"helpers/array":42,"helpers/object":50}],55:[function(require,module,exports){
+},{"helpers/array":47,"helpers/object":55}],60:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   MultiMap: {get: function() {
@@ -10333,7 +11165,7 @@ function MultiMap() {
 }
 
 //# 
-},{}],56:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   Hooks: {get: function() {
@@ -10484,7 +11316,7 @@ Handsontable.utils = Handsontable.utils || {};
 Handsontable.utils.Hooks = Hooks;
 
 //# 
-},{"helpers/array":42,"helpers/object":50}],57:[function(require,module,exports){
+},{"helpers/array":47,"helpers/object":55}],62:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   registerPlugin: {get: function() {
@@ -10559,7 +11391,7 @@ Handsontable.plugins.utils = Handsontable.plugins.utils || {};
 Handsontable.plugins.registerPlugin = registerPlugin;
 
 //# 
-},{"helpers/object":50,"helpers/string":52}],58:[function(require,module,exports){
+},{"helpers/object":55,"helpers/string":57}],63:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   default: {get: function() {
@@ -10692,7 +11524,7 @@ var $__default = BasePlugin;
 Handsontable.plugins.BasePlugin = BasePlugin;
 
 //# 
-},{"helpers/array":42,"helpers/object":50,"plugins":57}],59:[function(require,module,exports){
+},{"helpers/array":47,"helpers/object":55,"plugins":62}],64:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   AutoColumnSize: {get: function() {
@@ -10964,7 +11796,7 @@ var $AutoColumnSize = AutoColumnSize;
 registerPlugin('autoColumnSize', AutoColumnSize);
 
 //# 
-},{"3rdparty/walkontable/src/calculator/viewportColumns":3,"_base":58,"helpers/array":42,"helpers/dom/element":45,"helpers/number":49,"helpers/object":50,"helpers/string":52,"plugins":57,"utils/ghostTable":98,"utils/samplesGenerator":99}],60:[function(require,module,exports){
+},{"3rdparty/walkontable/src/calculator/viewportColumns":3,"_base":63,"helpers/array":47,"helpers/dom/element":50,"helpers/number":54,"helpers/object":55,"helpers/string":57,"plugins":62,"utils/ghostTable":103,"utils/samplesGenerator":104}],65:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   AutoRowSize: {get: function() {
@@ -11269,7 +12101,7 @@ var $AutoRowSize = AutoRowSize;
 registerPlugin('autoRowSize', AutoRowSize);
 
 //# 
-},{"_base":58,"helpers/array":42,"helpers/dom/element":45,"helpers/number":49,"helpers/object":50,"helpers/string":52,"plugins":57,"utils/ghostTable":98,"utils/samplesGenerator":99}],61:[function(require,module,exports){
+},{"_base":63,"helpers/array":47,"helpers/dom/element":50,"helpers/number":54,"helpers/object":55,"helpers/string":57,"plugins":62,"utils/ghostTable":103,"utils/samplesGenerator":104}],66:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   Autofill: {get: function() {
@@ -11520,7 +12352,7 @@ Handsontable.hooks.add('afterInit', function() {
 Handsontable.Autofill = Autofill;
 
 //# 
-},{"3rdparty/walkontable/src/cell/coords":5,"eventManager":41,"helpers/dom/element":45,"plugins":57}],62:[function(require,module,exports){
+},{"3rdparty/walkontable/src/cell/coords":5,"eventManager":46,"helpers/dom/element":50,"plugins":62}],67:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   ColumnSorting: {get: function() {
@@ -11887,7 +12719,7 @@ var $ColumnSorting = ColumnSorting;
 registerPlugin('columnSorting', ColumnSorting);
 
 //# 
-},{"_base":58,"eventManager":41,"helpers/array":42,"helpers/dom/element":45,"plugins":57}],63:[function(require,module,exports){
+},{"_base":63,"eventManager":46,"helpers/array":47,"helpers/dom/element":50,"plugins":62}],68:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   CommentEditor: {get: function() {
@@ -11975,7 +12807,7 @@ var $CommentEditor = CommentEditor;
 ;
 
 //# 
-},{"helpers/dom/element":45}],64:[function(require,module,exports){
+},{"helpers/dom/element":50}],69:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   Comments: {get: function() {
@@ -12270,7 +13102,7 @@ var $Comments = Comments;
 registerPlugin('comments', Comments);
 
 //# 
-},{"3rdparty/walkontable/src/cell/coords":5,"_base":58,"commentEditor":63,"eventManager":41,"helpers/dom/element":45,"plugins":57}],65:[function(require,module,exports){
+},{"3rdparty/walkontable/src/cell/coords":5,"_base":63,"commentEditor":68,"eventManager":46,"helpers/dom/element":50,"plugins":62}],70:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   CommandExecutor: {get: function() {
@@ -12343,7 +13175,7 @@ function findSubCommand(subCommandName, subCommands) {
 ;
 
 //# 
-},{"helpers/array":42}],66:[function(require,module,exports){
+},{"helpers/array":47}],71:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   ContextMenu: {get: function() {
@@ -12522,7 +13354,7 @@ Handsontable.hooks.register('afterContextMenuExecute');
 registerPlugin('contextMenu', ContextMenu);
 
 //# 
-},{"_base":58,"commandExecutor":65,"eventManager":41,"helpers/array":42,"helpers/dom/element":45,"helpers/dom/event":46,"helpers/object":50,"itemsFactory":68,"menu":69,"plugins":57,"predefinedItems":70}],67:[function(require,module,exports){
+},{"_base":63,"commandExecutor":70,"eventManager":46,"helpers/array":47,"helpers/dom/element":50,"helpers/dom/event":51,"helpers/object":55,"itemsFactory":73,"menu":74,"plugins":62,"predefinedItems":75}],72:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   Cursor: {get: function() {
@@ -12602,7 +13434,7 @@ Handsontable.plugins.utils = Handsontable.plugins.utils || {};
 Handsontable.plugins.utils.Cursor = Cursor;
 
 //# 
-},{"helpers/dom/element":45,"helpers/dom/event":46}],68:[function(require,module,exports){
+},{"helpers/dom/element":50,"helpers/dom/event":51}],73:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   ItemsFactory: {get: function() {
@@ -12721,7 +13553,7 @@ function getItems() {
 ;
 
 //# 
-},{"helpers/array":42,"helpers/object":50,"predefinedItems":70}],69:[function(require,module,exports){
+},{"helpers/array":47,"helpers/object":55,"predefinedItems":75}],74:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   Menu: {get: function() {
@@ -13202,7 +14034,7 @@ mixin(Menu, localHooks);
 ;
 
 //# 
-},{"cursor":67,"eventManager":41,"helpers/array":42,"helpers/dom/element":45,"helpers/dom/event":46,"helpers/object":50,"helpers/unicode":53,"mixins/localHooks":54,"predefinedItems":70,"utils":71}],70:[function(require,module,exports){
+},{"cursor":72,"eventManager":46,"helpers/array":47,"helpers/dom/element":50,"helpers/dom/event":51,"helpers/object":55,"helpers/unicode":58,"mixins/localHooks":59,"predefinedItems":75,"utils":76}],75:[function(require,module,exports){
 "use strict";
 var $__4;
 Object.defineProperties(exports, {
@@ -13759,7 +14591,7 @@ var _predefinedItems = ($__4 = {}, Object.defineProperty($__4, SEPARATOR, {
 }), $__4);
 
 //# 
-},{"helpers/number":49,"helpers/object":50,"utils":71}],71:[function(require,module,exports){
+},{"helpers/number":54,"helpers/object":55,"utils":76}],76:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   normalizeSelection: {get: function() {
@@ -13901,7 +14733,7 @@ function markLabelAsSelected(label) {
 }
 
 //# 
-},{"helpers/dom/element":45}],72:[function(require,module,exports){
+},{"helpers/dom/element":50}],77:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   ContextMenuCopyPaste: {get: function() {
@@ -14033,7 +14865,7 @@ var $ContextMenuCopyPaste = ContextMenuCopyPaste;
 registerPlugin('contextMenuCopyPaste', ContextMenuCopyPaste);
 
 //# 
-},{"_base":58,"eventManager":41,"helpers/array":42,"helpers/dom/element":45,"plugins":57,"zeroclipboard":"zeroclipboard"}],73:[function(require,module,exports){
+},{"_base":63,"eventManager":46,"helpers/array":47,"helpers/dom/element":50,"plugins":62,"zeroclipboard":"zeroclipboard"}],78:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   CopyPastePlugin: {get: function() {
@@ -14236,7 +15068,7 @@ Handsontable.hooks.register('modifyCopyableRange');
 ;
 
 //# 
-},{"3rdparty/walkontable/src/cell/coords":5,"3rdparty/walkontable/src/cell/range":6,"SheetClip":"SheetClip","copyPaste":"copyPaste","helpers/array":42,"helpers/dom/element":45,"helpers/dom/event":46,"helpers/function":47,"helpers/number":49,"helpers/unicode":53,"plugins":57}],74:[function(require,module,exports){
+},{"3rdparty/walkontable/src/cell/coords":5,"3rdparty/walkontable/src/cell/range":6,"SheetClip":"SheetClip","copyPaste":"copyPaste","helpers/array":47,"helpers/dom/element":50,"helpers/dom/event":51,"helpers/function":52,"helpers/number":54,"helpers/unicode":58,"plugins":62}],79:[function(require,module,exports){
 "use strict";
 var $___46__46__47__46__46__47_plugins__,
     $___46__46__47__46__46__47_3rdparty_47_walkontable_47_src_47_cell_47_range__,
@@ -14573,7 +15405,7 @@ Handsontable.hooks.add('afterInit', function() {
 Handsontable.CustomBorders = CustomBorders;
 
 //# 
-},{"3rdparty/walkontable/src/cell/range":6,"3rdparty/walkontable/src/selection":18,"plugins":57}],75:[function(require,module,exports){
+},{"3rdparty/walkontable/src/cell/range":6,"3rdparty/walkontable/src/selection":23,"plugins":62}],80:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   DragToScroll: {get: function() {
@@ -14661,7 +15493,7 @@ Handsontable.hooks.add('afterOnCellCornerMouseDown', function() {
 Handsontable.plugins.DragToScroll = DragToScroll;
 
 //# 
-},{"eventManager":41,"plugins":57}],76:[function(require,module,exports){
+},{"eventManager":46,"plugins":62}],81:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   ManualColumnFreeze: {get: function() {
@@ -14818,7 +15650,7 @@ var $ManualColumnFreeze = ManualColumnFreeze;
 registerPlugin('manualColumnFreeze', ManualColumnFreeze);
 
 //# 
-},{"_base":58,"plugins":57}],77:[function(require,module,exports){
+},{"_base":63,"plugins":62}],82:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   ManualColumnMove: {get: function() {
@@ -15086,7 +15918,7 @@ Handsontable.hooks.register('beforeColumnMove');
 Handsontable.hooks.register('afterColumnMove');
 
 //# 
-},{"eventManager":41,"helpers/dom/element":45,"helpers/dom/event":46,"plugins":57}],78:[function(require,module,exports){
+},{"eventManager":46,"helpers/dom/element":50,"helpers/dom/event":51,"plugins":62}],83:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   ManualColumnResize: {get: function() {
@@ -15330,7 +16162,7 @@ var $ManualColumnResize = ManualColumnResize;
 registerPlugin('manualColumnResize', ManualColumnResize);
 
 //# 
-},{"_base.js":58,"eventManager":41,"helpers/dom/element":45,"helpers/dom/event":46,"plugins":57}],79:[function(require,module,exports){
+},{"_base.js":63,"eventManager":46,"helpers/dom/element":50,"helpers/dom/event":51,"plugins":62}],84:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   ManualRowMove: {get: function() {
@@ -15552,7 +16384,7 @@ Handsontable.hooks.register('beforeRowMove');
 Handsontable.hooks.register('afterRowMove');
 
 //# 
-},{"eventManager":41,"helpers/dom/element":45,"helpers/dom/event":46,"plugins":57}],80:[function(require,module,exports){
+},{"eventManager":46,"helpers/dom/element":50,"helpers/dom/event":51,"plugins":62}],85:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   ManualRowResize: {get: function() {
@@ -15794,7 +16626,7 @@ var $ManualRowResize = ManualRowResize;
 registerPlugin('manualRowResize', ManualRowResize);
 
 //# 
-},{"_base.js":58,"eventManager":41,"helpers/dom/element":45,"helpers/dom/event":46,"plugins":57}],81:[function(require,module,exports){
+},{"_base.js":63,"eventManager":46,"helpers/dom/element":50,"helpers/dom/event":51,"plugins":62}],86:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   MergeCells: {get: function() {
@@ -16332,7 +17164,7 @@ Handsontable.hooks.add('afterRemoveRow', onAfterRemoveRow);
 Handsontable.MergeCells = MergeCells;
 
 //# 
-},{"3rdparty/walkontable/src/cell/coords":5,"3rdparty/walkontable/src/cell/range":6,"3rdparty/walkontable/src/table":20,"helpers/dom/event":46,"plugins":57}],82:[function(require,module,exports){
+},{"3rdparty/walkontable/src/cell/coords":5,"3rdparty/walkontable/src/cell/range":6,"3rdparty/walkontable/src/table":25,"helpers/dom/event":51,"plugins":62}],87:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   MultipleSelectionHandles: {get: function() {
@@ -16619,7 +17451,7 @@ var $MultipleSelectionHandles = MultipleSelectionHandles;
 registerPlugin('multipleSelectionHandles', MultipleSelectionHandles);
 
 //# 
-},{"_base":58,"eventManager":41,"helpers/dom/element":45,"plugins":57}],83:[function(require,module,exports){
+},{"_base":63,"eventManager":46,"helpers/dom/element":50,"plugins":62}],88:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   ObserveChanges: {get: function() {
@@ -16773,7 +17605,7 @@ function afterTableAlter() {
 }
 
 //# 
-},{"jsonpatch":"jsonpatch","plugins":57}],84:[function(require,module,exports){
+},{"jsonpatch":"jsonpatch","plugins":62}],89:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   HandsontablePersistentState: {get: function() {
@@ -16885,7 +17717,7 @@ Handsontable.hooks.add('beforeInit', htPersistentState.init);
 Handsontable.hooks.add('afterUpdateSettings', htPersistentState.init);
 
 //# 
-},{"plugins":57}],85:[function(require,module,exports){
+},{"plugins":62}],90:[function(require,module,exports){
 "use strict";
 var $___46__46__47__46__46__47_helpers_47_dom_47_element__,
     $___46__46__47__46__46__47_renderers__;
@@ -16993,7 +17825,7 @@ Handsontable.hooks.add('afterInit', init);
 Handsontable.hooks.add('afterUpdateSettings', init);
 
 //# 
-},{"helpers/dom/element":45,"renderers":88}],86:[function(require,module,exports){
+},{"helpers/dom/element":50,"renderers":93}],91:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   TouchScroll: {get: function() {
@@ -17037,11 +17869,20 @@ var $TouchScroll = TouchScroll;
         _this.scrollbars.push(wtOverlays.bottomOverlay);
       }
       _this.scrollbars.push(wtOverlays.leftOverlay);
+      if (wtOverlays.rightOverlay.clone) {
+        _this.scrollbars.push(wtOverlays.rightOverlay);
+      }
       if (wtOverlays.topLeftCornerOverlay) {
         _this.scrollbars.push(wtOverlays.topLeftCornerOverlay);
       }
       if (wtOverlays.bottomLeftCornerOverlay && wtOverlays.bottomLeftCornerOverlay.clone) {
         _this.scrollbars.push(wtOverlays.bottomLeftCornerOverlay);
+      }
+      if (wtOverlays.topRightCornerOverlay && wtOverlays.topRightCornerOverlay.clone) {
+        _this.scrollbars.push(wtOverlays.topRightCornerOverlay);
+      }
+      if (wtOverlays.bottomRightCornerOverlay && wtOverlays.bottomRightCornerOverlay.clone) {
+        _this.scrollbars.push(wtOverlays.bottomRightCornerOverlay);
       }
       _this.clones = [];
       if (wtOverlays.topOverlay.needFullRender) {
@@ -17053,11 +17894,20 @@ var $TouchScroll = TouchScroll;
       if (wtOverlays.leftOverlay.needFullRender) {
         _this.clones.push(wtOverlays.leftOverlay.clone.wtTable.holder.parentNode);
       }
+      if (wtOverlays.rightOverlay.needFullRender) {
+        _this.clones.push(wtOverlays.rightOverlay.clone.wtTable.holder.parentNode);
+      }
       if (wtOverlays.topLeftCornerOverlay) {
         _this.clones.push(wtOverlays.topLeftCornerOverlay.clone.wtTable.holder.parentNode);
       }
       if (wtOverlays.bottomLeftCornerOverlay && wtOverlays.bottomLeftCornerOverlay.clone) {
         _this.clones.push(wtOverlays.bottomLeftCornerOverlay.clone.wtTable.holder.parentNode);
+      }
+      if (wtOverlays.topRightCornerOverlay && wtOverlays.topRightCornerOverlay.clone) {
+        _this.clones.push(wtOverlays.topRightCornerOverlay.clone.wtTable.holder.parentNode);
+      }
+      if (wtOverlays.bottomRightCornerOverlay && wtOverlays.bottomRightCornerOverlay.clone) {
+        _this.clones.push(wtOverlays.bottomRightCornerOverlay.clone.wtTable.holder.parentNode);
       }
     });
   },
@@ -17106,7 +17956,7 @@ var $TouchScroll = TouchScroll;
 registerPlugin('touchScroll', TouchScroll);
 
 //# 
-},{"_base":58,"helpers/dom/element":45,"plugins":57}],87:[function(require,module,exports){
+},{"_base":63,"helpers/dom/element":50,"plugins":62}],92:[function(require,module,exports){
 "use strict";
 var $___46__46__47__46__46__47_helpers_47_object__,
     $___46__46__47__46__46__47_helpers_47_dom_47_event__;
@@ -17412,7 +18262,7 @@ Handsontable.hooks.add('afterInit', init);
 Handsontable.hooks.add('afterUpdateSettings', init);
 
 //# 
-},{"helpers/dom/event":46,"helpers/object":50}],88:[function(require,module,exports){
+},{"helpers/dom/event":51,"helpers/object":55}],93:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   registerRenderer: {get: function() {
@@ -17457,7 +18307,7 @@ function hasRenderer(rendererName) {
 ;
 
 //# 
-},{"helpers/string":52}],89:[function(require,module,exports){
+},{"helpers/string":57}],94:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   cellDecorator: {get: function() {
@@ -17499,7 +18349,7 @@ function cellDecorator(instance, TD, row, col, prop, value, cellProperties) {
 }
 
 //# 
-},{"helpers/dom/element":45,"renderers":88}],90:[function(require,module,exports){
+},{"helpers/dom/element":50,"renderers":93}],95:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   autocompleteRenderer: {get: function() {
@@ -17556,7 +18406,7 @@ function autocompleteRenderer(instance, TD, row, col, prop, value, cellPropertie
 registerRenderer('autocomplete', autocompleteRenderer);
 
 //# 
-},{"3rdparty/walkontable/src/cell/coords":5,"eventManager":41,"helpers/dom/element":45,"renderers":88}],91:[function(require,module,exports){
+},{"3rdparty/walkontable/src/cell/coords":5,"eventManager":46,"helpers/dom/element":50,"renderers":93}],96:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   checkboxRenderer: {get: function() {
@@ -17713,7 +18563,7 @@ function preventDefault(event) {
 }
 
 //# 
-},{"eventManager":41,"helpers/dom/element":45,"helpers/dom/event":46,"helpers/string":52,"helpers/unicode":53,"renderers":88}],92:[function(require,module,exports){
+},{"eventManager":46,"helpers/dom/element":50,"helpers/dom/event":51,"helpers/string":57,"helpers/unicode":58,"renderers":93}],97:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   htmlRenderer: {get: function() {
@@ -17735,7 +18585,7 @@ function htmlRenderer(instance, TD, row, col, prop, value, cellProperties) {
 registerRenderer('html', htmlRenderer);
 
 //# 
-},{"helpers/dom/element":45,"renderers":88}],93:[function(require,module,exports){
+},{"helpers/dom/element":50,"renderers":93}],98:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   numericRenderer: {get: function() {
@@ -17767,7 +18617,7 @@ function numericRenderer(instance, TD, row, col, prop, value, cellProperties) {
 registerRenderer('numeric', numericRenderer);
 
 //# 
-},{"helpers/dom/element":45,"helpers/number":49,"numeral":"numeral","renderers":88}],94:[function(require,module,exports){
+},{"helpers/dom/element":50,"helpers/number":54,"numeral":"numeral","renderers":93}],99:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   passwordRenderer: {get: function() {
@@ -17794,7 +18644,7 @@ function passwordRenderer(instance, TD, row, col, prop, value, cellProperties) {
 registerRenderer('password', passwordRenderer);
 
 //# 
-},{"helpers/dom/element":45,"renderers":88}],95:[function(require,module,exports){
+},{"helpers/dom/element":50,"renderers":93}],100:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   textRenderer: {get: function() {
@@ -17837,7 +18687,7 @@ function textRenderer(instance, TD, row, col, prop, value, cellProperties) {
 registerRenderer('text', textRenderer);
 
 //# 
-},{"helpers/dom/element":45,"helpers/mixed":48,"renderers":88}],96:[function(require,module,exports){
+},{"helpers/dom/element":50,"helpers/mixed":53,"renderers":93}],101:[function(require,module,exports){
 "use strict";
 (function(global) {
   'use strict';
@@ -18220,7 +19070,7 @@ registerRenderer('text', textRenderer);
 })();
 
 //# 
-},{}],97:[function(require,module,exports){
+},{}],102:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   TableView: {get: function() {
@@ -18419,6 +19269,9 @@ function TableView(instance) {
     },
     fixedRowsBottom: function() {
       return that.settings.fixedRowsBottom;
+    },
+    fixedColumnsRight: function() {
+      return that.settings.fixedColumnsRight;
     },
     minSpareRows: function() {
       return that.settings.minSpareRows;
@@ -18730,7 +19583,7 @@ TableView.prototype.destroy = function() {
 ;
 
 //# 
-},{"3rdparty/walkontable/src/cell/coords":5,"3rdparty/walkontable/src/core":7,"3rdparty/walkontable/src/selection":18,"eventManager":41,"helpers/dom/element":45,"helpers/dom/event":46}],98:[function(require,module,exports){
+},{"3rdparty/walkontable/src/cell/coords":5,"3rdparty/walkontable/src/core":7,"3rdparty/walkontable/src/selection":23,"eventManager":46,"helpers/dom/element":50,"helpers/dom/event":51}],103:[function(require,module,exports){
 "use strict";
 Object.defineProperties(exports, {
   GhostTable: {get: function() {
@@ -18955,7 +19808,7 @@ Handsontable.utils = Handsontable.utils || {};
 Handsontable.utils.GhostTable = GhostTable;
 
 //# 
-},{"helpers/array":42,"helpers/dom/element":45,"helpers/mixed":48,"helpers/number":49,"helpers/object":50}],99:[function(require,module,exports){
+},{"helpers/array":47,"helpers/dom/element":50,"helpers/mixed":53,"helpers/number":54,"helpers/object":55}],104:[function(require,module,exports){
 "use strict";
 var $__7;
 Object.defineProperties(exports, {
@@ -19069,7 +19922,7 @@ Handsontable.utils = Handsontable.utils || {};
 Handsontable.utils.SamplesGenerator = SamplesGenerator;
 
 //# 
-},{"helpers/array":42,"helpers/dom/element":45,"helpers/mixed":48,"helpers/number":49,"helpers/object":50}],100:[function(require,module,exports){
+},{"helpers/array":47,"helpers/dom/element":50,"helpers/mixed":53,"helpers/number":54,"helpers/object":55}],105:[function(require,module,exports){
 "use strict";
 var $___46__46__47_helpers_47_mixed__;
 var stringify = ($___46__46__47_helpers_47_mixed__ = require("helpers/mixed"), $___46__46__47_helpers_47_mixed__ && $___46__46__47_helpers_47_mixed__.__esModule && $___46__46__47_helpers_47_mixed__ || {default: $___46__46__47_helpers_47_mixed__}).stringify;
@@ -19104,7 +19957,7 @@ function process(value, callback) {
 }
 
 //# 
-},{"helpers/mixed":48}],101:[function(require,module,exports){
+},{"helpers/mixed":53}],106:[function(require,module,exports){
 "use strict";
 var $__moment__,
     $___46__46__47_editors__;
@@ -19150,7 +20003,7 @@ var correctFormat = function correctFormat(value, dateFormat) {
 };
 
 //# 
-},{"editors":29,"moment":"moment"}],102:[function(require,module,exports){
+},{"editors":34,"moment":"moment"}],107:[function(require,module,exports){
 "use strict";
 Handsontable.NumericValidator = function(value, callback) {
   if (value === null) {
@@ -20221,12 +21074,12 @@ if (typeof exports !== "undefined") {
 //# 
 },{}],"moment":[function(require,module,exports){
 //! moment.js
-//! version : 2.10.6
+//! version : 2.12.0
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
 //! license : MIT
 //! momentjs.com
 
-(function (global, factory) {
+;(function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
     global.moment = factory()
@@ -20245,7 +21098,7 @@ if (typeof exports !== "undefined") {
     }
 
     function isArray(input) {
-        return Object.prototype.toString.call(input) === '[object Array]';
+        return input instanceof Array || Object.prototype.toString.call(input) === '[object Array]';
     }
 
     function isDate(input) {
@@ -20343,39 +21196,45 @@ if (typeof exports !== "undefined") {
         return m;
     }
 
+    function isUndefined(input) {
+        return input === void 0;
+    }
+
+    // Plugins that add properties should also add the key here (null value),
+    // so we can properly clone ourselves.
     var momentProperties = utils_hooks__hooks.momentProperties = [];
 
     function copyConfig(to, from) {
         var i, prop, val;
 
-        if (typeof from._isAMomentObject !== 'undefined') {
+        if (!isUndefined(from._isAMomentObject)) {
             to._isAMomentObject = from._isAMomentObject;
         }
-        if (typeof from._i !== 'undefined') {
+        if (!isUndefined(from._i)) {
             to._i = from._i;
         }
-        if (typeof from._f !== 'undefined') {
+        if (!isUndefined(from._f)) {
             to._f = from._f;
         }
-        if (typeof from._l !== 'undefined') {
+        if (!isUndefined(from._l)) {
             to._l = from._l;
         }
-        if (typeof from._strict !== 'undefined') {
+        if (!isUndefined(from._strict)) {
             to._strict = from._strict;
         }
-        if (typeof from._tzm !== 'undefined') {
+        if (!isUndefined(from._tzm)) {
             to._tzm = from._tzm;
         }
-        if (typeof from._isUTC !== 'undefined') {
+        if (!isUndefined(from._isUTC)) {
             to._isUTC = from._isUTC;
         }
-        if (typeof from._offset !== 'undefined') {
+        if (!isUndefined(from._offset)) {
             to._offset = from._offset;
         }
-        if (typeof from._pf !== 'undefined') {
+        if (!isUndefined(from._pf)) {
             to._pf = getParsingFlags(from);
         }
-        if (typeof from._locale !== 'undefined') {
+        if (!isUndefined(from._locale)) {
             to._locale = from._locale;
         }
 
@@ -20383,7 +21242,7 @@ if (typeof exports !== "undefined") {
             for (i in momentProperties) {
                 prop = momentProperties[i];
                 val = from[prop];
-                if (typeof val !== 'undefined') {
+                if (!isUndefined(val)) {
                     to[prop] = val;
                 }
             }
@@ -20430,6 +21289,7 @@ if (typeof exports !== "undefined") {
         return value;
     }
 
+    // compare two arrays, return the number of differences
     function compareArrays(array1, array2, dontConvert) {
         var len = Math.min(array1.length, array2.length),
             lengthDiff = Math.abs(array1.length - array2.length),
@@ -20444,9 +21304,85 @@ if (typeof exports !== "undefined") {
         return diffs + lengthDiff;
     }
 
-    function Locale() {
+    function warn(msg) {
+        if (utils_hooks__hooks.suppressDeprecationWarnings === false &&
+                (typeof console !==  'undefined') && console.warn) {
+            console.warn('Deprecation warning: ' + msg);
+        }
     }
 
+    function deprecate(msg, fn) {
+        var firstTime = true;
+
+        return extend(function () {
+            if (firstTime) {
+                warn(msg + '\nArguments: ' + Array.prototype.slice.call(arguments).join(', ') + '\n' + (new Error()).stack);
+                firstTime = false;
+            }
+            return fn.apply(this, arguments);
+        }, fn);
+    }
+
+    var deprecations = {};
+
+    function deprecateSimple(name, msg) {
+        if (!deprecations[name]) {
+            warn(msg);
+            deprecations[name] = true;
+        }
+    }
+
+    utils_hooks__hooks.suppressDeprecationWarnings = false;
+
+    function isFunction(input) {
+        return input instanceof Function || Object.prototype.toString.call(input) === '[object Function]';
+    }
+
+    function isObject(input) {
+        return Object.prototype.toString.call(input) === '[object Object]';
+    }
+
+    function locale_set__set (config) {
+        var prop, i;
+        for (i in config) {
+            prop = config[i];
+            if (isFunction(prop)) {
+                this[i] = prop;
+            } else {
+                this['_' + i] = prop;
+            }
+        }
+        this._config = config;
+        // Lenient ordinal parsing accepts just a number in addition to
+        // number + (possibly) stuff coming from _ordinalParseLenient.
+        this._ordinalParseLenient = new RegExp(this._ordinalParse.source + '|' + (/\d{1,2}/).source);
+    }
+
+    function mergeConfigs(parentConfig, childConfig) {
+        var res = extend({}, parentConfig), prop;
+        for (prop in childConfig) {
+            if (hasOwnProp(childConfig, prop)) {
+                if (isObject(parentConfig[prop]) && isObject(childConfig[prop])) {
+                    res[prop] = {};
+                    extend(res[prop], parentConfig[prop]);
+                    extend(res[prop], childConfig[prop]);
+                } else if (childConfig[prop] != null) {
+                    res[prop] = childConfig[prop];
+                } else {
+                    delete res[prop];
+                }
+            }
+        }
+        return res;
+    }
+
+    function Locale(config) {
+        if (config != null) {
+            this.set(config);
+        }
+    }
+
+    // internal storage for locale config files
     var locales = {};
     var globalLocale;
 
@@ -20484,7 +21420,7 @@ if (typeof exports !== "undefined") {
     function loadLocale(name) {
         var oldLocale = null;
         // TODO: Find a better way to register and load all the locales in Node
-        if (!locales[name] && typeof module !== 'undefined' &&
+        if (!locales[name] && (typeof module !== 'undefined') &&
                 module && module.exports) {
             try {
                 oldLocale = globalLocale._abbr;
@@ -20503,7 +21439,7 @@ if (typeof exports !== "undefined") {
     function locale_locales__getSetGlobalLocale (key, values) {
         var data;
         if (key) {
-            if (typeof values === 'undefined') {
+            if (isUndefined(values)) {
                 data = locale_locales__getLocale(key);
             }
             else {
@@ -20519,11 +21455,25 @@ if (typeof exports !== "undefined") {
         return globalLocale._abbr;
     }
 
-    function defineLocale (name, values) {
-        if (values !== null) {
-            values.abbr = name;
-            locales[name] = locales[name] || new Locale();
-            locales[name].set(values);
+    function defineLocale (name, config) {
+        if (config !== null) {
+            config.abbr = name;
+            if (locales[name] != null) {
+                deprecateSimple('defineLocaleOverride',
+                        'use moment.updateLocale(localeName, config) to change ' +
+                        'an existing locale. moment.defineLocale(localeName, ' +
+                        'config) should only be used for creating a new locale');
+                config = mergeConfigs(locales[name]._config, config);
+            } else if (config.parentLocale != null) {
+                if (locales[config.parentLocale] != null) {
+                    config = mergeConfigs(locales[config.parentLocale]._config, config);
+                } else {
+                    // treat as if there is no base config
+                    deprecateSimple('parentLocaleUndefined',
+                            'specified parentLocale is not defined yet');
+                }
+            }
+            locales[name] = new Locale(config);
 
             // backwards compat for now: also set the locale
             locale_locales__getSetGlobalLocale(name);
@@ -20534,6 +21484,31 @@ if (typeof exports !== "undefined") {
             delete locales[name];
             return null;
         }
+    }
+
+    function updateLocale(name, config) {
+        if (config != null) {
+            var locale;
+            if (locales[name] != null) {
+                config = mergeConfigs(locales[name]._config, config);
+            }
+            locale = new Locale(config);
+            locale.parentLocale = locales[name];
+            locales[name] = locale;
+
+            // backwards compat for now: also set the locale
+            locale_locales__getSetGlobalLocale(name);
+        } else {
+            // pass null for config to unupdate, useful for tests
+            if (locales[name] != null) {
+                if (locales[name].parentLocale != null) {
+                    locales[name] = locales[name].parentLocale;
+                } else if (locales[name] != null) {
+                    delete locales[name];
+                }
+            }
+        }
+        return locales[name];
     }
 
     // returns locale data
@@ -20558,6 +21533,10 @@ if (typeof exports !== "undefined") {
         }
 
         return chooseLocale(key);
+    }
+
+    function locale_locales__listLocales() {
+        return Object.keys(locales);
     }
 
     var aliases = {};
@@ -20601,11 +21580,14 @@ if (typeof exports !== "undefined") {
     }
 
     function get_set__get (mom, unit) {
-        return mom._d['get' + (mom._isUTC ? 'UTC' : '') + unit]();
+        return mom.isValid() ?
+            mom._d['get' + (mom._isUTC ? 'UTC' : '') + unit]() : NaN;
     }
 
     function get_set__set (mom, unit, value) {
-        return mom._d['set' + (mom._isUTC ? 'UTC' : '') + unit](value);
+        if (mom.isValid()) {
+            mom._d['set' + (mom._isUTC ? 'UTC' : '') + unit](value);
+        }
     }
 
     // MOMENTS
@@ -20618,7 +21600,7 @@ if (typeof exports !== "undefined") {
             }
         } else {
             units = normalizeUnits(units);
-            if (typeof this[units] === 'function') {
+            if (isFunction(this[units])) {
                 return this[units](value);
             }
         }
@@ -20633,7 +21615,7 @@ if (typeof exports !== "undefined") {
             Math.pow(10, Math.max(0, zerosToFill)).toString().substr(1) + absNumber;
     }
 
-    var formattingTokens = /(\[[^\[]*\])|(\\)?(Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Q|YYYYYY|YYYYY|YYYY|YY|gg(ggg?)?|GG(GGG?)?|e|E|a|A|hh?|HH?|mm?|ss?|S{1,9}|x|X|zz?|ZZ?|.)/g;
+    var formattingTokens = /(\[[^\[]*\])|(\\)?([Hh]mm(ss)?|Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Qo?|YYYYYY|YYYYY|YYYY|YY|gg(ggg?)?|GG(GGG?)?|e|E|a|A|hh?|HH?|mm?|ss?|S{1,9}|x|X|zz?|ZZ?|.)/g;
 
     var localFormattingTokens = /(\[[^\[]*\])|(\\)?(LTS|LT|LL?L?L?|l{1,4})/g;
 
@@ -20729,6 +21711,8 @@ if (typeof exports !== "undefined") {
     var match4         = /\d{4}/;         //    0000 - 9999
     var match6         = /[+-]?\d{6}/;    // -999999 - 999999
     var match1to2      = /\d\d?/;         //       0 - 99
+    var match3to4      = /\d\d\d\d?/;     //     999 - 9999
+    var match5to6      = /\d\d\d\d\d\d?/; //   99999 - 999999
     var match1to3      = /\d{1,3}/;       //       0 - 999
     var match1to4      = /\d{1,4}/;       //       0 - 9999
     var match1to6      = /[+-]?\d{1,6}/;  // -999999 - 999999
@@ -20737,23 +21721,19 @@ if (typeof exports !== "undefined") {
     var matchSigned    = /[+-]?\d+/;      //    -inf - inf
 
     var matchOffset    = /Z|[+-]\d\d:?\d\d/gi; // +00:00 -00:00 +0000 -0000 or Z
+    var matchShortOffset = /Z|[+-]\d\d(?::?\d\d)?/gi; // +00 -00 +00:00 -00:00 +0000 -0000 or Z
 
     var matchTimestamp = /[+-]?\d+(\.\d{1,3})?/; // 123456789 123456789.123
 
     // any word (or two) characters or numbers including two/three word month in arabic.
+    // includes scottish gaelic two word and hyphenated months
     var matchWord = /[0-9]*['a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+|[\u0600-\u06FF\/]+(\s*?[\u0600-\u06FF]+){1,2}/i;
+
 
     var regexes = {};
 
-    function isFunction (sth) {
-        // https://github.com/moment/moment/issues/2325
-        return typeof sth === 'function' &&
-            Object.prototype.toString.call(sth) === '[object Function]';
-    }
-
-
     function addRegexToken (token, regex, strictRegex) {
-        regexes[token] = isFunction(regex) ? regex : function (isStrict) {
+        regexes[token] = isFunction(regex) ? regex : function (isStrict, localeData) {
             return (isStrict && strictRegex) ? strictRegex : regex;
         };
     }
@@ -20768,9 +21748,13 @@ if (typeof exports !== "undefined") {
 
     // Code from http://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript
     function unescapeFormat(s) {
-        return s.replace('\\', '').replace(/\\(\[)|\\(\])|\[([^\]\[]*)\]|\\(.)/g, function (matched, p1, p2, p3, p4) {
+        return regexEscape(s.replace('\\', '').replace(/\\(\[)|\\(\])|\[([^\]\[]*)\]|\\(.)/g, function (matched, p1, p2, p3, p4) {
             return p1 || p2 || p3 || p4;
-        }).replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+        }));
+    }
+
+    function regexEscape(s) {
+        return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
     }
 
     var tokens = {};
@@ -20810,6 +21794,8 @@ if (typeof exports !== "undefined") {
     var MINUTE = 4;
     var SECOND = 5;
     var MILLISECOND = 6;
+    var WEEK = 7;
+    var WEEKDAY = 8;
 
     function daysInMonth(year, month) {
         return new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
@@ -20837,8 +21823,12 @@ if (typeof exports !== "undefined") {
 
     addRegexToken('M',    match1to2);
     addRegexToken('MM',   match1to2, match2);
-    addRegexToken('MMM',  matchWord);
-    addRegexToken('MMMM', matchWord);
+    addRegexToken('MMM',  function (isStrict, locale) {
+        return locale.monthsShortRegex(isStrict);
+    });
+    addRegexToken('MMMM', function (isStrict, locale) {
+        return locale.monthsRegex(isStrict);
+    });
 
     addParseToken(['M', 'MM'], function (input, array) {
         array[MONTH] = toInt(input) - 1;
@@ -20856,14 +21846,17 @@ if (typeof exports !== "undefined") {
 
     // LOCALES
 
+    var MONTHS_IN_FORMAT = /D[oD]?(\[[^\[\]]*\]|\s+)+MMMM?/;
     var defaultLocaleMonths = 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_');
-    function localeMonths (m) {
-        return this._months[m.month()];
+    function localeMonths (m, format) {
+        return isArray(this._months) ? this._months[m.month()] :
+            this._months[MONTHS_IN_FORMAT.test(format) ? 'format' : 'standalone'][m.month()];
     }
 
     var defaultLocaleMonthsShort = 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_');
-    function localeMonthsShort (m) {
-        return this._monthsShort[m.month()];
+    function localeMonthsShort (m, format) {
+        return isArray(this._monthsShort) ? this._monthsShort[m.month()] :
+            this._monthsShort[MONTHS_IN_FORMAT.test(format) ? 'format' : 'standalone'][m.month()];
     }
 
     function localeMonthsParse (monthName, format, strict) {
@@ -20902,12 +21895,20 @@ if (typeof exports !== "undefined") {
     function setMonth (mom, value) {
         var dayOfMonth;
 
-        // TODO: Move this out of here!
+        if (!mom.isValid()) {
+            // No op
+            return mom;
+        }
+
         if (typeof value === 'string') {
-            value = mom.localeData().monthsParse(value);
-            // TODO: Another silent failure?
-            if (typeof value !== 'number') {
-                return mom;
+            if (/^\d+$/.test(value)) {
+                value = toInt(value);
+            } else {
+                value = mom.localeData().monthsParse(value);
+                // TODO: Another silent failure?
+                if (typeof value !== 'number') {
+                    return mom;
+                }
             }
         }
 
@@ -20930,6 +21931,72 @@ if (typeof exports !== "undefined") {
         return daysInMonth(this.year(), this.month());
     }
 
+    var defaultMonthsShortRegex = matchWord;
+    function monthsShortRegex (isStrict) {
+        if (this._monthsParseExact) {
+            if (!hasOwnProp(this, '_monthsRegex')) {
+                computeMonthsParse.call(this);
+            }
+            if (isStrict) {
+                return this._monthsShortStrictRegex;
+            } else {
+                return this._monthsShortRegex;
+            }
+        } else {
+            return this._monthsShortStrictRegex && isStrict ?
+                this._monthsShortStrictRegex : this._monthsShortRegex;
+        }
+    }
+
+    var defaultMonthsRegex = matchWord;
+    function monthsRegex (isStrict) {
+        if (this._monthsParseExact) {
+            if (!hasOwnProp(this, '_monthsRegex')) {
+                computeMonthsParse.call(this);
+            }
+            if (isStrict) {
+                return this._monthsStrictRegex;
+            } else {
+                return this._monthsRegex;
+            }
+        } else {
+            return this._monthsStrictRegex && isStrict ?
+                this._monthsStrictRegex : this._monthsRegex;
+        }
+    }
+
+    function computeMonthsParse () {
+        function cmpLenRev(a, b) {
+            return b.length - a.length;
+        }
+
+        var shortPieces = [], longPieces = [], mixedPieces = [],
+            i, mom;
+        for (i = 0; i < 12; i++) {
+            // make the regex if we don't have it already
+            mom = create_utc__createUTC([2000, i]);
+            shortPieces.push(this.monthsShort(mom, ''));
+            longPieces.push(this.months(mom, ''));
+            mixedPieces.push(this.months(mom, ''));
+            mixedPieces.push(this.monthsShort(mom, ''));
+        }
+        // Sorting makes sure if one month (or abbr) is a prefix of another it
+        // will match the longer piece.
+        shortPieces.sort(cmpLenRev);
+        longPieces.sort(cmpLenRev);
+        mixedPieces.sort(cmpLenRev);
+        for (i = 0; i < 12; i++) {
+            shortPieces[i] = regexEscape(shortPieces[i]);
+            longPieces[i] = regexEscape(longPieces[i]);
+            mixedPieces[i] = regexEscape(mixedPieces[i]);
+        }
+
+        this._monthsRegex = new RegExp('^(' + mixedPieces.join('|') + ')', 'i');
+        this._monthsShortRegex = this._monthsRegex;
+        this._monthsStrictRegex = new RegExp('^(' + longPieces.join('|') + ')$', 'i');
+        this._monthsShortStrictRegex = new RegExp('^(' + shortPieces.join('|') + ')$', 'i');
+    }
+
     function checkOverflow (m) {
         var overflow;
         var a = m._a;
@@ -20947,6 +22014,12 @@ if (typeof exports !== "undefined") {
             if (getParsingFlags(m)._overflowDayOfYear && (overflow < YEAR || overflow > DATE)) {
                 overflow = DATE;
             }
+            if (getParsingFlags(m)._overflowWeeks && overflow === -1) {
+                overflow = WEEK;
+            }
+            if (getParsingFlags(m)._overflowWeekday && overflow === -1) {
+                overflow = WEEKDAY;
+            }
 
             getParsingFlags(m).overflow = overflow;
         }
@@ -20954,51 +22027,39 @@ if (typeof exports !== "undefined") {
         return m;
     }
 
-    function warn(msg) {
-        if (utils_hooks__hooks.suppressDeprecationWarnings === false && typeof console !== 'undefined' && console.warn) {
-            console.warn('Deprecation warning: ' + msg);
-        }
-    }
+    // iso 8601 regex
+    // 0000-00-00 0000-W00 or 0000-W00-0 + T + 00 or 00:00 or 00:00:00 or 00:00:00.000 + +00:00 or +0000 or +00)
+    var extendedIsoRegex = /^\s*((?:[+-]\d{6}|\d{4})-(?:\d\d-\d\d|W\d\d-\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?::\d\d(?::\d\d(?:[.,]\d+)?)?)?)([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?/;
+    var basicIsoRegex = /^\s*((?:[+-]\d{6}|\d{4})(?:\d\d\d\d|W\d\d\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?:\d\d(?:\d\d(?:[.,]\d+)?)?)?)([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?/;
 
-    function deprecate(msg, fn) {
-        var firstTime = true;
-
-        return extend(function () {
-            if (firstTime) {
-                warn(msg + '\n' + (new Error()).stack);
-                firstTime = false;
-            }
-            return fn.apply(this, arguments);
-        }, fn);
-    }
-
-    var deprecations = {};
-
-    function deprecateSimple(name, msg) {
-        if (!deprecations[name]) {
-            warn(msg);
-            deprecations[name] = true;
-        }
-    }
-
-    utils_hooks__hooks.suppressDeprecationWarnings = false;
-
-    var from_string__isoRegex = /^\s*(?:[+-]\d{6}|\d{4})-(?:(\d\d-\d\d)|(W\d\d$)|(W\d\d-\d)|(\d\d\d))((T| )(\d\d(:\d\d(:\d\d(\.\d+)?)?)?)?([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?$/;
+    var tzRegex = /Z|[+-]\d\d(?::?\d\d)?/;
 
     var isoDates = [
-        ['YYYYYY-MM-DD', /[+-]\d{6}-\d{2}-\d{2}/],
-        ['YYYY-MM-DD', /\d{4}-\d{2}-\d{2}/],
-        ['GGGG-[W]WW-E', /\d{4}-W\d{2}-\d/],
-        ['GGGG-[W]WW', /\d{4}-W\d{2}/],
-        ['YYYY-DDD', /\d{4}-\d{3}/]
+        ['YYYYYY-MM-DD', /[+-]\d{6}-\d\d-\d\d/],
+        ['YYYY-MM-DD', /\d{4}-\d\d-\d\d/],
+        ['GGGG-[W]WW-E', /\d{4}-W\d\d-\d/],
+        ['GGGG-[W]WW', /\d{4}-W\d\d/, false],
+        ['YYYY-DDD', /\d{4}-\d{3}/],
+        ['YYYY-MM', /\d{4}-\d\d/, false],
+        ['YYYYYYMMDD', /[+-]\d{10}/],
+        ['YYYYMMDD', /\d{8}/],
+        // YYYYMM is NOT allowed by the standard
+        ['GGGG[W]WWE', /\d{4}W\d{3}/],
+        ['GGGG[W]WW', /\d{4}W\d{2}/, false],
+        ['YYYYDDD', /\d{7}/]
     ];
 
     // iso time formats and regexes
     var isoTimes = [
-        ['HH:mm:ss.SSSS', /(T| )\d\d:\d\d:\d\d\.\d+/],
-        ['HH:mm:ss', /(T| )\d\d:\d\d:\d\d/],
-        ['HH:mm', /(T| )\d\d:\d\d/],
-        ['HH', /(T| )\d\d/]
+        ['HH:mm:ss.SSSS', /\d\d:\d\d:\d\d\.\d+/],
+        ['HH:mm:ss,SSSS', /\d\d:\d\d:\d\d,\d+/],
+        ['HH:mm:ss', /\d\d:\d\d:\d\d/],
+        ['HH:mm', /\d\d:\d\d/],
+        ['HHmmss.SSSS', /\d\d\d\d\d\d\.\d+/],
+        ['HHmmss,SSSS', /\d\d\d\d\d\d,\d+/],
+        ['HHmmss', /\d\d\d\d\d\d/],
+        ['HHmm', /\d\d\d\d/],
+        ['HH', /\d\d/]
     ];
 
     var aspNetJsonRegex = /^\/?Date\((\-?\d+)/i;
@@ -21007,26 +22068,49 @@ if (typeof exports !== "undefined") {
     function configFromISO(config) {
         var i, l,
             string = config._i,
-            match = from_string__isoRegex.exec(string);
+            match = extendedIsoRegex.exec(string) || basicIsoRegex.exec(string),
+            allowTime, dateFormat, timeFormat, tzFormat;
 
         if (match) {
             getParsingFlags(config).iso = true;
+
             for (i = 0, l = isoDates.length; i < l; i++) {
-                if (isoDates[i][1].exec(string)) {
-                    config._f = isoDates[i][0];
+                if (isoDates[i][1].exec(match[1])) {
+                    dateFormat = isoDates[i][0];
+                    allowTime = isoDates[i][2] !== false;
                     break;
                 }
             }
-            for (i = 0, l = isoTimes.length; i < l; i++) {
-                if (isoTimes[i][1].exec(string)) {
-                    // match[6] should be 'T' or space
-                    config._f += (match[6] || ' ') + isoTimes[i][0];
-                    break;
+            if (dateFormat == null) {
+                config._isValid = false;
+                return;
+            }
+            if (match[3]) {
+                for (i = 0, l = isoTimes.length; i < l; i++) {
+                    if (isoTimes[i][1].exec(match[3])) {
+                        // match[2] should be 'T' or space
+                        timeFormat = (match[2] || ' ') + isoTimes[i][0];
+                        break;
+                    }
+                }
+                if (timeFormat == null) {
+                    config._isValid = false;
+                    return;
                 }
             }
-            if (string.match(matchOffset)) {
-                config._f += 'Z';
+            if (!allowTime && timeFormat != null) {
+                config._isValid = false;
+                return;
             }
+            if (match[4]) {
+                if (tzRegex.exec(match[4])) {
+                    tzFormat = 'Z';
+                } else {
+                    config._isValid = false;
+                    return;
+                }
+            }
+            config._f = dateFormat + (timeFormat || '') + (tzFormat || '');
             configFromStringAndFormat(config);
         } else {
             config._isValid = false;
@@ -21064,8 +22148,8 @@ if (typeof exports !== "undefined") {
         //http://stackoverflow.com/questions/181348/instantiating-a-javascript-object-by-calling-prototype-constructor-apply
         var date = new Date(y, m, d, h, M, s, ms);
 
-        //the date constructor doesn't accept years < 1970
-        if (y < 1970) {
+        //the date constructor remaps years 0-99 to 1900-1999
+        if (y < 100 && y >= 0 && isFinite(date.getFullYear())) {
             date.setFullYear(y);
         }
         return date;
@@ -21073,11 +22157,20 @@ if (typeof exports !== "undefined") {
 
     function createUTCDate (y) {
         var date = new Date(Date.UTC.apply(null, arguments));
-        if (y < 1970) {
+
+        //the Date.UTC function remaps years 0-99 to 1900-1999
+        if (y < 100 && y >= 0 && isFinite(date.getUTCFullYear())) {
             date.setUTCFullYear(y);
         }
         return date;
     }
+
+    // FORMATTING
+
+    addFormatToken('Y', 0, 0, function () {
+        var y = this.year();
+        return y <= 9999 ? '' + y : '+' + y;
+    });
 
     addFormatToken(0, ['YY', 2], 0, function () {
         return this.year() % 100;
@@ -21106,6 +22199,9 @@ if (typeof exports !== "undefined") {
     addParseToken('YY', function (input, array) {
         array[YEAR] = utils_hooks__hooks.parseTwoDigitYear(input);
     });
+    addParseToken('Y', function (input, array) {
+        array[YEAR] = parseInt(input, 10);
+    });
 
     // HELPERS
 
@@ -21131,124 +22227,66 @@ if (typeof exports !== "undefined") {
         return isLeapYear(this.year());
     }
 
-    addFormatToken('w', ['ww', 2], 'wo', 'week');
-    addFormatToken('W', ['WW', 2], 'Wo', 'isoWeek');
+    // start-of-first-week - start-of-year
+    function firstWeekOffset(year, dow, doy) {
+        var // first-week day -- which january is always in the first week (4 for iso, 1 for other)
+            fwd = 7 + dow - doy,
+            // first-week day local weekday -- which local weekday is fwd
+            fwdlw = (7 + createUTCDate(year, 0, fwd).getUTCDay() - dow) % 7;
 
-    // ALIASES
-
-    addUnitAlias('week', 'w');
-    addUnitAlias('isoWeek', 'W');
-
-    // PARSING
-
-    addRegexToken('w',  match1to2);
-    addRegexToken('ww', match1to2, match2);
-    addRegexToken('W',  match1to2);
-    addRegexToken('WW', match1to2, match2);
-
-    addWeekParseToken(['w', 'ww', 'W', 'WW'], function (input, week, config, token) {
-        week[token.substr(0, 1)] = toInt(input);
-    });
-
-    // HELPERS
-
-    // firstDayOfWeek       0 = sun, 6 = sat
-    //                      the day of the week that starts the week
-    //                      (usually sunday or monday)
-    // firstDayOfWeekOfYear 0 = sun, 6 = sat
-    //                      the first week is the week that contains the first
-    //                      of this day of the week
-    //                      (eg. ISO weeks use thursday (4))
-    function weekOfYear(mom, firstDayOfWeek, firstDayOfWeekOfYear) {
-        var end = firstDayOfWeekOfYear - firstDayOfWeek,
-            daysToDayOfWeek = firstDayOfWeekOfYear - mom.day(),
-            adjustedMoment;
-
-
-        if (daysToDayOfWeek > end) {
-            daysToDayOfWeek -= 7;
-        }
-
-        if (daysToDayOfWeek < end - 7) {
-            daysToDayOfWeek += 7;
-        }
-
-        adjustedMoment = local__createLocal(mom).add(daysToDayOfWeek, 'd');
-        return {
-            week: Math.ceil(adjustedMoment.dayOfYear() / 7),
-            year: adjustedMoment.year()
-        };
+        return -fwdlw + fwd - 1;
     }
-
-    // LOCALES
-
-    function localeWeek (mom) {
-        return weekOfYear(mom, this._week.dow, this._week.doy).week;
-    }
-
-    var defaultLocaleWeek = {
-        dow : 0, // Sunday is the first day of the week.
-        doy : 6  // The week that contains Jan 1st is the first week of the year.
-    };
-
-    function localeFirstDayOfWeek () {
-        return this._week.dow;
-    }
-
-    function localeFirstDayOfYear () {
-        return this._week.doy;
-    }
-
-    // MOMENTS
-
-    function getSetWeek (input) {
-        var week = this.localeData().week(this);
-        return input == null ? week : this.add((input - week) * 7, 'd');
-    }
-
-    function getSetISOWeek (input) {
-        var week = weekOfYear(this, 1, 4).week;
-        return input == null ? week : this.add((input - week) * 7, 'd');
-    }
-
-    addFormatToken('DDD', ['DDDD', 3], 'DDDo', 'dayOfYear');
-
-    // ALIASES
-
-    addUnitAlias('dayOfYear', 'DDD');
-
-    // PARSING
-
-    addRegexToken('DDD',  match1to3);
-    addRegexToken('DDDD', match3);
-    addParseToken(['DDD', 'DDDD'], function (input, array, config) {
-        config._dayOfYear = toInt(input);
-    });
-
-    // HELPERS
 
     //http://en.wikipedia.org/wiki/ISO_week_date#Calculating_a_date_given_the_year.2C_week_number_and_weekday
-    function dayOfYearFromWeeks(year, week, weekday, firstDayOfWeekOfYear, firstDayOfWeek) {
-        var week1Jan = 6 + firstDayOfWeek - firstDayOfWeekOfYear, janX = createUTCDate(year, 0, 1 + week1Jan), d = janX.getUTCDay(), dayOfYear;
-        if (d < firstDayOfWeek) {
-            d += 7;
+    function dayOfYearFromWeeks(year, week, weekday, dow, doy) {
+        var localWeekday = (7 + weekday - dow) % 7,
+            weekOffset = firstWeekOffset(year, dow, doy),
+            dayOfYear = 1 + 7 * (week - 1) + localWeekday + weekOffset,
+            resYear, resDayOfYear;
+
+        if (dayOfYear <= 0) {
+            resYear = year - 1;
+            resDayOfYear = daysInYear(resYear) + dayOfYear;
+        } else if (dayOfYear > daysInYear(year)) {
+            resYear = year + 1;
+            resDayOfYear = dayOfYear - daysInYear(year);
+        } else {
+            resYear = year;
+            resDayOfYear = dayOfYear;
         }
 
-        weekday = weekday != null ? 1 * weekday : firstDayOfWeek;
-
-        dayOfYear = 1 + week1Jan + 7 * (week - 1) - d + weekday;
-
         return {
-            year: dayOfYear > 0 ? year : year - 1,
-            dayOfYear: dayOfYear > 0 ?  dayOfYear : daysInYear(year - 1) + dayOfYear
+            year: resYear,
+            dayOfYear: resDayOfYear
         };
     }
 
-    // MOMENTS
+    function weekOfYear(mom, dow, doy) {
+        var weekOffset = firstWeekOffset(mom.year(), dow, doy),
+            week = Math.floor((mom.dayOfYear() - weekOffset - 1) / 7) + 1,
+            resWeek, resYear;
 
-    function getSetDayOfYear (input) {
-        var dayOfYear = Math.round((this.clone().startOf('day') - this.clone().startOf('year')) / 864e5) + 1;
-        return input == null ? dayOfYear : this.add((input - dayOfYear), 'd');
+        if (week < 1) {
+            resYear = mom.year() - 1;
+            resWeek = week + weeksInYear(resYear, dow, doy);
+        } else if (week > weeksInYear(mom.year(), dow, doy)) {
+            resWeek = week - weeksInYear(mom.year(), dow, doy);
+            resYear = mom.year() + 1;
+        } else {
+            resYear = mom.year();
+            resWeek = week;
+        }
+
+        return {
+            week: resWeek,
+            year: resYear
+        };
+    }
+
+    function weeksInYear(year, dow, doy) {
+        var weekOffset = firstWeekOffset(year, dow, doy),
+            weekOffsetNext = firstWeekOffset(year + 1, dow, doy);
+        return (daysInYear(year) - weekOffset + weekOffsetNext) / 7;
     }
 
     // Pick the first defined of two or three arguments.
@@ -21263,11 +22301,12 @@ if (typeof exports !== "undefined") {
     }
 
     function currentDateArray(config) {
-        var now = new Date();
+        // hooks is actually the exported moment object
+        var nowValue = new Date(utils_hooks__hooks.now());
         if (config._useUTC) {
-            return [now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()];
+            return [nowValue.getUTCFullYear(), nowValue.getUTCMonth(), nowValue.getUTCDate()];
         }
-        return [now.getFullYear(), now.getMonth(), now.getDate()];
+        return [nowValue.getFullYear(), nowValue.getMonth(), nowValue.getDate()];
     }
 
     // convert an array to a date.
@@ -21337,7 +22376,7 @@ if (typeof exports !== "undefined") {
     }
 
     function dayOfYearFromWeekInfo(config) {
-        var w, weekYear, week, weekday, dow, doy, temp;
+        var w, weekYear, week, weekday, dow, doy, temp, weekdayOverflow;
 
         w = config._w;
         if (w.GG != null || w.W != null || w.E != null) {
@@ -21351,6 +22390,9 @@ if (typeof exports !== "undefined") {
             weekYear = defaults(w.GG, config._a[YEAR], weekOfYear(local__createLocal(), 1, 4).year);
             week = defaults(w.W, 1);
             weekday = defaults(w.E, 1);
+            if (weekday < 1 || weekday > 7) {
+                weekdayOverflow = true;
+            }
         } else {
             dow = config._locale._week.dow;
             doy = config._locale._week.doy;
@@ -21361,23 +22403,32 @@ if (typeof exports !== "undefined") {
             if (w.d != null) {
                 // weekday -- low day numbers are considered next week
                 weekday = w.d;
-                if (weekday < dow) {
-                    ++week;
+                if (weekday < 0 || weekday > 6) {
+                    weekdayOverflow = true;
                 }
             } else if (w.e != null) {
                 // local weekday -- counting starts from begining of week
                 weekday = w.e + dow;
+                if (w.e < 0 || w.e > 6) {
+                    weekdayOverflow = true;
+                }
             } else {
                 // default to begining of week
                 weekday = dow;
             }
         }
-        temp = dayOfYearFromWeeks(weekYear, week, weekday, doy, dow);
-
-        config._a[YEAR] = temp.year;
-        config._dayOfYear = temp.dayOfYear;
+        if (week < 1 || week > weeksInYear(weekYear, dow, doy)) {
+            getParsingFlags(config)._overflowWeeks = true;
+        } else if (weekdayOverflow != null) {
+            getParsingFlags(config)._overflowWeekday = true;
+        } else {
+            temp = dayOfYearFromWeeks(weekYear, week, weekday, dow, doy);
+            config._a[YEAR] = temp.year;
+            config._dayOfYear = temp.dayOfYear;
+        }
     }
 
+    // constant that refers to the ISO standard
     utils_hooks__hooks.ISO_8601 = function () {};
 
     // date from string and format string
@@ -21402,6 +22453,8 @@ if (typeof exports !== "undefined") {
         for (i = 0; i < tokens.length; i++) {
             token = tokens[i];
             parsedInput = (string.match(getParseRegexForToken(token, config)) || [])[0];
+            // console.log('token', token, 'parsedInput', parsedInput,
+            //         'regex', getParseRegexForToken(token, config));
             if (parsedInput) {
                 skipped = string.substr(0, string.indexOf(parsedInput));
                 if (skipped.length > 0) {
@@ -21470,6 +22523,7 @@ if (typeof exports !== "undefined") {
         }
     }
 
+    // date from string and array of format strings
     function configFromStringAndArray(config) {
         var tempConfig,
             bestMoment,
@@ -21520,7 +22574,9 @@ if (typeof exports !== "undefined") {
         }
 
         var i = normalizeObjectUnits(config._i);
-        config._a = [i.year, i.month, i.day || i.date, i.hour, i.minute, i.second, i.millisecond];
+        config._a = map([i.year, i.month, i.day || i.date, i.hour, i.minute, i.second, i.millisecond], function (obj) {
+            return obj && parseInt(obj, 10);
+        });
 
         configFromArray(config);
     }
@@ -21562,13 +22618,17 @@ if (typeof exports !== "undefined") {
             configFromInput(config);
         }
 
+        if (!valid__isValid(config)) {
+            config._d = null;
+        }
+
         return config;
     }
 
     function configFromInput(config) {
         var input = config._i;
         if (input === undefined) {
-            config._d = new Date();
+            config._d = new Date(utils_hooks__hooks.now());
         } else if (isDate(input)) {
             config._d = new Date(+input);
         } else if (typeof input === 'string') {
@@ -21612,18 +22672,26 @@ if (typeof exports !== "undefined") {
     }
 
     var prototypeMin = deprecate(
-         'moment().min is deprecated, use moment.min instead. https://github.com/moment/moment/issues/1548',
+         'moment().min is deprecated, use moment.max instead. https://github.com/moment/moment/issues/1548',
          function () {
              var other = local__createLocal.apply(null, arguments);
-             return other < this ? this : other;
+             if (this.isValid() && other.isValid()) {
+                 return other < this ? this : other;
+             } else {
+                 return valid__createInvalid();
+             }
          }
      );
 
     var prototypeMax = deprecate(
-        'moment().max is deprecated, use moment.max instead. https://github.com/moment/moment/issues/1548',
+        'moment().max is deprecated, use moment.min instead. https://github.com/moment/moment/issues/1548',
         function () {
             var other = local__createLocal.apply(null, arguments);
-            return other > this ? this : other;
+            if (this.isValid() && other.isValid()) {
+                return other > this ? this : other;
+            } else {
+                return valid__createInvalid();
+            }
         }
     );
 
@@ -21661,6 +22729,10 @@ if (typeof exports !== "undefined") {
 
         return pickBy('isAfter', args);
     }
+
+    var now = function () {
+        return Date.now ? Date.now() : +(new Date());
+    };
 
     function Duration (duration) {
         var normalizedInput = normalizeObjectUnits(duration),
@@ -21701,6 +22773,8 @@ if (typeof exports !== "undefined") {
         return obj instanceof Duration;
     }
 
+    // FORMATTING
+
     function offset (token, separator) {
         addFormatToken(token, 0, 0, function () {
             var offset = this.utcOffset();
@@ -21718,11 +22792,11 @@ if (typeof exports !== "undefined") {
 
     // PARSING
 
-    addRegexToken('Z',  matchOffset);
-    addRegexToken('ZZ', matchOffset);
+    addRegexToken('Z',  matchShortOffset);
+    addRegexToken('ZZ', matchShortOffset);
     addParseToken(['Z', 'ZZ'], function (input, array, config) {
         config._useUTC = true;
-        config._tzm = offsetFromString(input);
+        config._tzm = offsetFromString(matchShortOffset, input);
     });
 
     // HELPERS
@@ -21732,8 +22806,8 @@ if (typeof exports !== "undefined") {
     // '-1530'  > ['-15', '30']
     var chunkOffset = /([\+\-]|\d\d)/gi;
 
-    function offsetFromString(string) {
-        var matches = ((string || '').match(matchOffset) || []);
+    function offsetFromString(matcher, string) {
+        var matches = ((string || '').match(matcher) || []);
         var chunk   = matches[matches.length - 1] || [];
         var parts   = (chunk + '').match(chunkOffset) || ['-', 0, 0];
         var minutes = +(parts[1] * 60) + toInt(parts[2]);
@@ -21783,11 +22857,13 @@ if (typeof exports !== "undefined") {
     function getSetOffset (input, keepLocalTime) {
         var offset = this._offset || 0,
             localAdjust;
+        if (!this.isValid()) {
+            return input != null ? this : NaN;
+        }
         if (input != null) {
             if (typeof input === 'string') {
-                input = offsetFromString(input);
-            }
-            if (Math.abs(input) < 16) {
+                input = offsetFromString(matchShortOffset, input);
+            } else if (Math.abs(input) < 16) {
                 input = input * 60;
             }
             if (!this._isUTC && keepLocalTime) {
@@ -21847,12 +22923,15 @@ if (typeof exports !== "undefined") {
         if (this._tzm) {
             this.utcOffset(this._tzm);
         } else if (typeof this._i === 'string') {
-            this.utcOffset(offsetFromString(this._i));
+            this.utcOffset(offsetFromString(matchOffset, this._i));
         }
         return this;
     }
 
     function hasAlignedHourOffset (input) {
+        if (!this.isValid()) {
+            return false;
+        }
         input = input ? local__createLocal(input).utcOffset() : 0;
 
         return (this.utcOffset() - input) % 60 === 0;
@@ -21866,7 +22945,7 @@ if (typeof exports !== "undefined") {
     }
 
     function isDaylightSavingTimeShifted () {
-        if (typeof this._isDSTShifted !== 'undefined') {
+        if (!isUndefined(this._isDSTShifted)) {
             return this._isDSTShifted;
         }
 
@@ -21887,22 +22966,24 @@ if (typeof exports !== "undefined") {
     }
 
     function isLocal () {
-        return !this._isUTC;
+        return this.isValid() ? !this._isUTC : false;
     }
 
     function isUtcOffset () {
-        return this._isUTC;
+        return this.isValid() ? this._isUTC : false;
     }
 
     function isUtc () {
-        return this._isUTC && this._offset === 0;
+        return this.isValid() ? this._isUTC && this._offset === 0 : false;
     }
 
-    var aspNetRegex = /(\-)?(?:(\d*)\.)?(\d+)\:(\d+)(?:\:(\d+)\.?(\d{3})?)?/;
+    // ASP.NET json date format regex
+    var aspNetRegex = /^(\-)?(?:(\d*)[. ])?(\d+)\:(\d+)(?:\:(\d+)\.?(\d{3})?\d*)?$/;
 
     // from http://docs.closure-library.googlecode.com/git/closure_goog_date_date.js.source.html
     // somewhat more in line with 4.4.3.2 2004 spec, but allows decimal anywhere
-    var create__isoRegex = /^(-)?P(?:(?:([0-9,.]*)Y)?(?:([0-9,.]*)M)?(?:([0-9,.]*)D)?(?:T(?:([0-9,.]*)H)?(?:([0-9,.]*)M)?(?:([0-9,.]*)S)?)?|([0-9,.]*)W)$/;
+    // and further modified to allow for strings containing both week and day
+    var isoRegex = /^(-)?P(?:([0-9,.]*)Y)?(?:([0-9,.]*)M)?(?:([0-9,.]*)W)?(?:([0-9,.]*)D)?(?:T(?:([0-9,.]*)H)?(?:([0-9,.]*)M)?(?:([0-9,.]*)S)?)?$/;
 
     function create__createDuration (input, key) {
         var duration = input,
@@ -21935,16 +23016,16 @@ if (typeof exports !== "undefined") {
                 s  : toInt(match[SECOND])      * sign,
                 ms : toInt(match[MILLISECOND]) * sign
             };
-        } else if (!!(match = create__isoRegex.exec(input))) {
+        } else if (!!(match = isoRegex.exec(input))) {
             sign = (match[1] === '-') ? -1 : 1;
             duration = {
                 y : parseIso(match[2], sign),
                 M : parseIso(match[3], sign),
-                d : parseIso(match[4], sign),
-                h : parseIso(match[5], sign),
-                m : parseIso(match[6], sign),
-                s : parseIso(match[7], sign),
-                w : parseIso(match[8], sign)
+                w : parseIso(match[4], sign),
+                d : parseIso(match[5], sign),
+                h : parseIso(match[6], sign),
+                m : parseIso(match[7], sign),
+                s : parseIso(match[8], sign)
             };
         } else if (duration == null) {// checks for null or undefined
             duration = {};
@@ -21992,6 +23073,10 @@ if (typeof exports !== "undefined") {
 
     function momentsDifference(base, other) {
         var res;
+        if (!(base.isValid() && other.isValid())) {
+            return {milliseconds: 0, months: 0};
+        }
+
         other = cloneWithOffset(other, base);
         if (base.isBefore(other)) {
             res = positiveMomentsDifference(base, other);
@@ -22004,6 +23089,15 @@ if (typeof exports !== "undefined") {
         return res;
     }
 
+    function absRound (number) {
+        if (number < 0) {
+            return Math.round(-1 * number) * -1;
+        } else {
+            return Math.round(number);
+        }
+    }
+
+    // TODO: remove 'name' arg after deprecation is removed
     function createAdder(direction, name) {
         return function (val, period) {
             var dur, tmp;
@@ -22022,8 +23116,14 @@ if (typeof exports !== "undefined") {
 
     function add_subtract__addSubtract (mom, duration, isAdding, updateOffset) {
         var milliseconds = duration._milliseconds,
-            days = duration._days,
-            months = duration._months;
+            days = absRound(duration._days),
+            months = absRound(duration._months);
+
+        if (!mom.isValid()) {
+            // No op
+            return;
+        }
+
         updateOffset = updateOffset == null ? true : updateOffset;
 
         if (milliseconds) {
@@ -22055,7 +23155,10 @@ if (typeof exports !== "undefined") {
                 diff < 1 ? 'sameDay' :
                 diff < 2 ? 'nextDay' :
                 diff < 7 ? 'nextWeek' : 'sameElse';
-        return this.format(formats && formats[format] || this.localeData().calendar(format, this, local__createLocal(now)));
+
+        var output = formats && (isFunction(formats[format]) ? formats[format]() : formats[format]);
+
+        return this.format(output || this.localeData().calendar(format, this, local__createLocal(now)));
     }
 
     function clone () {
@@ -22063,26 +23166,28 @@ if (typeof exports !== "undefined") {
     }
 
     function isAfter (input, units) {
-        var inputMs;
-        units = normalizeUnits(typeof units !== 'undefined' ? units : 'millisecond');
+        var localInput = isMoment(input) ? input : local__createLocal(input);
+        if (!(this.isValid() && localInput.isValid())) {
+            return false;
+        }
+        units = normalizeUnits(!isUndefined(units) ? units : 'millisecond');
         if (units === 'millisecond') {
-            input = isMoment(input) ? input : local__createLocal(input);
-            return +this > +input;
+            return +this > +localInput;
         } else {
-            inputMs = isMoment(input) ? +input : +local__createLocal(input);
-            return inputMs < +this.clone().startOf(units);
+            return +localInput < +this.clone().startOf(units);
         }
     }
 
     function isBefore (input, units) {
-        var inputMs;
-        units = normalizeUnits(typeof units !== 'undefined' ? units : 'millisecond');
+        var localInput = isMoment(input) ? input : local__createLocal(input);
+        if (!(this.isValid() && localInput.isValid())) {
+            return false;
+        }
+        units = normalizeUnits(!isUndefined(units) ? units : 'millisecond');
         if (units === 'millisecond') {
-            input = isMoment(input) ? input : local__createLocal(input);
-            return +this < +input;
+            return +this < +localInput;
         } else {
-            inputMs = isMoment(input) ? +input : +local__createLocal(input);
-            return +this.clone().endOf(units) < inputMs;
+            return +this.clone().endOf(units) < +localInput;
         }
     }
 
@@ -22091,21 +23196,44 @@ if (typeof exports !== "undefined") {
     }
 
     function isSame (input, units) {
-        var inputMs;
+        var localInput = isMoment(input) ? input : local__createLocal(input),
+            inputMs;
+        if (!(this.isValid() && localInput.isValid())) {
+            return false;
+        }
         units = normalizeUnits(units || 'millisecond');
         if (units === 'millisecond') {
-            input = isMoment(input) ? input : local__createLocal(input);
-            return +this === +input;
+            return +this === +localInput;
         } else {
-            inputMs = +local__createLocal(input);
+            inputMs = +localInput;
             return +(this.clone().startOf(units)) <= inputMs && inputMs <= +(this.clone().endOf(units));
         }
     }
 
+    function isSameOrAfter (input, units) {
+        return this.isSame(input, units) || this.isAfter(input,units);
+    }
+
+    function isSameOrBefore (input, units) {
+        return this.isSame(input, units) || this.isBefore(input,units);
+    }
+
     function diff (input, units, asFloat) {
-        var that = cloneWithOffset(input, this),
-            zoneDelta = (that.utcOffset() - this.utcOffset()) * 6e4,
+        var that,
+            zoneDelta,
             delta, output;
+
+        if (!this.isValid()) {
+            return NaN;
+        }
+
+        that = cloneWithOffset(input, this);
+
+        if (!that.isValid()) {
+            return NaN;
+        }
+
+        zoneDelta = (that.utcOffset() - this.utcOffset()) * 6e4;
 
         units = normalizeUnits(units);
 
@@ -22157,7 +23285,7 @@ if (typeof exports !== "undefined") {
     function moment_format__toISOString () {
         var m = this.clone().utc();
         if (0 < m.year() && m.year() <= 9999) {
-            if ('function' === typeof Date.prototype.toISOString) {
+            if (isFunction(Date.prototype.toISOString)) {
                 // native implementation is ~50x faster, use it when we can
                 return this.toDate().toISOString();
             } else {
@@ -22174,10 +23302,13 @@ if (typeof exports !== "undefined") {
     }
 
     function from (time, withoutSuffix) {
-        if (!this.isValid()) {
+        if (this.isValid() &&
+                ((isMoment(time) && time.isValid()) ||
+                 local__createLocal(time).isValid())) {
+            return create__createDuration({to: this, from: time}).locale(this.locale()).humanize(!withoutSuffix);
+        } else {
             return this.localeData().invalidDate();
         }
-        return create__createDuration({to: this, from: time}).locale(this.locale()).humanize(!withoutSuffix);
     }
 
     function fromNow (withoutSuffix) {
@@ -22185,16 +23316,22 @@ if (typeof exports !== "undefined") {
     }
 
     function to (time, withoutSuffix) {
-        if (!this.isValid()) {
+        if (this.isValid() &&
+                ((isMoment(time) && time.isValid()) ||
+                 local__createLocal(time).isValid())) {
+            return create__createDuration({from: this, to: time}).locale(this.locale()).humanize(!withoutSuffix);
+        } else {
             return this.localeData().invalidDate();
         }
-        return create__createDuration({from: this, to: time}).locale(this.locale()).humanize(!withoutSuffix);
     }
 
     function toNow (withoutSuffix) {
         return this.to(local__createLocal(), withoutSuffix);
     }
 
+    // If passed a locale key, it will set the locale for this
+    // instance.  Otherwise, it will return the locale configuration
+    // variables for this instance.
     function locale (key) {
         var newLocaleData;
 
@@ -22305,6 +23442,11 @@ if (typeof exports !== "undefined") {
         };
     }
 
+    function toJSON () {
+        // new Date(NaN).toJSON() === null
+        return this.isValid() ? this.toISOString() : null;
+    }
+
     function moment_valid__isValid () {
         return valid__isValid(this);
     }
@@ -22316,6 +23458,18 @@ if (typeof exports !== "undefined") {
     function invalidAt () {
         return getParsingFlags(this).overflow;
     }
+
+    function creationData() {
+        return {
+            input: this._i,
+            format: this._f,
+            locale: this._locale,
+            isUTC: this._isUTC,
+            strict: this._strict
+        };
+    }
+
+    // FORMATTING
 
     addFormatToken(0, ['gg', 2], 0, function () {
         return this.weekYear() % 100;
@@ -22358,22 +23512,20 @@ if (typeof exports !== "undefined") {
         week[token] = utils_hooks__hooks.parseTwoDigitYear(input);
     });
 
-    // HELPERS
-
-    function weeksInYear(year, dow, doy) {
-        return weekOfYear(local__createLocal([year, 11, 31 + dow - doy]), dow, doy).week;
-    }
-
     // MOMENTS
 
     function getSetWeekYear (input) {
-        var year = weekOfYear(this, this.localeData()._week.dow, this.localeData()._week.doy).year;
-        return input == null ? year : this.add((input - year), 'y');
+        return getSetWeekYearHelper.call(this,
+                input,
+                this.week(),
+                this.weekday(),
+                this.localeData()._week.dow,
+                this.localeData()._week.doy);
     }
 
     function getSetISOWeekYear (input) {
-        var year = weekOfYear(this, 1, 4).year;
-        return input == null ? year : this.add((input - year), 'y');
+        return getSetWeekYearHelper.call(this,
+                input, this.isoWeek(), this.isoWeekday(), 1, 4);
     }
 
     function getISOWeeksInYear () {
@@ -22385,7 +23537,32 @@ if (typeof exports !== "undefined") {
         return weeksInYear(this.year(), weekInfo.dow, weekInfo.doy);
     }
 
-    addFormatToken('Q', 0, 0, 'quarter');
+    function getSetWeekYearHelper(input, week, weekday, dow, doy) {
+        var weeksTarget;
+        if (input == null) {
+            return weekOfYear(this, dow, doy).year;
+        } else {
+            weeksTarget = weeksInYear(input, dow, doy);
+            if (week > weeksTarget) {
+                week = weeksTarget;
+            }
+            return setWeekAll.call(this, input, week, weekday, dow, doy);
+        }
+    }
+
+    function setWeekAll(weekYear, week, weekday, dow, doy) {
+        var dayOfYearData = dayOfYearFromWeeks(weekYear, week, weekday, dow, doy),
+            date = createUTCDate(dayOfYearData.year, 0, dayOfYearData.dayOfYear);
+
+        this.year(date.getUTCFullYear());
+        this.month(date.getUTCMonth());
+        this.date(date.getUTCDate());
+        return this;
+    }
+
+    // FORMATTING
+
+    addFormatToken('Q', 0, 'Qo', 'quarter');
 
     // ALIASES
 
@@ -22403,6 +23580,62 @@ if (typeof exports !== "undefined") {
     function getSetQuarter (input) {
         return input == null ? Math.ceil((this.month() + 1) / 3) : this.month((input - 1) * 3 + this.month() % 3);
     }
+
+    // FORMATTING
+
+    addFormatToken('w', ['ww', 2], 'wo', 'week');
+    addFormatToken('W', ['WW', 2], 'Wo', 'isoWeek');
+
+    // ALIASES
+
+    addUnitAlias('week', 'w');
+    addUnitAlias('isoWeek', 'W');
+
+    // PARSING
+
+    addRegexToken('w',  match1to2);
+    addRegexToken('ww', match1to2, match2);
+    addRegexToken('W',  match1to2);
+    addRegexToken('WW', match1to2, match2);
+
+    addWeekParseToken(['w', 'ww', 'W', 'WW'], function (input, week, config, token) {
+        week[token.substr(0, 1)] = toInt(input);
+    });
+
+    // HELPERS
+
+    // LOCALES
+
+    function localeWeek (mom) {
+        return weekOfYear(mom, this._week.dow, this._week.doy).week;
+    }
+
+    var defaultLocaleWeek = {
+        dow : 0, // Sunday is the first day of the week.
+        doy : 6  // The week that contains Jan 1st is the first week of the year.
+    };
+
+    function localeFirstDayOfWeek () {
+        return this._week.dow;
+    }
+
+    function localeFirstDayOfYear () {
+        return this._week.doy;
+    }
+
+    // MOMENTS
+
+    function getSetWeek (input) {
+        var week = this.localeData().week(this);
+        return input == null ? week : this.add((input - week) * 7, 'd');
+    }
+
+    function getSetISOWeek (input) {
+        var week = weekOfYear(this, 1, 4).week;
+        return input == null ? week : this.add((input - week) * 7, 'd');
+    }
+
+    // FORMATTING
 
     addFormatToken('D', ['DD', 2], 'Do', 'date');
 
@@ -22426,6 +23659,8 @@ if (typeof exports !== "undefined") {
     // MOMENTS
 
     var getSetDayOfMonth = makeGetSet('Date', true);
+
+    // FORMATTING
 
     addFormatToken('d', 0, 'do', 'day');
 
@@ -22459,8 +23694,8 @@ if (typeof exports !== "undefined") {
     addRegexToken('ddd',  matchWord);
     addRegexToken('dddd', matchWord);
 
-    addWeekParseToken(['dd', 'ddd', 'dddd'], function (input, week, config) {
-        var weekday = config._locale.weekdaysParse(input);
+    addWeekParseToken(['dd', 'ddd', 'dddd'], function (input, week, config, token) {
+        var weekday = config._locale.weekdaysParse(input, token, config._strict);
         // if we didn't get a weekday name, mark the date as invalid
         if (weekday != null) {
             week.d = weekday;
@@ -22495,8 +23730,9 @@ if (typeof exports !== "undefined") {
     // LOCALES
 
     var defaultLocaleWeekdays = 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_');
-    function localeWeekdays (m) {
-        return this._weekdays[m.day()];
+    function localeWeekdays (m, format) {
+        return isArray(this._weekdays) ? this._weekdays[m.day()] :
+            this._weekdays[this._weekdays.isFormat.test(format) ? 'format' : 'standalone'][m.day()];
     }
 
     var defaultLocaleWeekdaysShort = 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_');
@@ -22509,20 +23745,37 @@ if (typeof exports !== "undefined") {
         return this._weekdaysMin[m.day()];
     }
 
-    function localeWeekdaysParse (weekdayName) {
+    function localeWeekdaysParse (weekdayName, format, strict) {
         var i, mom, regex;
 
-        this._weekdaysParse = this._weekdaysParse || [];
+        if (!this._weekdaysParse) {
+            this._weekdaysParse = [];
+            this._minWeekdaysParse = [];
+            this._shortWeekdaysParse = [];
+            this._fullWeekdaysParse = [];
+        }
 
         for (i = 0; i < 7; i++) {
             // make the regex if we don't have it already
+
+            mom = local__createLocal([2000, 1]).day(i);
+            if (strict && !this._fullWeekdaysParse[i]) {
+                this._fullWeekdaysParse[i] = new RegExp('^' + this.weekdays(mom, '').replace('.', '\.?') + '$', 'i');
+                this._shortWeekdaysParse[i] = new RegExp('^' + this.weekdaysShort(mom, '').replace('.', '\.?') + '$', 'i');
+                this._minWeekdaysParse[i] = new RegExp('^' + this.weekdaysMin(mom, '').replace('.', '\.?') + '$', 'i');
+            }
             if (!this._weekdaysParse[i]) {
-                mom = local__createLocal([2000, 1]).day(i);
                 regex = '^' + this.weekdays(mom, '') + '|^' + this.weekdaysShort(mom, '') + '|^' + this.weekdaysMin(mom, '');
                 this._weekdaysParse[i] = new RegExp(regex.replace('.', ''), 'i');
             }
             // test the regex
-            if (this._weekdaysParse[i].test(weekdayName)) {
+            if (strict && format === 'dddd' && this._fullWeekdaysParse[i].test(weekdayName)) {
+                return i;
+            } else if (strict && format === 'ddd' && this._shortWeekdaysParse[i].test(weekdayName)) {
+                return i;
+            } else if (strict && format === 'dd' && this._minWeekdaysParse[i].test(weekdayName)) {
+                return i;
+            } else if (!strict && this._weekdaysParse[i].test(weekdayName)) {
                 return i;
             }
         }
@@ -22531,6 +23784,9 @@ if (typeof exports !== "undefined") {
     // MOMENTS
 
     function getSetDayOfWeek (input) {
+        if (!this.isValid()) {
+            return input != null ? this : NaN;
+        }
         var day = this._isUTC ? this._d.getUTCDay() : this._d.getDay();
         if (input != null) {
             input = parseWeekday(input, this.localeData());
@@ -22541,20 +23797,73 @@ if (typeof exports !== "undefined") {
     }
 
     function getSetLocaleDayOfWeek (input) {
+        if (!this.isValid()) {
+            return input != null ? this : NaN;
+        }
         var weekday = (this.day() + 7 - this.localeData()._week.dow) % 7;
         return input == null ? weekday : this.add(input - weekday, 'd');
     }
 
     function getSetISODayOfWeek (input) {
+        if (!this.isValid()) {
+            return input != null ? this : NaN;
+        }
         // behaves the same as moment#day except
         // as a getter, returns 7 instead of 0 (1-7 range instead of 0-6)
         // as a setter, sunday should belong to the previous week.
         return input == null ? this.day() || 7 : this.day(this.day() % 7 ? input : input - 7);
     }
 
-    addFormatToken('H', ['HH', 2], 0, 'hour');
-    addFormatToken('h', ['hh', 2], 0, function () {
+    // FORMATTING
+
+    addFormatToken('DDD', ['DDDD', 3], 'DDDo', 'dayOfYear');
+
+    // ALIASES
+
+    addUnitAlias('dayOfYear', 'DDD');
+
+    // PARSING
+
+    addRegexToken('DDD',  match1to3);
+    addRegexToken('DDDD', match3);
+    addParseToken(['DDD', 'DDDD'], function (input, array, config) {
+        config._dayOfYear = toInt(input);
+    });
+
+    // HELPERS
+
+    // MOMENTS
+
+    function getSetDayOfYear (input) {
+        var dayOfYear = Math.round((this.clone().startOf('day') - this.clone().startOf('year')) / 864e5) + 1;
+        return input == null ? dayOfYear : this.add((input - dayOfYear), 'd');
+    }
+
+    // FORMATTING
+
+    function hFormat() {
         return this.hours() % 12 || 12;
+    }
+
+    addFormatToken('H', ['HH', 2], 0, 'hour');
+    addFormatToken('h', ['hh', 2], 0, hFormat);
+
+    addFormatToken('hmm', 0, 0, function () {
+        return '' + hFormat.apply(this) + zeroFill(this.minutes(), 2);
+    });
+
+    addFormatToken('hmmss', 0, 0, function () {
+        return '' + hFormat.apply(this) + zeroFill(this.minutes(), 2) +
+            zeroFill(this.seconds(), 2);
+    });
+
+    addFormatToken('Hmm', 0, 0, function () {
+        return '' + this.hours() + zeroFill(this.minutes(), 2);
+    });
+
+    addFormatToken('Hmmss', 0, 0, function () {
+        return '' + this.hours() + zeroFill(this.minutes(), 2) +
+            zeroFill(this.seconds(), 2);
     });
 
     function meridiem (token, lowercase) {
@@ -22583,6 +23892,11 @@ if (typeof exports !== "undefined") {
     addRegexToken('HH', match1to2, match2);
     addRegexToken('hh', match1to2, match2);
 
+    addRegexToken('hmm', match3to4);
+    addRegexToken('hmmss', match5to6);
+    addRegexToken('Hmm', match3to4);
+    addRegexToken('Hmmss', match5to6);
+
     addParseToken(['H', 'HH'], HOUR);
     addParseToken(['a', 'A'], function (input, array, config) {
         config._isPm = config._locale.isPM(input);
@@ -22591,6 +23905,32 @@ if (typeof exports !== "undefined") {
     addParseToken(['h', 'hh'], function (input, array, config) {
         array[HOUR] = toInt(input);
         getParsingFlags(config).bigHour = true;
+    });
+    addParseToken('hmm', function (input, array, config) {
+        var pos = input.length - 2;
+        array[HOUR] = toInt(input.substr(0, pos));
+        array[MINUTE] = toInt(input.substr(pos));
+        getParsingFlags(config).bigHour = true;
+    });
+    addParseToken('hmmss', function (input, array, config) {
+        var pos1 = input.length - 4;
+        var pos2 = input.length - 2;
+        array[HOUR] = toInt(input.substr(0, pos1));
+        array[MINUTE] = toInt(input.substr(pos1, 2));
+        array[SECOND] = toInt(input.substr(pos2));
+        getParsingFlags(config).bigHour = true;
+    });
+    addParseToken('Hmm', function (input, array, config) {
+        var pos = input.length - 2;
+        array[HOUR] = toInt(input.substr(0, pos));
+        array[MINUTE] = toInt(input.substr(pos));
+    });
+    addParseToken('Hmmss', function (input, array, config) {
+        var pos1 = input.length - 4;
+        var pos2 = input.length - 2;
+        array[HOUR] = toInt(input.substr(0, pos1));
+        array[MINUTE] = toInt(input.substr(pos1, 2));
+        array[SECOND] = toInt(input.substr(pos2));
     });
 
     // LOCALES
@@ -22619,6 +23959,8 @@ if (typeof exports !== "undefined") {
     // this rule.
     var getSetHour = makeGetSet('Hours', true);
 
+    // FORMATTING
+
     addFormatToken('m', ['mm', 2], 0, 'minute');
 
     // ALIASES
@@ -22635,6 +23977,8 @@ if (typeof exports !== "undefined") {
 
     var getSetMinute = makeGetSet('Minutes', false);
 
+    // FORMATTING
+
     addFormatToken('s', ['ss', 2], 0, 'second');
 
     // ALIASES
@@ -22650,6 +23994,8 @@ if (typeof exports !== "undefined") {
     // MOMENTS
 
     var getSetSecond = makeGetSet('Seconds', false);
+
+    // FORMATTING
 
     addFormatToken('S', 0, 0, function () {
         return ~~(this.millisecond() / 100);
@@ -22706,6 +24052,8 @@ if (typeof exports !== "undefined") {
 
     var getSetMillisecond = makeGetSet('Milliseconds', false);
 
+    // FORMATTING
+
     addFormatToken('z',  0, 0, 'zoneAbbr');
     addFormatToken('zz', 0, 0, 'zoneName');
 
@@ -22721,40 +24069,43 @@ if (typeof exports !== "undefined") {
 
     var momentPrototype__proto = Moment.prototype;
 
-    momentPrototype__proto.add          = add_subtract__add;
-    momentPrototype__proto.calendar     = moment_calendar__calendar;
-    momentPrototype__proto.clone        = clone;
-    momentPrototype__proto.diff         = diff;
-    momentPrototype__proto.endOf        = endOf;
-    momentPrototype__proto.format       = format;
-    momentPrototype__proto.from         = from;
-    momentPrototype__proto.fromNow      = fromNow;
-    momentPrototype__proto.to           = to;
-    momentPrototype__proto.toNow        = toNow;
-    momentPrototype__proto.get          = getSet;
-    momentPrototype__proto.invalidAt    = invalidAt;
-    momentPrototype__proto.isAfter      = isAfter;
-    momentPrototype__proto.isBefore     = isBefore;
-    momentPrototype__proto.isBetween    = isBetween;
-    momentPrototype__proto.isSame       = isSame;
-    momentPrototype__proto.isValid      = moment_valid__isValid;
-    momentPrototype__proto.lang         = lang;
-    momentPrototype__proto.locale       = locale;
-    momentPrototype__proto.localeData   = localeData;
-    momentPrototype__proto.max          = prototypeMax;
-    momentPrototype__proto.min          = prototypeMin;
-    momentPrototype__proto.parsingFlags = parsingFlags;
-    momentPrototype__proto.set          = getSet;
-    momentPrototype__proto.startOf      = startOf;
-    momentPrototype__proto.subtract     = add_subtract__subtract;
-    momentPrototype__proto.toArray      = toArray;
-    momentPrototype__proto.toObject     = toObject;
-    momentPrototype__proto.toDate       = toDate;
-    momentPrototype__proto.toISOString  = moment_format__toISOString;
-    momentPrototype__proto.toJSON       = moment_format__toISOString;
-    momentPrototype__proto.toString     = toString;
-    momentPrototype__proto.unix         = unix;
-    momentPrototype__proto.valueOf      = to_type__valueOf;
+    momentPrototype__proto.add               = add_subtract__add;
+    momentPrototype__proto.calendar          = moment_calendar__calendar;
+    momentPrototype__proto.clone             = clone;
+    momentPrototype__proto.diff              = diff;
+    momentPrototype__proto.endOf             = endOf;
+    momentPrototype__proto.format            = format;
+    momentPrototype__proto.from              = from;
+    momentPrototype__proto.fromNow           = fromNow;
+    momentPrototype__proto.to                = to;
+    momentPrototype__proto.toNow             = toNow;
+    momentPrototype__proto.get               = getSet;
+    momentPrototype__proto.invalidAt         = invalidAt;
+    momentPrototype__proto.isAfter           = isAfter;
+    momentPrototype__proto.isBefore          = isBefore;
+    momentPrototype__proto.isBetween         = isBetween;
+    momentPrototype__proto.isSame            = isSame;
+    momentPrototype__proto.isSameOrAfter     = isSameOrAfter;
+    momentPrototype__proto.isSameOrBefore    = isSameOrBefore;
+    momentPrototype__proto.isValid           = moment_valid__isValid;
+    momentPrototype__proto.lang              = lang;
+    momentPrototype__proto.locale            = locale;
+    momentPrototype__proto.localeData        = localeData;
+    momentPrototype__proto.max               = prototypeMax;
+    momentPrototype__proto.min               = prototypeMin;
+    momentPrototype__proto.parsingFlags      = parsingFlags;
+    momentPrototype__proto.set               = getSet;
+    momentPrototype__proto.startOf           = startOf;
+    momentPrototype__proto.subtract          = add_subtract__subtract;
+    momentPrototype__proto.toArray           = toArray;
+    momentPrototype__proto.toObject          = toObject;
+    momentPrototype__proto.toDate            = toDate;
+    momentPrototype__proto.toISOString       = moment_format__toISOString;
+    momentPrototype__proto.toJSON            = toJSON;
+    momentPrototype__proto.toString          = toString;
+    momentPrototype__proto.unix              = unix;
+    momentPrototype__proto.valueOf           = to_type__valueOf;
+    momentPrototype__proto.creationData      = creationData;
 
     // Year
     momentPrototype__proto.year       = getSetYear;
@@ -22840,7 +24191,7 @@ if (typeof exports !== "undefined") {
 
     function locale_calendar__calendar (key, mom, now) {
         var output = this._calendar[key];
-        return typeof output === 'function' ? output.call(mom, now) : output;
+        return isFunction(output) ? output.call(mom, now) : output;
     }
 
     var defaultLongDateFormat = {
@@ -22902,29 +24253,14 @@ if (typeof exports !== "undefined") {
 
     function relative__relativeTime (number, withoutSuffix, string, isFuture) {
         var output = this._relativeTime[string];
-        return (typeof output === 'function') ?
+        return (isFunction(output)) ?
             output(number, withoutSuffix, string, isFuture) :
             output.replace(/%d/i, number);
     }
 
     function pastFuture (diff, output) {
         var format = this._relativeTime[diff > 0 ? 'future' : 'past'];
-        return typeof format === 'function' ? format(output) : format.replace(/%s/i, output);
-    }
-
-    function locale_set__set (config) {
-        var prop, i;
-        for (i in config) {
-            prop = config[i];
-            if (typeof prop === 'function') {
-                this[i] = prop;
-            } else {
-                this['_' + i] = prop;
-            }
-        }
-        // Lenient ordinal parsing accepts just a number in addition to
-        // number + (possibly) stuff coming from _ordinalParseLenient.
-        this._ordinalParseLenient = new RegExp(this._ordinalParse.source + '|' + (/\d{1,2}/).source);
+        return isFunction(format) ? format(output) : format.replace(/%s/i, output);
     }
 
     var prototype__proto = Locale.prototype;
@@ -22946,11 +24282,15 @@ if (typeof exports !== "undefined") {
     prototype__proto.set             = locale_set__set;
 
     // Month
-    prototype__proto.months       =        localeMonths;
-    prototype__proto._months      = defaultLocaleMonths;
-    prototype__proto.monthsShort  =        localeMonthsShort;
-    prototype__proto._monthsShort = defaultLocaleMonthsShort;
-    prototype__proto.monthsParse  =        localeMonthsParse;
+    prototype__proto.months            =        localeMonths;
+    prototype__proto._months           = defaultLocaleMonths;
+    prototype__proto.monthsShort       =        localeMonthsShort;
+    prototype__proto._monthsShort      = defaultLocaleMonthsShort;
+    prototype__proto.monthsParse       =        localeMonthsParse;
+    prototype__proto._monthsRegex      = defaultMonthsRegex;
+    prototype__proto.monthsRegex       = monthsRegex;
+    prototype__proto._monthsShortRegex = defaultMonthsShortRegex;
+    prototype__proto.monthsShortRegex  = monthsShortRegex;
 
     // Week
     prototype__proto.week = localeWeek;
@@ -23238,15 +24578,15 @@ if (typeof exports !== "undefined") {
         var years    = round(duration.as('y'));
 
         var a = seconds < thresholds.s && ['s', seconds]  ||
-                minutes === 1          && ['m']           ||
+                minutes <= 1           && ['m']           ||
                 minutes < thresholds.m && ['mm', minutes] ||
-                hours   === 1          && ['h']           ||
+                hours   <= 1           && ['h']           ||
                 hours   < thresholds.h && ['hh', hours]   ||
-                days    === 1          && ['d']           ||
+                days    <= 1           && ['d']           ||
                 days    < thresholds.d && ['dd', days]    ||
-                months  === 1          && ['M']           ||
+                months  <= 1           && ['M']           ||
                 months  < thresholds.M && ['MM', months]  ||
-                years   === 1          && ['y']           || ['yy', years];
+                years   <= 1           && ['y']           || ['yy', years];
 
         a[2] = withoutSuffix;
         a[3] = +posNegDuration > 0;
@@ -23367,6 +24707,8 @@ if (typeof exports !== "undefined") {
 
     // Side effect imports
 
+    // FORMATTING
+
     addFormatToken('X', 0, 0, 'unix');
     addFormatToken('x', 0, 0, 'valueOf');
 
@@ -23384,13 +24726,14 @@ if (typeof exports !== "undefined") {
     // Side effect imports
 
 
-    utils_hooks__hooks.version = '2.10.6';
+    utils_hooks__hooks.version = '2.12.0';
 
     setHookCallback(local__createLocal);
 
     utils_hooks__hooks.fn                    = momentPrototype;
     utils_hooks__hooks.min                   = min;
     utils_hooks__hooks.max                   = max;
+    utils_hooks__hooks.now                   = now;
     utils_hooks__hooks.utc                   = create_utc__createUTC;
     utils_hooks__hooks.unix                  = moment__createUnix;
     utils_hooks__hooks.months                = lists__listMonths;
@@ -23406,9 +24749,12 @@ if (typeof exports !== "undefined") {
     utils_hooks__hooks.monthsShort           = lists__listMonthsShort;
     utils_hooks__hooks.weekdaysMin           = lists__listWeekdaysMin;
     utils_hooks__hooks.defineLocale          = defineLocale;
+    utils_hooks__hooks.updateLocale          = updateLocale;
+    utils_hooks__hooks.locales               = locale_locales__listLocales;
     utils_hooks__hooks.weekdaysShort         = lists__listWeekdaysShort;
     utils_hooks__hooks.normalizeUnits        = normalizeUnits;
     utils_hooks__hooks.relativeTimeThreshold = duration_humanize__getSetRelativeTimeThreshold;
+    utils_hooks__hooks.prototype             = momentPrototype;
 
     var _moment = utils_hooks__hooks;
 
@@ -27615,5 +28961,5 @@ if (typeof exports !== "undefined") {
 })(function() {
   return this || window;
 }());
-},{}]},{},[23,59,61,60,62,83,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,84,85,86,87,100,101,102,90,91,92,93,94,95,31,35,32,33,40,34,36,37,38,39])("zeroclipboard")
+},{}]},{},[28,64,65,66,67,88,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,89,90,91,92,105,106,107,95,96,97,98,99,100,36,40,37,38,45,39,41,42,43,44])("zeroclipboard")
 });
